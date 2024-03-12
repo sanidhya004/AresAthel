@@ -13,15 +13,16 @@ const ForgotPassword = () => {
   const dispatch = useDispatch();
   const { isFetching } = useSelector((state) => state.auth);
   const handleSendOtp = async () => {
-    if (await SendOtp(dispatch, { email })) {
-      setShowModal(true);
-    }
+    // if (await SendOtp(dispatch, { email })) {
+    //   setShowModal(true);
+    // }
+    setShowModal(true)
   };
   const handleClose = () => setShowModal(false);
 
   return (
     <AuthLayout>
-      <section className="forgot-password">
+      <section >
         <h3 className="mb-4 font-weight-bold">Forgot Password</h3>
         <p className="mb-1 mt-4 email ml-1">
           Email to send reset instructions to

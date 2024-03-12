@@ -1,9 +1,52 @@
 import React from "react";
 import { FaBeer, FaHome } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink ,useNavigate } from "react-router-dom";
+import { useDisclosure } from '@mantine/hooks';
+import { Modal } from "@mantine/core";
+
 const Sidenav = () => {
+  const [opened, { open, close }] = useDisclosure(false);
+const navigate=useNavigate ()
   return (
-    <div className="athel-menu-cont">
+    <>
+      <Modal.Root opened={opened} onClose={close}>
+        <Modal.Overlay />
+        <Modal.Content>
+          <Modal.Header>
+            
+            <Modal.CloseButton />
+          </Modal.Header>
+          <Modal.Body>
+              <div style={{ textAlign: "center" }}>
+                <h4 style={{ fontSize: "19px" }}>Do you want to Logout?</h4>
+                <p style={{ color: "#8C90AA" }}>
+                  Are you sure that you want to Logout
+                </p>
+                <div
+                  style={{
+                    display: "flex",
+                    minWidth: "100%",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <button
+                    className="purple-button"
+                    onClick={() => {
+                      navigate("/signin")
+                    }}
+                  >
+                    {" "}
+                    Confirm
+                  </button>
+                  <button className="grey-button" onClick={close}>
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </Modal.Body>
+        </Modal.Content>
+      </Modal.Root>
+    
       <main className="w-100 h-100 athel-menu text-center text-secondary">
         <div className="sidenav-main">
           <img src="/images/DoctorMenuLogo.png" />
@@ -113,14 +156,17 @@ const Sidenav = () => {
               </div>
             </NavLink>
           </p>
-          <p style={{color:"white",position:"absolute",bottom:"10px",left:"5vw"}}><span style={{marginRight:"4px"}}><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div onClick={open}>
+      <p style={{color:"white",position:"absolute",bottom:"10px",left:"5vw"}}><span style={{marginRight:"4px"}}><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M14 5L12.6 6.4L14.2 8H6V10H14.2L12.6 11.6L14 13L18 9L14 5ZM2 2H9V0H2C0.9 0 0 0.9 0 2V16C0 17.1 0.9 18 2 18H9V16H2V2Z" fill="white"/>
 </svg>
 </span>Logout</p>
+</div>
         </div>
       </main>
       
-    </div>
+    
+    </>
   );
 };
 

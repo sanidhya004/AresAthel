@@ -5,7 +5,10 @@ import ProfileCard from './Components/ProfileCard'
 const AthelProfileManager = () => {
   return (
    <AtheProfileLayout>
-      <ProfileCard/>
+      
+      <ProfileCard/> 
+   
+     
     </AtheProfileLayout>
   )
 }

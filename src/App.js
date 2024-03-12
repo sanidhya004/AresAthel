@@ -19,6 +19,8 @@ import "./styles/login.css";
 import "./styles/recent_bookings.css";
 import ErrorBoundary from "./utils/ErrorBoundary.js";
 import AthelProfileManager from "./components/layout/AthelProfileManager";
+import AtheleDashboard from "./pages/AtheleDashboard";
+import SelectPlan from "./pages/SelectPlan";
 
 function App() {
   return (
@@ -26,7 +28,7 @@ function App() {
       <ErrorBoundary>
         {/* <Router> */}
         <Routes>
-          <Route path="/" element={<AtheleHome />} />
+          <Route path="/" element={<AtheleDashboard/>} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/a-home" element={<AtheleHome />} />
           <Route path="/a-transactions" element={<AtheTransactions />} />
@@ -41,7 +43,7 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/update-password" element={<UpdatePassword />} />
           <Route path="*" element={<PageNotFound />} />
-
+          <Route path="/a-plans" element={<SelectPlan/>}/>
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-use" element={<TermsOfUse />} />
         </Routes>

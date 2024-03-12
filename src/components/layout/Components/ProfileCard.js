@@ -109,7 +109,9 @@ const ProfileCard = () => {
         </Modal.Root>
       )}
 
-      <div>
+      <div
+        style={{ background: "white", padding: "30px", borderRadius: "16px" }}
+      >
         <p className="profile-header">Profile</p>
         <div className="profile-card">
           <Avatar
@@ -132,7 +134,9 @@ const ProfileCard = () => {
             <h5>MS Kishore</h5>
             <div>
               <p className="sub-text">Kishore@gmail.com</p>
-              <p className="sub-text" style={{marginTop:"-16px"}}>8770100421</p>
+              <p className="sub-text" style={{ marginTop: "-16px" }}>
+                8770100421
+              </p>
             </div>
           </div>
         </div>
@@ -146,7 +150,20 @@ const ProfileCard = () => {
             </div>
 
             <div>
-              <i class="fa-solid fa-arrow-right"></i>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.48951 18.5303C8.17016 18.2374 8.17016 17.7626 8.48951 17.4697L13.875 12.5303C14.1944 12.2374 14.1944 11.7626 13.875 11.4697L8.48951 6.53033C8.17016 6.23744 8.17016 5.76256 8.48951 5.46967C8.80886 5.17678 9.32663 5.17678 9.64598 5.46967L15.0315 10.409C15.9895 11.2877 15.9895 12.7123 15.0315 13.591L9.64598 18.5303C9.32663 18.8232 8.80886 18.8232 8.48951 18.5303Z"
+                  fill="#060024"
+                />
+              </svg>
             </div>
           </div>
         </NavLink>
@@ -159,7 +176,20 @@ const ProfileCard = () => {
             </p>
           </div>
           <div>
-            <i class="fa-solid fa-arrow-right"></i>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M8.48951 18.5303C8.17016 18.2374 8.17016 17.7626 8.48951 17.4697L13.875 12.5303C14.1944 12.2374 14.1944 11.7626 13.875 11.4697L8.48951 6.53033C8.17016 6.23744 8.17016 5.76256 8.48951 5.46967C8.80886 5.17678 9.32663 5.17678 9.64598 5.46967L15.0315 10.409C15.9895 11.2877 15.9895 12.7123 15.0315 13.591L9.64598 18.5303C9.32663 18.8232 8.80886 18.8232 8.48951 18.5303Z"
+                fill="#060024"
+              />
+            </svg>
           </div>
         </div>
 
@@ -168,7 +198,20 @@ const ProfileCard = () => {
             <p className="header">Term Of Use</p>
           </div>
           <div>
-            <i class="fa-solid fa-arrow-right"></i>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M8.48951 18.5303C8.17016 18.2374 8.17016 17.7626 8.48951 17.4697L13.875 12.5303C14.1944 12.2374 14.1944 11.7626 13.875 11.4697L8.48951 6.53033C8.17016 6.23744 8.17016 5.76256 8.48951 5.46967C8.80886 5.17678 9.32663 5.17678 9.64598 5.46967L15.0315 10.409C15.9895 11.2877 15.9895 12.7123 15.0315 13.591L9.64598 18.5303C9.32663 18.8232 8.80886 18.8232 8.48951 18.5303Z"
+                fill="#060024"
+              />
+            </svg>
           </div>
         </div>
         <NavLink to="/a-security">
@@ -177,8 +220,46 @@ const ProfileCard = () => {
               <p className="header">Privacy Policy</p>
             </div>
             <div>
-              <i class="fa-solid fa-arrow-right"></i>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.48951 18.5303C8.17016 18.2374 8.17016 17.7626 8.48951 17.4697L13.875 12.5303C14.1944 12.2374 14.1944 11.7626 13.875 11.4697L8.48951 6.53033C8.17016 6.23744 8.17016 5.76256 8.48951 5.46967C8.80886 5.17678 9.32663 5.17678 9.64598 5.46967L15.0315 10.409C15.9895 11.2877 15.9895 12.7123 15.0315 13.591L9.64598 18.5303C9.32663 18.8232 8.80886 18.8232 8.48951 18.5303Z"
+                  fill="#060024"
+                />
+              </svg>
             </div>
+          </div>
+        </NavLink>
+        <NavLink to="/signin">
+          <div className="nav-links" style={{ background: "transparent" }}>
+            <div className="cont">
+              <p className="header" style={{ color: "red" }}>
+                {" "}
+                <span style={{marginRight:"4px"}}>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M14 5L12.6 6.4L14.2 8H6V10H14.2L12.6 11.6L14 13L18 9L14 5ZM2 2H9V0H2C0.9 0 0 0.9 0 2V16C0 17.1 0.9 18 2 18H9V16H2V2Z"
+                      fill="#FF2222"
+                    />
+                  </svg>
+                </span>
+                Logout
+              </p>
+            </div>
+            <div></div>
           </div>
         </NavLink>
       </div>

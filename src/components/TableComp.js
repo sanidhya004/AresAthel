@@ -20,15 +20,15 @@ const TableComp = () => {
       <Table.Td><p>{element.time}</p></Table.Td>
       <Table.Td>{
         <div className='d-flex flex-column gap-2'>
-          <Button variant="filled" color="#7257FF" style={{fontSize:"11px"}}>Start Drill</Button> 
-          <Button variant="filled" color="#7257FF26"style={{fontSize:"11px",color:"#7257FF"}}>View Prescription</Button>
+          <Button variant="filled" color="#7257FF" style={{fontSize:"12px",borderRadius:"12px"}}>Start Drill</Button> 
+          <Button variant="filled" color="#7257FF26"style={{fontSize:"12px",color:"#7257FF",borderRadius:"12px" }}>View Prescription</Button>
           </div>
         }</Table.Td>
     </Table.Tr>
   ));
   return (
     <Table.ScrollContainer minWidth={500} type="native">
-      <Table  striped>
+      <Table  >
         <Table.Thead>
           <Table.Tr>
             <Table.Th>Name</Table.Th>

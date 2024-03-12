@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import AtheProfileLayout from "../../components/layout/AtheProfileLayout";
 import { Input } from "@mantine/core";
 import { Select } from "@mantine/core";
@@ -8,7 +8,7 @@ import { DateInput } from "@mantine/dates";
 
 const EditProfile = () => {
   const [value, setValue] = useState(null);
-
+const navigate=useNavigate()
   const [formData, setFormData] = useState({
     firstName: "",
     surname: "",
@@ -37,7 +37,8 @@ const EditProfile = () => {
   };
   return (
     <AtheProfileLayout>
-      <div className="d-flex">
+      <div style={{background:"white",padding:"30px",borderRadius:"16px"}}>
+      <div className="d-flex ">
       <NavLink to='/a-manager'>
         <div className="d-flex gap-3 mb-4">
          
@@ -129,6 +130,32 @@ const EditProfile = () => {
           <label htmlFor="inputPassword4">Confirm Password</label>
           <PasswordInput variant="filled" placeholder="Confirm" />
         </div>
+      </div>
+      <div className="form-row">
+      <div
+                  style={{
+                    display: "flex",
+                    minWidth: "100%",
+                    gap:"3px",
+                    marginTop:"2px"
+                  }}
+                >
+                  <button
+                    className="purple-button"
+                    onClick={() => {
+                     
+                    }}
+                  >
+                    {" "}
+                    Save
+                  </button>
+                  <button className="grey-button "   onClick={() => {
+                     navigate("/a-manager")
+                    }}>
+                    Cancel
+                  </button>
+                </div>
+      </div>
       </div>
     </AtheProfileLayout>
   );

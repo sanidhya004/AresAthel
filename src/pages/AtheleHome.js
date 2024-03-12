@@ -61,20 +61,22 @@ const AtheleHome = () => {
       </Modal>
 
       <section style={{ overflowY: "hidden" }} className="athel-home">
-        <p className="h4 " style={{ marginLeft: "20px", margin: "10px 20px" }}>
+       
+        <Container style={{ height: "85%", width: "99%" }}>
+          
+          <Row style={{ height: "100%" }} className="justify-content-around ">
+            <Col sm={8} xs={12} className="d-grid  all-cont-width">
+            <p className="h4 " >
           Hello,
           <p className="font-weight-bold d-inline">
             Colter! <img src="/images/icon/hi.svg" />
           </p>
         </p>
-        <Container style={{ height: "85%", width: "99%" }}>
-          <Row style={{ height: "100%" }} className="justify-content-around ">
-            <Col sm={8} xs={12} className="d-grid  all-cont-width">
               <Row className=" gap-2 flex-row" style={{ minHeight: "300px" }}>
-                <Col
+                <div
                   xs={6}
                   sm={6}
-                  className="upper-card "
+                  className="upper-card"
                   style={{
                     background: "#7257FF",
                   }}
@@ -109,8 +111,8 @@ const AtheleHome = () => {
                       </div>
                     </div>
                   </div>
-                </Col>
-                <Col xs={6} sm={6} className=" training-card">
+                </div>
+                <Col xs={6} sm={6} className="training-card">
                   <div className="d-flex justify-content-between upper-train  ">
                     <div>
                       <p>Training Session</p>
@@ -201,7 +203,7 @@ const AtheleHome = () => {
                     </div>
                   </div>
                 </div>
-                  </Row>
+              </Row>
               <Row>
                 <h5>Select Service</h5>
                 <Container className="services-cont ">
@@ -295,6 +297,7 @@ const AtheleHome = () => {
                     </Col>
                     <Col
                       sm={6}
+                      xs={12}
                       style={{ backgroundColor: "#D9CFFB" }}
                       className=" mb-4 d-flex justify-content-between  align-items-center"
                     >
@@ -333,9 +336,13 @@ const AtheleHome = () => {
                   <RecentBooking />
                 </Col>
               </Row>
+              
+            
             </Col>
+           
             <Col
-              class="col-md-auto "
+              
+              class="col-md-auto dekstop "
               style={{
                 backgroundColor: "white",
                 borderRadius: "20px",
@@ -349,7 +356,7 @@ const AtheleHome = () => {
                 defaultValue={defaultValues}
                 style={{ height: "200px" }}
               /> */}
-              <Row className="m-1 desktop">
+              <Row className="m-1 ">
                 <div className="calender-comp">
                   <div>
                     <p>Calender</p>

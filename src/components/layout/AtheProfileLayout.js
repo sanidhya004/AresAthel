@@ -10,10 +10,10 @@ import ProfileNavigation from "./Components/ProfileNavigation";
 const AtheProfileLayout = ({ children }) => {
   return (
     <AtheleteMenu>
-      <section style={{ padding:"30px",background:"white",borderRadius:"16px" ,display:"flex",justifyContent:"center",alignItems:"center"}}>
-        {/* <img src="/images/profile_heading.png" /> */}
+      {/* <section style={{ padding:"30px",background:"white",borderRadius:"16px" ,display:"flex",justifyContent:"center",alignItems:"center"}}>
+        {/* <img src="/images/profile_heading.png" /> 
        
-        {/* <Container style={{ width: "90%" }}>
+         <Container style={{ width: "90%" }}>
           <ProfileDetails />
 
           <Row
@@ -28,12 +28,13 @@ const AtheProfileLayout = ({ children }) => {
             <ProfileNavigation />
             <ProfileContent>{children}</ProfileContent>
           </Row>
-        </Container> */}
+        </Container> 
         
         
-     <div style={{width:"100%"}}>{children}</div>
+ 
 
-      </section>
+      {/* </section> */}
+          <div style={{width:"100%",padding:"30px"}}>{children}</div> 
     </AtheleteMenu>
   );
 };
