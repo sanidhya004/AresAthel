@@ -6,6 +6,7 @@ const RecentBooking = () => {
     const [opened, { open, close }] = useDisclosure(false)
   return (
    <>
+   
    <Modal.Root opened={opened} onClose={close} centered={true} size="65rem">
         <Modal.Overlay />
         <Modal.Content>

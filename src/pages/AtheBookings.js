@@ -1,324 +1,67 @@
-import React from "react";
-import { Button, Dropdown, Table } from "react-bootstrap";
-import AtheleteMenu from "../components/layout/AtheleteMenu";
-
+import React from 'react'
+import AtheleteMenu from '../components/layout/AtheleteMenu'
+import { Input, CloseButton, Avatar } from '@mantine/core';
+import { Table } from '@mantine/core';
 const AtheBookings = () => {
-  const bookings = [
-    {
-      time: "9:23 AM",
-      date: "Oct 17, 2023",
-      serviceType: "Sports Vision Performance",
-      name: "Mr. Scott Mctominay",
-      email: "curtis.weaver@example.com",
-      phoneNumber: "(406) 555-0120",
-      status: "completed",
-    },
-    {
-      time: "9:23 AM",
-      date: "Oct 17, 2023",
-      serviceType: "Sports Vision Performance",
-      name: "Mr. Scott Mctominay",
-      email: "curtis.weaver@example.com",
-      phoneNumber: "(406) 555-0120",
-      status: "upcoming",
-    },
-
-    {
-      time: "9:23 AM",
-      date: "Oct 17, 2023",
-      serviceType: "Sports Vision Performance",
-      name: "Mr. Scott Mctominay",
-      email: "curtis.weaver@example.com",
-      phoneNumber: "(406) 555-0120",
-      status: "completed",
-    },
-    {
-      time: "9:23 AM",
-      date: "Oct 17, 2023",
-      serviceType: "Sports Vision Performance",
-      name: "Mr. Scott Mctominay",
-      email: "curtis.weaver@example.com",
-      phoneNumber: "(406) 555-0120",
-      status: "completed",
-    },
-    {
-      time: "9:23 AM",
-      date: "Oct 17, 2023",
-      serviceType: "Sports Vision Performance",
-      name: "Mr. Scott Mctominay",
-      email: "curtis.weaver@example.com",
-      phoneNumber: "(406) 555-0120",
-      status: "completed",
-    },
-    {
-      time: "9:23 AM",
-      date: "Oct 17, 2023",
-      serviceType: "Sports Vision Performance",
-      name: "Mr. Scott Mctominay",
-      email: "curtis.weaver@example.com",
-      phoneNumber: "(406) 555-0120",
-      status: "completed",
-    },
-
-    {
-      time: "9:23 AM",
-      date: "Oct 17, 2023",
-      serviceType: "Sports Vision Performance",
-      name: "Mr. Scott Mctominay",
-      email: "curtis.weaver@example.com",
-      phoneNumber: "(406) 555-0120",
-      status: "completed",
-    },
-
-    // Add more data objects for each booking...
+  const url="https://s3-alpha-sig.figma.com/img/63c4/be83/222c85e6c852819bc5d4b24a87a87fb6?Expires=1711324800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Y4SY5J0CmBpurLNdyssoFuDVIjUivt~TjdQaMbuLy9MqbOJzReqwYFykcxiFAm4wjnxQHbY0fBds-c8jJOuSEhxnIZytiS~EuxX~PytgwY6cobBUszo0gi-oqOTVUlJ89JtgK4fyyXVBeeavR9sisvIFpS740Bty68TTfxndSOlMBM4eOox~yT9ifL2JckNSFBj5WNjS7Cf0YAqIPr9DL4KVoE5gdsTtDmzobV4sVvo9mX9vwMMkr6hAh-NI07QoQlzioEP6B~vuit0ps5EsYwDDZpBmCN5CeU5SqRL-pbW2vNZNXPIm4IUe-bGgJZgdXVmpCnw3mPqykaekuBZ7kw__"
+  const elements = [
+    { Name: <div className='name-cont'><Avatar src={url}/><div><h6>Mr. Scott Mctominay</h6> <p>curtis.weaver@example.com</p></div></div>, mass: "Sports Vision Performance", symbol: 'Oct 17, 2023', name: 'Carbon',time:<p className='time'>9:23 AM</p>,button:<button className='pending'>Pending</button>,status:<button className="fill">Pay Now</button> },
+    { Name: <div className='name-cont'><Avatar src={url}/><div><h6>Mr. Scott Mctominay</h6> <p>curtis.weaver@example.com</p></div></div>, mass: "Sports Vision Performance", symbol: 'Oct 17, 2023', name: 'Nitrogen',time:<p className='time'>9:23 AM</p> ,button:<button className='fail'>Failed</button>,status:<button className="outlined">View Details</button>},
+    { Name: <div className='name-cont'><Avatar src={url}/><div><h6>Mr. Scott Mctominay</h6> <p>curtis.weaver@example.com</p></div></div>, mass: "Sports Vision Performance", symbol: 'Oct 17, 2023', name: 'Yttrium',time:<p className='time'>9:23 AM</p>,button:<button className='success'>Success</button>,status:<button className="fill">Pay Now</button> },
+    { Name: <div className='name-cont'><Avatar src={url}/><div><h6>Mr. Scott Mctominay</h6> <p>curtis.weaver@example.com</p></div></div>, mass: "Sports Vision Performance", symbol: 'Oct 17, 2023', name: 'Barium',time:<p className='time'>9:23 AM</p>,button:<button className='pending'>Pending</button>,status:<button className="outlined">View Details</button> },
+    { Name: <div className='name-cont'><Avatar src={url}/><div><h6>Mr. Scott Mctominay</h6> <p>curtis.weaver@example.com</p></div></div>, mass: "Sports Vision Performance", symbol: 'Oct 17, 2023', name: 'Cerium',time:<p className='time'>9:23 AM</p>,button:<button className='success'>Success</button> ,status:<button className="outlined">View Details</button>},
+    { Name: <div className='name-cont'><Avatar src={url}/><div><h6>Mr. Scott Mctominay</h6> <p>curtis.weaver@example.com</p></div></div>, mass: "Sports Vision Performance", symbol: 'Oct 17, 2023', name: 'Cerium',time:<p className='time'>9:23 AM</p>,button:<button className='fail'>Failed</button>,status:<button className="fill">Pay Now</button> },
+    { Name: <div className='name-cont'><Avatar src={url}/><div><h6>Mr. Scott Mctominay</h6> <p>curtis.weaver@example.com</p></div></div>, mass: "Sports Vision Performance", symbol: 'Oct 17, 2023', name: 'Cerium',time:<p className='time'>9:23 AM</p>,button:<button className='success'>Success</button>,status:<button className="outlined">View Details</button> },
   ];
-
+  const rows = elements.map((element) => (
+    <Table.Tr key={element.name}>
+      <Table.Td>{element.Name}</Table.Td>
+      <Table.Td>{element.mass}</Table.Td>
+      <Table.Td>{element.symbol}</Table.Td>
+      <Table.Td>{element.time}</Table.Td> 
+      <Table.Td>{element.button}</Table.Td>
+      <Table.Td>{element.status}</Table.Td>
+    </Table.Tr>
+  ));  
   return (
-    <AtheleteMenu>
-      <div className="p-3 main-wrapper mt-5 booking-presc">
-        <div className="frame ">
-          <div className="d-flex justify-content-between align-items-center recent-booking-head">
-            <div style={{ paddingLeft: "15px" }}>
-              <h2 className="">Bookings</h2>
-            </div>
-            <div
-              className="input-group mb-3 search-bar"
-              style={{ width: "400px" }}
-            >
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Search..."
-                aria-label="Search"
-                aria-describedby="searchIcon"
-              />
-              <div className="input-group-append ">
-                <span className="input-group-text" id="searchIcon">
-                  <i class="fas fa-search"></i>
-                </span>
-              </div>
-            </div>
+   <AtheleteMenu>
+    <div className='transaction-table-cont'>
+    <div className="transaction-table">
+      <div className="transaction-table-console">
+        <h3>Transactions</h3>
+        <div className="d-flex console-inputs">
+        <Input placeholder="Your email" leftSection={<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="9.14342" cy="8.94952" rx="8.14342" ry="7.94952" stroke="#8C90AA" stroke-width="1.78947" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M14.8047 14.8906L17.9974 17.9992" stroke="#8C90AA" stroke-width="1.78947" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
 
-            <div
-              className=" d-flex flex-row  justify-content-center mt-3"
-              style={{ width: "150px", gap: "10px", marginRight: "15px" }}
-            >
-              <i class="fa-solid fa-calendar m-auto" />
-              <Dropdown>
-                {/* <Dropdown.Toggle id="dropdown-basic">
-              {currentPage} of {totalPages}
-            </Dropdown.Toggle>
+} />
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="50" height="50" rx="10" fill="#F4F4F4"/>
+<path d="M34.6667 14.6667H32V13.3333C32 12.9797 31.8595 12.6406 31.6095 12.3905C31.3594 12.1405 31.0203 12 30.6667 12C30.313 12 29.9739 12.1405 29.7239 12.3905C29.4738 12.6406 29.3333 12.9797 29.3333 13.3333V14.6667H21.3333V13.3333C21.3333 12.9797 21.1929 12.6406 20.9428 12.3905C20.6928 12.1405 20.3536 12 20 12C19.6464 12 19.3072 12.1405 19.0572 12.3905C18.8071 12.6406 18.6667 12.9797 18.6667 13.3333V14.6667H16C14.9391 14.6667 13.9217 15.0881 13.1716 15.8382C12.4214 16.5884 12 17.6058 12 18.6667V34.6667C12 35.7275 12.4214 36.7449 13.1716 37.4951C13.9217 38.2452 14.9391 38.6667 16 38.6667H34.6667C35.7275 38.6667 36.7449 38.2452 37.4951 37.4951C38.2452 36.7449 38.6667 35.7275 38.6667 34.6667V18.6667C38.6667 17.6058 38.2452 16.5884 37.4951 15.8382C36.7449 15.0881 35.7275 14.6667 34.6667 14.6667ZM36 34.6667C36 35.0203 35.8595 35.3594 35.6095 35.6095C35.3594 35.8595 35.0203 36 34.6667 36H16C15.6464 36 15.3072 35.8595 15.0572 35.6095C14.8071 35.3594 14.6667 35.0203 14.6667 34.6667V25.3333H36V34.6667ZM36 22.6667H14.6667V18.6667C14.6667 18.313 14.8071 17.9739 15.0572 17.7239C15.3072 17.4738 15.6464 17.3333 16 17.3333H18.6667V18.6667C18.6667 19.0203 18.8071 19.3594 19.0572 19.6095C19.3072 19.8595 19.6464 20 20 20C20.3536 20 20.6928 19.8595 20.9428 19.6095C21.1929 19.3594 21.3333 19.0203 21.3333 18.6667V17.3333H29.3333V18.6667C29.3333 19.0203 29.4738 19.3594 29.7239 19.6095C29.9739 19.8595 30.313 20 30.6667 20C31.0203 20 31.3594 19.8595 31.6095 19.6095C31.8595 19.3594 32 19.0203 32 18.6667V17.3333H34.6667C35.0203 17.3333 35.3594 17.4738 35.6095 17.7239C35.8595 17.9739 36 18.313 36 18.6667V22.6667Z" fill="#8C90AA"/>
+</svg>
 
-            <Dropdown.Menu>
-              {[...Array(totalPages).keys()].map((page) => (
-                <Dropdown.Item
-                  key={page + 1}
-                  onClick={() => handlePageChange(page + 1)}
-                >
-                  {page + 1}
-                </Dropdown.Item>
-              ))}
-            </Dropdown.Menu> */}
-              </Dropdown>
-            </div>
-            {/* </div> */}
-          </div>
-          <div className="table-div-booking">
-            <Table
-              className="table"
-              striped
-              hover
-              variant="light"
-              // style={{ height: "70vh" }}
-            >
-              <thead className="table-head">
-                <tr>
-                  <th style={{ paddingLeft: "20px" }}>
-                    Name <i className="fa-solid fa-sort" />
-                  </th>
-                  <th>
-                    Service Type <i className="fa-solid fa-filter" />
-                  </th>
-                  <th>
-                    Date <i className="fa-solid fa-sort" />
-                  </th>
-                  <th>
-                    Time <i className="fa-solid fa-sort" />
-                  </th>
-
-                  <th>
-                    Status <i className="fa-solid fa-filter" />
-                  </th>
-                  <th>
-                    Actions <i className="fa-solid fa-sort" />
-                  </th>
-                </tr>
-              </thead>
-
-              {/* {!isFetching ? ( */}
-
-              <tbody className="recent-bookings-cont">
-                {/* {bookings.length > 0 ? ( */}
-
-                {bookings.map((booking, index) => (
-                  <tr key={index}>
-                    <td
-                      className=" name-email-image-cont"
-                      style={{ paddingLeft: "20px" }}
-                    >
-                      <img
-                        src="/images/image3.png"
-                        alt={booking?.name}
-                        className="recent-booking-person-image "
-                        style={{ marginRight: "10px" }}
-                      />
-                      {/* <div>
-                    <small className="name">
-                      {booking?.client?.first_name}{" "}
-                      {booking?.client?.last_name}
-                    </small>
-                    <br />
-                    <small className="email">
-                      {booking?.client?.email}
-                    </small>
-                  </div> */}
-                      <div>
-                        <small className="name">{booking.name} </small>
-                        <br />
-                        <small className="email">{booking.email}</small>
-                      </div>
-                    </td>
-                    {/* <td className="service_type">
-                  {Service_ENUM_values[booking?.service_type]}
-                  
-                </td> */}
-                    <td className="service_type">{booking.serviceType}</td>
-                    <td className="date">{booking.date}</td>
-                    <td className="time">{booking.time}</td>
-
-                    <td className="status">
-                      <div className={`${booking.status} `}>
-                        {booking.status}
-                      </div>
-                    </td>
-                    <td className="actions ">
-                      <Button className="action-view-eval">
-                        View Prescription
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-              {/* //       ) : (
-          //         <>
-          //           <tr>
-          //             <td>
-          //               {" "}
-          //               <div className="text-center ">
-          //                 No Appointments
-          //               </div>{" "}
-          //             </td>
-          //           </tr>
-          //         </>
-          //       )}
-          //     </tbody>
-          //   </>
-          // ) : (
-          //   <> */}
-
-              {/*   <tr>
-                  {" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>{" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>{" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>{" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>{" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>{" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>
-                </tr>{" "}
-                <tr><td></td><td></td></tr>
-                <tr>
-                  {" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>{" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>{" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>{" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>{" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>{" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>
-                </tr>{" "}
-                <tr>
-                  {" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>{" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>{" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>{" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>{" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>{" "}
-                  <td>
-                    {" "}
-                    <Placeholder size="lg" />
-                  </td>
-                </tr>{" "}
-                <tr></tr>
-              </tbody> */}
-              {/* <Spinner className="m-auto" />
-            </>
-          )} */}
-            </Table>
-          </div>
         </div>
       </div>
-    </AtheleteMenu>
-  );
-};
+      <div className="mt-3">
+          <Table>
+      <Table.Thead>
+        <Table.Tr style={{fontWeight:"600",fontSize:"18px"}}>
+          <Table.Th >Name</Table.Th>
+          <Table.Th >Service Type</Table.Th>
+          <Table.Th>Date</Table.Th>
+          <Table.Th>Time</Table.Th>
+          <Table.Th>Payment Status</Table.Th>
+          <Table.Th>Service Status</Table.Th>
+        </Table.Tr>
+      </Table.Thead>
+      <Table.Tbody>{rows}</Table.Tbody>
+    </Table>
+          </div>
+    </div>
+    </div>
+   </AtheleteMenu>
+  )
+}
 
-export default AtheBookings;
+export default AtheBookings
