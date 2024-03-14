@@ -75,7 +75,7 @@ const Prescriptions = () => {
             </div>
             <div className="d-flex" style={{ gap: "20px" }}>
               <TextInput
-                label="Sphere"
+                label="Axis"
                 placeholder="Select"
                 variant="filled"
                 radius={"8px"}
@@ -83,7 +83,7 @@ const Prescriptions = () => {
                 inputWrapperOrder={["label", "error", "input", "description"]}
               />
               <TextInput
-                label="Cylinder"
+                label="Add Power"
                 placeholder="Select"
                 variant="filled"
                 radius={"8px"}
@@ -121,7 +121,7 @@ const Prescriptions = () => {
             </div>
             <div className="d-flex" style={{ gap: "20px" }}>
               <TextInput
-                label="Sphere"
+                label="Axis"
                 placeholder="Select"
                 variant="filled"
                 radius={"8px"}
@@ -129,7 +129,7 @@ const Prescriptions = () => {
                 inputWrapperOrder={["label", "error", "input", "description"]}
               />
               <TextInput
-                label="Cylinder"
+                label="Add Power"
                 placeholder="Select"
                 variant="filled"
                 radius={"8px"}
@@ -167,7 +167,7 @@ const Prescriptions = () => {
             </div>
             <div className="d-flex" style={{ gap: "20px" }}>
               <TextInput
-                label="Sphere"
+                label="Axis"
                 placeholder="Select"
                 variant="filled"
                 radius={"8px"}
@@ -175,7 +175,7 @@ const Prescriptions = () => {
                 inputWrapperOrder={["label", "error", "input", "description"]}
               />
               <TextInput
-                label="Cylinder"
+                label="Add Power"
                 placeholder="Select"
                 variant="filled"
                 radius={"8px"}
