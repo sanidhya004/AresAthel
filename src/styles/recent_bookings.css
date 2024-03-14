@@ -317,7 +317,11 @@ background: #7257FF26;
 color:#7257FF
 
 }
-
+.empty{
+  padding: 12.5px, 16px, 12.5px, 16px;
+  width: 156px;
+  font-weight: 600;
+}
 .fill{
   width: 156px;
   height: 44px;

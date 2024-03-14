@@ -14,6 +14,7 @@ import Card1 from "../components/Card1";
 import Card2 from "../components/layout/Components/Card2";
 import Card3 from "../components/layout/Components/Card3";
 import TeleSessions from "../components/layout/Components/TeleSessions";
+import TodaysSession from "../components/layout/Components/TodaysSession";
 const AtheleDashboard = () => {
   return (
     <AtheleteMenu>
@@ -515,32 +516,7 @@ icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://
                     <hr/>
                   </div>
                 </div>
-                <div className="d-flex justify-content-between ">
-                  <h5>Todays Session</h5>
-                  <Link className="view-all" style={{ fontSize: "13px" }}>
-                    View All
-                  </Link>
-                </div>
-                <div className="appointments-aligned mt-3" style={{borderRadius:"8px"}}>
-                  <div className="appointments-aligned-div" style={{borderRadius:"8px"}}>
-                    <Avatar src="https://s3-alpha-sig.figma.com/img/93eb/70e4/1b58b9ca0fc1d95ef7ee8f1a97100431?Expires=1710720000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=J8X6GzryNyHsiHrAOg-Xp5jH-Y6xzKk2M0ELy8v3CR4Y4zwEp2Cv9yZ0VEhxBL1GNG559NPdUfe44X9aatKkuWKYrjogjkpN782W6kkLvpUMF1DazVpctez~lVmxPMh5lJpokXOebsmpcsjvJSYEcHG756GfllCL4IqPQLG20T10dR5DzA6fYttW~t2vvRLAsVMtxhrr1dnuPI9KxkPvvcb9gfyAokxTCevcHIoTOZ97IdLvW9QkvV8ehYWlhQDvSFCKa9Ssfp~xX668CYkkY8tfZWasMhxXipBPz5vpGhDUwPjC7ZG3tPLlB~z1l6Enwt378BasSQN32GSEDJ95Vw__"></Avatar>
-                    <div className="d-flex flex-column ">
-                      <h7>Dr. Alex</h7>
-                      <p className="m-0">
-                        Post Concussion | 9 Apr’23 | 04:00 PM
-                      </p>
-                    </div>
-                  </div>
-                  <div className="appointments-aligned-div">
-                    <Avatar src="https://s3-alpha-sig.figma.com/img/93eb/70e4/1b58b9ca0fc1d95ef7ee8f1a97100431?Expires=1710720000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=J8X6GzryNyHsiHrAOg-Xp5jH-Y6xzKk2M0ELy8v3CR4Y4zwEp2Cv9yZ0VEhxBL1GNG559NPdUfe44X9aatKkuWKYrjogjkpN782W6kkLvpUMF1DazVpctez~lVmxPMh5lJpokXOebsmpcsjvJSYEcHG756GfllCL4IqPQLG20T10dR5DzA6fYttW~t2vvRLAsVMtxhrr1dnuPI9KxkPvvcb9gfyAokxTCevcHIoTOZ97IdLvW9QkvV8ehYWlhQDvSFCKa9Ssfp~xX668CYkkY8tfZWasMhxXipBPz5vpGhDUwPjC7ZG3tPLlB~z1l6Enwt378BasSQN32GSEDJ95Vw__"></Avatar>
-                    <div className="d-flex flex-column ">
-                      <h7>Dr. Alex</h7>
-                      <p className="m-0">
-                        Post Concussion | 9 Apr’23 | 04:00 PM
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <TodaysSession/>
               </Row>
               <Row className="mt-4 bg-white pt-4 pb-4 box-shadow  " style={{borderRadius:"10px"}}>
                 <Notifications />
