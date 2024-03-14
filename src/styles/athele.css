@@ -290,6 +290,35 @@ a:hover {
 .profile-password div {
   padding: 10px 20px;
 }
+@media only screen and (max-width: 1442px){
+  .upper-card{
+     width: 370px !important;
+  }
+  .training-card{ 
+    width: 370px !important;
+  }
+  .row1{
+     gap:0.4rem !important
+  }
+  .row2{
+    gap:0.4rem !important
+  }
+  .service-box{
+    width: 370px  !important;
+  }
+  .card-art{
+     left:290px  !important
+  }
+}
+.row1{
+   gap: 1rem;
+}
+.service-box{
+  width: 400px;
+}
+.row2{
+   gap:1.5rem;
+}
 @media only screen and (max-width: 768px){
  .sidebar{
    display: none;
@@ -1565,4 +1594,3 @@ cursor: pointer;
     font-family: "Lato", sans-serif;
   }
 
-  

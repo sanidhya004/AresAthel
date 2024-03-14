@@ -28,7 +28,7 @@ const AtheleDashboard = () => {
             </p>
           </div>
           {/* This is row 1 contains your stat cards */}
-          <div className="d-flex gap-3 flex-wrap">
+          <div className="d-flex row1 flex-wrap">
          
           {/* <Card1/> */}
           <Card2/>
@@ -41,14 +41,14 @@ const AtheleDashboard = () => {
           <h4 className=" text-shadow">Select Service</h4>
           <Container className="services-cont text-shadow ">
                   <Row
-                    className="gap-4 "
+                    className="row2 "
                     style={{ maxWidth: "80vw" }}
                     
                   >
                     <Col
                       sm={6}
-                      style={{ backgroundColor: "#57315A",borderRadius:"10px",width:"400px" }}
-                      className="text-light mb-4 d-flex justify-content-between  align-items-center box-shadow-drop-bottom "
+                      style={{ backgroundColor: "#57315A",borderRadius:"10px" }}
+                      className=" service-box text-light mb-4 d-flex justify-content-between  align-items-center box-shadow-drop-bottom "
                     >
                       <ServiceModal
                       svg={<svg width="75" height="75" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -158,8 +158,8 @@ icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://
                     </Col>
                     <Col
                       sm={6}
-                      style={{ backgroundColor: "#FF8989",borderRadius:"10px" ,width:"400px"}}
-                      className="text-light mb-4 d-flex justify-content-between align-items-center box-shadow-drop-bottom "
+                      style={{ backgroundColor: "#FF8989",borderRadius:"10px" }}
+                      className=" service-box text-light mb-4 d-flex justify-content-between align-items-center box-shadow-drop-bottom "
                     >
                       <ServiceModal
                       svg={<svg width="80" height="80" viewBox="0 0 89 88" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -300,14 +300,14 @@ icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://
                     </Col>
                   </Row>
                   <Row
-                    className="gap-4"
+                    className="row2"
                     style={{ maxWidth: "80vw" }}
                   >
                     <Col
                       sm={6}
 
-                      style={{ backgroundColor: "#C1E2F4",borderRadius:"10px",width:"400px" }}
-                      className=" mb-4 d-flex justify-content-between  align-items-center box-shadow-drop-bottom "
+                      style={{ backgroundColor: "#C1E2F4",borderRadius:"10px" }}
+                      className="service-box mb-4 d-flex justify-content-between  align-items-center box-shadow-drop-bottom "
                     >
                       {/* <img
                         src="/images/icon/medical.svg"
@@ -405,8 +405,8 @@ icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://
                     <Col
                       sm={6}
                       xs={12}
-                      style={{ backgroundColor: "#D9CFFB",borderRadius:"10px",width:"400px" }}
-                      className=" mb-4 d-flex justify-content-between  align-items-center box-shadow-drop-bottom "
+                      style={{ backgroundColor: "#D9CFFB",borderRadius:"10px" }}
+                      className=" service-box mb-4 d-flex justify-content-between  align-items-center box-shadow-drop-bottom "
                     >
                       {/* <img
                         src="/images/icon/consul.svg"
@@ -505,8 +505,8 @@ icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://
               </Row>
           </div>
         </div>
-        <div class="rightcont text-shadow ">
-        <Row className=" bg-white  box-shadow  " style={{borderRadius:"18px",padding:"2rem 0.5rem 2rem"}}>
+        <div class="rightcont text-shadow  ">
+        <Row className=" bg-white  box-shadow row1 " style={{borderRadius:"18px",padding:"2rem 0.5rem 2rem"}}>
                 <div className="calender-comp">
                   <div style={{width:"100%"}}>
                     <p>Calender</p>
