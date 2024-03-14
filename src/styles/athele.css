@@ -1311,7 +1311,7 @@ margin-bottom: 40px;
   width: 100%;
   background: #F4F4F4;
 height: 65px;
-padding: 19px, 16px, 19px, 19px;
+padding: 19px 16px 19px  19px;
 border-radius: 12px;
 margin-top: 16px;
 display: flex;

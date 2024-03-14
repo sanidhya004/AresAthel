@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useDisclosure } from "@mantine/hooks";
 import { Modal, Button,Table } from "@mantine/core";
 const PlanCard = ({ price, plans }) => {
   const [opened, { open, close }] = useDisclosure(false);
   const[success,successHandler]=useDisclosure(false)
+  const[selectedPlan,setSelectedPlan]=useState()
   const elements = [
     { position: <b>Ref Number</b>, mass: 12.011 },
     { position: <b>Payment Time</b>, mass: 12.011 },
@@ -90,90 +91,8 @@ const PlanCard = ({ price, plans }) => {
              </div>
               <div className="mt-1">
                 <div className="plan-select-box">
-                  <div className="plan-select">
-                    <div></div>
-                    <div className="plan-select-right">
-                      <h4>
-                        Phase 1{" "}
-                        <span
-                          style={{
-                            fontSize: "14px",
-                            color: "#7257FF",
-                            marginLeft: "4px",
-                          }}
-                        >
-                          $147/month
-                        </span>
-                      </h4>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur. Scelerisque nisl
-                        lectus sed odio adipiscing et.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="plan-select">
-                    <div></div>
-                    <div className="plan-select-right">
-                      <h4>
-                        Phase 1{" "}
-                        <span
-                          style={{
-                            fontSize: "14px",
-                            color: "#7257FF",
-                            marginLeft: "4px",
-                          }}
-                        >
-                          $147/month
-                        </span>
-                      </h4>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur. Scelerisque nisl
-                        lectus sed odio adipiscing et.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="plan-select">
-                    <div></div>
-                    <div className="plan-select-right">
-                      <h4>
-                        Phase 1{" "}
-                        <span
-                          style={{
-                            fontSize: "14px",
-                            color: "#7257FF",
-                            marginLeft: "4px",
-                          }}
-                        >
-                          $147/month
-                        </span>
-                      </h4>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur. Scelerisque nisl
-                        lectus sed odio adipiscing et.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="plan-select">
-                    <div></div>
-                    <div className="plan-select-right">
-                      <h4>
-                        Phase 1{" "}
-                        <span
-                          style={{
-                            fontSize: "14px",
-                            color: "#7257FF",
-                            marginLeft: "4px",
-                          }}
-                        >
-                          $147/month
-                        </span>
-                      </h4>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur. Scelerisque nisl
-                        lectus sed odio adipiscing et.
-                      </p>
-                    </div>
-                  </div>
+                
+                  
                   
                 </div>
                 <button style={{width:"100%",padding:"15px 24px 15px 24px",background:"#7257FF",color:"white",borderRadius:"8px"}} onClick={()=>{ close(); successHandler.open()}}>Select Plan</button>
