@@ -29,11 +29,11 @@ const AtheleDashboard = () => {
             </p>
           </div>
           {/* This is row 1 contains your stat cards */}
-          <div className="d-flex row1 flex-wrap">
+          <div className="d-flex row1 grow1 upper-card-cont">
          
           {/* <Card1/> */}
-          <Card2/>
-          {/* <Card3/> */}
+          {/* <Card2/> */}
+          <Card3/>
           <TeleSessions/>
           </div>
           {/* -------------- */}
@@ -43,7 +43,7 @@ const AtheleDashboard = () => {
           <Container className="services-cont text-shadow ">
                   <Row
                     className="row2 "
-                    style={{ maxWidth: "80vw" }}
+                    style={{ maxWidth: "90vw" }}
                     
                   >
                     <Col
@@ -302,7 +302,7 @@ icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://
                   </Row>
                   <Row
                     className="row2"
-                    style={{ maxWidth: "80vw" }}
+                    style={{ maxWidth: "90vw" }}
                   >
                     <Col
                       sm={6}

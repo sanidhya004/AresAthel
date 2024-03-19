@@ -115,7 +115,7 @@ const AtheleHome = () => {
                 <Col xs={6} sm={6} className="training-card">
                   <div className="d-flex justify-content-between upper-train  ">
                     <div>
-                      <p>Training Session</p>
+                      <h2>Training Session</h2>
                     </div>
                     <div>
                       <div className="view-all" onClick={open}>
@@ -209,7 +209,7 @@ const AtheleHome = () => {
                 <Container className="services-cont ">
                   <Row
                     className="justify-content-between "
-                    style={{ maxWidth: "80vw" }}
+                    style={{ maxWidth: "85vw" }}
                     
                   >
                     <Col

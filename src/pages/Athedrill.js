@@ -1,559 +1,817 @@
 import React from "react";
-import {
-  Accordion,
-  Button,
-  Col,
-  Container,
-  ProgressBar,
-  Row,
-} from "react-bootstrap";
 import AtheleteMenu from "../components/layout/AtheleteMenu";
+import { Accordion, Divider, Progress, TextInput } from "@mantine/core";
 
 const Athedrill = () => {
-  return (
-    <AtheleteMenu>
-      <section style={{ overflowX: "hidden" }} className="athel-home">
-        <Container className="atheldrill-main">
-          <Row>
-            <div className="d-flex atheldrill-btn-wrapper flex-row  " style={{ overflowX: "scroll" }}>
-              <div className="d-flex" style={{gap:"5px"}}>
-                <Button className="week-button">Week 1</Button>{" "}
-                <Button className="week-button week-selected">Week 2</Button>{" "}
-                <Button className="week-button">Week 3</Button>{" "}
-                <Button className="week-button">Week 4</Button>
-                
+  const groceries = [
+    {
+      emoji: (
+        <div
+          className="d-flex gap-4"
+          style={{ justifyContent: "space-between" }}
+        >
+          <div className="d-flex gap-1" style={{ alignItems: "center" }}>
+            <svg
+              width="21"
+              height="20"
+              viewBox="0 0 21 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.7109 17.5C14.8531 17.5 18.2109 14.1421 18.2109 10C18.2109 5.85786 14.8531 2.5 10.7109 2.5C6.5688 2.5 3.21094 5.85786 3.21094 10C3.21094 14.1421 6.5688 17.5 10.7109 17.5Z"
+                stroke="#564FFD"
+                stroke-width="1.3"
+                stroke-miterlimit="10"
+              />
+              <path
+                d="M13.2109 10L9.46094 7.5V12.5L13.2109 10Z"
+                stroke="#564FFD"
+                stroke-width="1.3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <p style={{ margin: 0, color: "#4E5566", fontSize: "small" }}>
+              4 drills
+            </p>
+          </div>
+          <div className="d-flex gap-1" style={{ alignItems: "center" }}>
+            <svg
+              width="21"
+              height="20"
+              viewBox="0 0 21 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.7109 17.5C14.8531 17.5 18.2109 14.1421 18.2109 10C18.2109 5.85786 14.8531 2.5 10.7109 2.5C6.5688 2.5 3.21094 5.85786 3.21094 10C3.21094 14.1421 6.5688 17.5 10.7109 17.5Z"
+                stroke="#FD8E1F"
+                stroke-width="1.3"
+                stroke-miterlimit="10"
+              />
+              <path
+                d="M10.7109 5.625V10H15.0859"
+                stroke="#FD8E1F"
+                stroke-width="1.3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+
+            <p style={{ margin: 0, color: "#4E5566", fontSize: "small" }}>
+              51 min
+            </p>
+          </div>
+          <div className="d-flex gap-1" style={{ alignItems: "center" }}>
+            <svg
+              width="21"
+              height="20"
+              viewBox="0 0 21 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.2734 6.5625L5.39844 13.4375L1.96094 10.0002"
+                stroke="#23BD33"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M19.4627 6.5625L12.5877 13.4375L10.7617 11.6116"
+                stroke="#23BD33"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+
+            <p style={{ margin: 0, color: "#4E5566", fontSize: "small" }}>
+              25% finish
+            </p>
+          </div>
+        </div>
+      ),
+      value: "Day 1",
+      description: (
+        <div style={{ height: "150px", overflowY: "scroll" }}>
+          <div className="tasks">
+            <div className="task-title-cont">
+              {" "}
+              <div>
+                <svg
+                  width="19"
+                  height="18"
+                  viewBox="0 0 19 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    fill="white"
+                  />
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    stroke="#7257FF"
+                  />
+                </svg>
+              </div>
+              <p className="task-title">1. Welcome to Ares Elite</p>
+            </div>
+           
+          </div>
+          <div className="tasks">
+            <div className="task-title-cont">
+              {" "}
+              <div>
+                <svg
+                  width="19"
+                  height="18"
+                  viewBox="0 0 19 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    fill="white"
+                  />
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    stroke="#7257FF"
+                  />
+                </svg>
+              </div>
+              <p className="task-title">1. Welcome to Ares Elite</p>
+            </div>
+            <div className="d-flex gap-3" style={{alignItems:"center"}}>
+              <div>
+                <svg
+                  width="17"
+                  height="16"
+                  viewBox="0 0 17 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.3028 7.57338L5.30431 2.0741C5.22852 2.02778 5.14175 2.00248 5.05294 2.00082C4.96413 1.99916 4.87648 2.02118 4.799 2.06463C4.72153 2.10808 4.65703 2.17139 4.61214 2.24803C4.56724 2.32468 4.54358 2.41191 4.54358 2.50073V13.4993C4.54358 13.5881 4.56724 13.6754 4.61214 13.752C4.65703 13.8287 4.72153 13.892 4.799 13.9354C4.87648 13.9789 4.96413 14.0009 5.05294 13.9992C5.14175 13.9976 5.22852 13.9723 5.30431 13.9259L14.3028 8.42666C14.3759 8.38199 14.4363 8.3193 14.4782 8.2446C14.5201 8.16989 14.5421 8.08567 14.5421 8.00002C14.5421 7.91437 14.5201 7.83015 14.4782 7.75545C14.4363 7.68074 14.3759 7.61805 14.3028 7.57338Z"
+                    fill="#A1A5B3"
+                  />
+                </svg>
               </div>
               <div>
-              <Button className="week-button week-selected" style={{marginLeft:"4.5px"}}>
-                  Upgrade Plan
-                </Button>
-                
+              <p style={{margin:0,fontSize:"small",color:"#A1A5B3",textAlign:"center"}}>07:31</p>
               </div>
             </div>
-          </Row>
-          <Row className="bg-white py-4  " style={{borderRadius:"10px"}}>
-            <Col className="">
-              <p style={{fontSize:"12px",fontWeight:"700"}}>Elite (P1)- Week 1/Day1/NeuroTrainer(Calibration)</p>
-              <video src="/images/produ.mp4" className=" w-100 fa " controls />
-            </Col>
-            <Col>
-              <div className="d-flex  justify-content-between">
-                <h5 style={{fontSize:"20px",fontWeight:"700"}}>Drill Contents</h5>
-                <p className="text-success">15% Completed</p>
+          </div>
+          <div className="tasks">
+            <div className="task-title-cont">
+              {" "}
+              <div>
+                <svg
+                  width="19"
+                  height="18"
+                  viewBox="0 0 19 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    fill="white"
+                  />
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    stroke="#7257FF"
+                  />
+                </svg>
               </div>
-              <ProgressBar
-                now={20}
-                variant="success"
-                animated
-                style={{ height: "5px" }}
-                className="mb-2"
-              />{" "}
-              <section
-                className=""
-                style={{
-                  height: "280px",
-                  overflowY: "scroll",
-                }}
-              >
-                <Accordion defaultActiveKey={["0"]} alwaysOpen>
-                  <Accordion.Item eventKey="0">
-                    <Accordion.Header >
-                      <div style={{display:"flex", justifyContent:"space-between",width:"100%",alignItems:"center",fontSize:"10.5px"}}>
-                      <h6 className="w-25">Day 1</h6>
-                      <div className="d-flex acc-head-cont " >
-                        <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-                          <img src="/images/icon/playcircle.svg" />
-                          <p> 4 Drills</p>
-                        </div>
-                        <div>
-                          <img src="/images/icon/clock.svg" />
-                          <p> 51m</p>
-                        </div>
-                        <div>
-                          <img src="/images/icon/checks.svg" />
-                          <p> 25% finish (1/4)</p>
-                        </div>
-                      </div>
+              <p className="task-title">1. Welcome to Ares Elite</p>
+            </div>
+            <div className="d-flex gap-3" style={{alignItems:"center"}}>
+              <div>
+                <svg
+                  width="17"
+                  height="16"
+                  viewBox="0 0 17 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.3028 7.57338L5.30431 2.0741C5.22852 2.02778 5.14175 2.00248 5.05294 2.00082C4.96413 1.99916 4.87648 2.02118 4.799 2.06463C4.72153 2.10808 4.65703 2.17139 4.61214 2.24803C4.56724 2.32468 4.54358 2.41191 4.54358 2.50073V13.4993C4.54358 13.5881 4.56724 13.6754 4.61214 13.752C4.65703 13.8287 4.72153 13.892 4.799 13.9354C4.87648 13.9789 4.96413 14.0009 5.05294 13.9992C5.14175 13.9976 5.22852 13.9723 5.30431 13.9259L14.3028 8.42666C14.3759 8.38199 14.4363 8.3193 14.4782 8.2446C14.5201 8.16989 14.5421 8.08567 14.5421 8.00002C14.5421 7.91437 14.5201 7.83015 14.4782 7.75545C14.4363 7.68074 14.3759 7.61805 14.3028 7.57338Z"
+                    fill="#A1A5B3"
+                  />
+                </svg>
+              </div>
+              <div>
+              <p style={{margin:0,fontSize:"small",color:"#A1A5B3",textAlign:"center"}}>07:31</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      emoji: (
+        <div
+          className="d-flex gap-4"
+          style={{ justifyContent: "space-between" }}
+        >
+          <div className="d-flex gap-1" style={{ alignItems: "center" }}>
+            <svg
+              width="21"
+              height="20"
+              viewBox="0 0 21 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.7109 17.5C14.8531 17.5 18.2109 14.1421 18.2109 10C18.2109 5.85786 14.8531 2.5 10.7109 2.5C6.5688 2.5 3.21094 5.85786 3.21094 10C3.21094 14.1421 6.5688 17.5 10.7109 17.5Z"
+                stroke="#564FFD"
+                stroke-width="1.3"
+                stroke-miterlimit="10"
+              />
+              <path
+                d="M13.2109 10L9.46094 7.5V12.5L13.2109 10Z"
+                stroke="#564FFD"
+                stroke-width="1.3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <p style={{ margin: 0, color: "#4E5566", fontSize: "small" }}>
+              4 drills
+            </p>
+          </div>
+          <div className="d-flex gap-1" style={{ alignItems: "center" }}>
+            <svg
+              width="21"
+              height="20"
+              viewBox="0 0 21 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.7109 17.5C14.8531 17.5 18.2109 14.1421 18.2109 10C18.2109 5.85786 14.8531 2.5 10.7109 2.5C6.5688 2.5 3.21094 5.85786 3.21094 10C3.21094 14.1421 6.5688 17.5 10.7109 17.5Z"
+                stroke="#FD8E1F"
+                stroke-width="1.3"
+                stroke-miterlimit="10"
+              />
+              <path
+                d="M10.7109 5.625V10H15.0859"
+                stroke="#FD8E1F"
+                stroke-width="1.3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
 
-                      </div>
-                     
-                    </Accordion.Header>
-                    <Accordion.Body>
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="1" />
-                          <label for="1" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
+            <p style={{ margin: 0, color: "#4E5566", fontSize: "small" }}>
+              51 min
+            </p>
+          </div>
+          <div className="d-flex gap-1" style={{ alignItems: "center" }}>
+            <svg
+              width="21"
+              height="20"
+              viewBox="0 0 21 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.2734 6.5625L5.39844 13.4375L1.96094 10.0002"
+                stroke="#23BD33"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M19.4627 6.5625L12.5877 13.4375L10.7617 11.6116"
+                stroke="#23BD33"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
 
-                            <p className="d-inline">
-                              1. Welcome to Ares Elite Academy
-                            </p>
-                          </label>
-                        </div>
+            <p style={{ margin: 0, color: "#4E5566", fontSize: "small" }}>
+              25% finish
+            </p>
+          </div>
+        </div>
+      ),
+      value: "Day 2",
+      description: (
+        <div style={{ height: "150px", overflowY: "scroll" }}>
+          <div className="tasks">
+            <div className="task-title-cont">
+              {" "}
+              <div>
+                <svg
+                  width="19"
+                  height="18"
+                  viewBox="0 0 19 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    fill="white"
+                  />
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    stroke="#7257FF"
+                  />
+                </svg>
+              </div>
+              <p className="task-title">1. Welcome to Ares Elite</p>
+            </div>
+            <div className="d-flex gap-3" style={{alignItems:"center"}}>
+              <div>
+                <svg
+                  width="17"
+                  height="16"
+                  viewBox="0 0 17 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.3028 7.57338L5.30431 2.0741C5.22852 2.02778 5.14175 2.00248 5.05294 2.00082C4.96413 1.99916 4.87648 2.02118 4.799 2.06463C4.72153 2.10808 4.65703 2.17139 4.61214 2.24803C4.56724 2.32468 4.54358 2.41191 4.54358 2.50073V13.4993C4.54358 13.5881 4.56724 13.6754 4.61214 13.752C4.65703 13.8287 4.72153 13.892 4.799 13.9354C4.87648 13.9789 4.96413 14.0009 5.05294 13.9992C5.14175 13.9976 5.22852 13.9723 5.30431 13.9259L14.3028 8.42666C14.3759 8.38199 14.4363 8.3193 14.4782 8.2446C14.5201 8.16989 14.5421 8.08567 14.5421 8.00002C14.5421 7.91437 14.5201 7.83015 14.4782 7.75545C14.4363 7.68074 14.3759 7.61805 14.3028 7.57338Z"
+                    fill="#A1A5B3"
+                  />
+                </svg>
+              </div>
+              <div>
+              <p style={{margin:0,fontSize:"small",color:"#A1A5B3",textAlign:"center"}}>07:31</p>
+              </div>
+            </div>
+          </div>
+          <div className="tasks">
+            <div className="task-title-cont">
+              {" "}
+              <div>
+                <svg
+                  width="19"
+                  height="18"
+                  viewBox="0 0 19 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    fill="white"
+                  />
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    stroke="#7257FF"
+                  />
+                </svg>
+              </div>
+              <p className="task-title">1. Welcome to Ares Elite</p>
+            </div>
+            <div className="d-flex gap-3" style={{alignItems:"center"}}>
+              <div>
+                <svg
+                  width="17"
+                  height="16"
+                  viewBox="0 0 17 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.3028 7.57338L5.30431 2.0741C5.22852 2.02778 5.14175 2.00248 5.05294 2.00082C4.96413 1.99916 4.87648 2.02118 4.799 2.06463C4.72153 2.10808 4.65703 2.17139 4.61214 2.24803C4.56724 2.32468 4.54358 2.41191 4.54358 2.50073V13.4993C4.54358 13.5881 4.56724 13.6754 4.61214 13.752C4.65703 13.8287 4.72153 13.892 4.799 13.9354C4.87648 13.9789 4.96413 14.0009 5.05294 13.9992C5.14175 13.9976 5.22852 13.9723 5.30431 13.9259L14.3028 8.42666C14.3759 8.38199 14.4363 8.3193 14.4782 8.2446C14.5201 8.16989 14.5421 8.08567 14.5421 8.00002C14.5421 7.91437 14.5201 7.83015 14.4782 7.75545C14.4363 7.68074 14.3759 7.61805 14.3028 7.57338Z"
+                    fill="#A1A5B3"
+                  />
+                </svg>
+              </div>
+              <div>
+              <p style={{margin:0,fontSize:"small",color:"#A1A5B3",textAlign:"center"}}>07:31</p>
+              </div>
+            </div>
+          </div>
+          <div className="tasks">
+            <div className="task-title-cont">
+              {" "}
+              <div>
+                <svg
+                  width="19"
+                  height="18"
+                  viewBox="0 0 19 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    fill="white"
+                  />
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    stroke="#7257FF"
+                  />
+                </svg>
+              </div>
+              <p className="task-title">1. Welcome to Ares Elite</p>
+            </div>
+            <div className="d-flex gap-3" style={{alignItems:"center"}}>
+              <div>
+                <svg
+                  width="17"
+                  height="16"
+                  viewBox="0 0 17 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.3028 7.57338L5.30431 2.0741C5.22852 2.02778 5.14175 2.00248 5.05294 2.00082C4.96413 1.99916 4.87648 2.02118 4.799 2.06463C4.72153 2.10808 4.65703 2.17139 4.61214 2.24803C4.56724 2.32468 4.54358 2.41191 4.54358 2.50073V13.4993C4.54358 13.5881 4.56724 13.6754 4.61214 13.752C4.65703 13.8287 4.72153 13.892 4.799 13.9354C4.87648 13.9789 4.96413 14.0009 5.05294 13.9992C5.14175 13.9976 5.22852 13.9723 5.30431 13.9259L14.3028 8.42666C14.3759 8.38199 14.4363 8.3193 14.4782 8.2446C14.5201 8.16989 14.5421 8.08567 14.5421 8.00002C14.5421 7.91437 14.5201 7.83015 14.4782 7.75545C14.4363 7.68074 14.3759 7.61805 14.3028 7.57338Z"
+                    fill="#A1A5B3"
+                  />
+                </svg>
+              </div>
+              <div>
+              <p style={{margin:0,fontSize:"small",color:"#A1A5B3",textAlign:"center"}}>07:31</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      emoji: (
+        <div
+          className="d-flex gap-4"
+          style={{ justifyContent: "space-between" }}
+        >
+          <div className="d-flex gap-1" style={{ alignItems: "center" }}>
+            <svg
+              width="21"
+              height="20"
+              viewBox="0 0 21 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.7109 17.5C14.8531 17.5 18.2109 14.1421 18.2109 10C18.2109 5.85786 14.8531 2.5 10.7109 2.5C6.5688 2.5 3.21094 5.85786 3.21094 10C3.21094 14.1421 6.5688 17.5 10.7109 17.5Z"
+                stroke="#564FFD"
+                stroke-width="1.3"
+                stroke-miterlimit="10"
+              />
+              <path
+                d="M13.2109 10L9.46094 7.5V12.5L13.2109 10Z"
+                stroke="#564FFD"
+                stroke-width="1.3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <p style={{ margin: 0, color: "#4E5566", fontSize: "small" }}>
+              4 drills
+            </p>
+          </div>
+          <div className="d-flex gap-1" style={{ alignItems: "center" }}>
+            <svg
+              width="21"
+              height="20"
+              viewBox="0 0 21 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.7109 17.5C14.8531 17.5 18.2109 14.1421 18.2109 10C18.2109 5.85786 14.8531 2.5 10.7109 2.5C6.5688 2.5 3.21094 5.85786 3.21094 10C3.21094 14.1421 6.5688 17.5 10.7109 17.5Z"
+                stroke="#FD8E1F"
+                stroke-width="1.3"
+                stroke-miterlimit="10"
+              />
+              <path
+                d="M10.7109 5.625V10H15.0859"
+                stroke="#FD8E1F"
+                stroke-width="1.3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
 
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="2" />
-                          <label for="2" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
+            <p style={{ margin: 0, color: "#4E5566", fontSize: "small" }}>
+              51 min
+            </p>
+          </div>
+          <div className="d-flex gap-1" style={{ alignItems: "center" }}>
+            <svg
+              width="21"
+              height="20"
+              viewBox="0 0 21 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.2734 6.5625L5.39844 13.4375L1.96094 10.0002"
+                stroke="#23BD33"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M19.4627 6.5625L12.5877 13.4375L10.7617 11.6116"
+                stroke="#23BD33"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
 
-                            <p className="d-inline">
-                              2. NeuroTrainer (Calibration)
-                            </p>
-                          </label>
-                        </div>
+            <p style={{ margin: 0, color: "#4E5566", fontSize: "small" }}>
+              25% finish
+            </p>
+          </div>
+        </div>
+      ),
+      value: "Day 3",
+      description: (
+        <div style={{ height: "150px", overflowY: "scroll" }}>
+          <div className="tasks">
+            <div className="task-title-cont">
+              {" "}
+              <div>
+             
+                <svg
+                  width="19"
+                  height="18"
+                  viewBox="0 0 19 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    fill="white"
+                  />
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    stroke="#7257FF"
+                  />
+                </svg>
+              </div>
+              <p className="task-title">1. Welcome to Ares Elite</p>
+            </div>
+            <div className="d-flex gap-3" style={{alignItems:"center"}}>
+              <div>
+                <svg
+                  width="17"
+                  height="16"
+                  viewBox="0 0 17 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.3028 7.57338L5.30431 2.0741C5.22852 2.02778 5.14175 2.00248 5.05294 2.00082C4.96413 1.99916 4.87648 2.02118 4.799 2.06463C4.72153 2.10808 4.65703 2.17139 4.61214 2.24803C4.56724 2.32468 4.54358 2.41191 4.54358 2.50073V13.4993C4.54358 13.5881 4.56724 13.6754 4.61214 13.752C4.65703 13.8287 4.72153 13.892 4.799 13.9354C4.87648 13.9789 4.96413 14.0009 5.05294 13.9992C5.14175 13.9976 5.22852 13.9723 5.30431 13.9259L14.3028 8.42666C14.3759 8.38199 14.4363 8.3193 14.4782 8.2446C14.5201 8.16989 14.5421 8.08567 14.5421 8.00002C14.5421 7.91437 14.5201 7.83015 14.4782 7.75545C14.4363 7.68074 14.3759 7.61805 14.3028 7.57338Z"
+                    fill="#A1A5B3"
+                  />
+                </svg>
+              </div>
+              <div>
+              <p style={{margin:0,fontSize:"small",color:"#A1A5B3",textAlign:"center"}}>07:31</p>
+              </div>
+            </div>
+          </div>
+          <div className="tasks">
+            <div className="task-title-cont">
+              {" "}
+              <div>
+                <svg
+                  width="19"
+                  height="18"
+                  viewBox="0 0 19 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    fill="white"
+                  />
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    stroke="#7257FF"
+                  />
+                </svg>
+                
+              </div>
+              <p className="task-title">1. Welcome to Ares Elite</p>
+            </div>
+            <div className="d-flex gap-3" style={{alignItems:"center"}}>
+              <div>
+                <svg
+                  width="17"
+                  height="16"
+                  viewBox="0 0 17 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.3028 7.57338L5.30431 2.0741C5.22852 2.02778 5.14175 2.00248 5.05294 2.00082C4.96413 1.99916 4.87648 2.02118 4.799 2.06463C4.72153 2.10808 4.65703 2.17139 4.61214 2.24803C4.56724 2.32468 4.54358 2.41191 4.54358 2.50073V13.4993C4.54358 13.5881 4.56724 13.6754 4.61214 13.752C4.65703 13.8287 4.72153 13.892 4.799 13.9354C4.87648 13.9789 4.96413 14.0009 5.05294 13.9992C5.14175 13.9976 5.22852 13.9723 5.30431 13.9259L14.3028 8.42666C14.3759 8.38199 14.4363 8.3193 14.4782 8.2446C14.5201 8.16989 14.5421 8.08567 14.5421 8.00002C14.5421 7.91437 14.5201 7.83015 14.4782 7.75545C14.4363 7.68074 14.3759 7.61805 14.3028 7.57338Z"
+                    fill="#A1A5B3"
+                  />
+                </svg>
+              </div>
+              <div>
+              <p style={{margin:0,fontSize:"small",color:"#A1A5B3",textAlign:"center"}}>07:31</p>
+              </div>
+            </div>
+          </div>
+          <div className="tasks">
+            <div className="task-title-cont">
+              {" "}
+              <div>
+                <svg
+                  width="19"
+                  height="18"
+                  viewBox="0 0 19 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    fill="white"
+                  />
+                  <rect
+                    x="1.21021"
+                    y="0.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    stroke="#7257FF"
+                  />
+                </svg>
+              </div>
+              <p className="task-title">1. Welcome to Ares Elite</p>
+            </div>
+            <div className="d-flex gap-3" style={{alignItems:"center"}}>
+              <div>
+                <svg
+                  width="17"
+                  height="16"
+                  viewBox="0 0 17 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.3028 7.57338L5.30431 2.0741C5.22852 2.02778 5.14175 2.00248 5.05294 2.00082C4.96413 1.99916 4.87648 2.02118 4.799 2.06463C4.72153 2.10808 4.65703 2.17139 4.61214 2.24803C4.56724 2.32468 4.54358 2.41191 4.54358 2.50073V13.4993C4.54358 13.5881 4.56724 13.6754 4.61214 13.752C4.65703 13.8287 4.72153 13.892 4.799 13.9354C4.87648 13.9789 4.96413 14.0009 5.05294 13.9992C5.14175 13.9976 5.22852 13.9723 5.30431 13.9259L14.3028 8.42666C14.3759 8.38199 14.4363 8.3193 14.4782 8.2446C14.5201 8.16989 14.5421 8.08567 14.5421 8.00002C14.5421 7.91437 14.5201 7.83015 14.4782 7.75545C14.4363 7.68074 14.3759 7.61805 14.3028 7.57338Z"
+                    fill="#A1A5B3"
+                  />
+                </svg>
+              </div>
+              <div>
+              <p style={{margin:0,fontSize:"small",color:"#A1A5B3",textAlign:"center"}}>07:31</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+  ];
+  const items = groceries.map((item) => (
+    <Accordion.Item key={item.value} value={item.value}>
+      <Accordion.Control icon={item.emoji} style={{ borderRadius: "12px" }}>
+        {item.value}
+      </Accordion.Control>
+      <Accordion.Panel>{item.description}</Accordion.Panel>
+    </Accordion.Item>
+  ));
+  return (
+    <AtheleteMenu>
+      <div
+        style={{ padding: "30px ", display: "flex", flexDirection: "column" }}
+      >
+        <div className="drill-main-box weeks">
+          <div className="weekbuttons">
+            <button className="week-button">Week 1</button>
+            <button className="week-button">Week 2</button>
+            <button className="week-button">Week 3</button>
+            <button className="week-button">Week 4</button>
+          </div>
+          <div>
+            <button className="upgrade-plan">Upgrade Plan</button>
+          </div>
+        </div>
+        <div className="drill-main-box video-cont">
+          <div className="video-player" style={{ height: "100%" }}>
+            <h5>Elite (P1)- Week 1/Day1/NeuroTrainer(Calibration)</h5>
+            <div style={{height:"400px",display:"flex",alignItems:"center"} }>
+            <video width="90%" controls style={{ borderRadius: "26.78px" }}>
+              <source src="produ.mp4" type="video/mp4" />
+            </video>
+            </div>
+          </div>
 
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="3" />
-                          <label for="3" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              3. Senaptec (Eye Hand Coordination)
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="4" />
-                          <label for="4" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              1. Welcome to Ares Elite Academy
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="5" />
-                          <label for="5" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              4. Senaptec Eye Hand Coordination Recordings (3x)
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                    </Accordion.Body>
-                  </Accordion.Item>
-                  <Accordion.Item eventKey="1">
-                    <Accordion.Header>
-                      {" "}
-                      <h6 className="w-25">Day 2</h6>
-                      <div className="d-flex acc-head-cont">
-                        <div>
-                          <img src="/images/icon/playcircle.svg" />
-                          <p> 4 Drills</p>
-                        </div>
-                        <div>
-                          <img src="/images/icon/clock.svg" />
-                          <p> 51m</p>
-                        </div>
-                        <div>
-                          <img src="/images/icon/checks.svg" />
-                          <p> 25% finish (1/4)</p>
-                        </div>
-                      </div>
-                    </Accordion.Header>
-                    <Accordion.Body>
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="1" />
-                          <label for="1" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              1. Welcome to Ares Elite Academy
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="2" />
-                          <label for="2" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              2. NeuroTrainer (Calibration)
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="3" />
-                          <label for="3" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              3. Senaptec (Eye Hand Coordination)
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="4" />
-                          <label for="4" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              1. Welcome to Ares Elite Academy
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="5" />
-                          <label for="5" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              4. Senaptec Eye Hand Coordination Recordings (3x)
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                    </Accordion.Body>
-                  </Accordion.Item>{" "}
-                  <Accordion.Item eventKey="2">
-                    <Accordion.Header>
-                      {" "}
-                      <h6 className="w-25">Day 3</h6>
-                      <div className="d-flex acc-head-cont">
-                        <div>
-                          <img src="/images/icon/playcircle.svg" />
-                          <p> 4 Drills</p>
-                        </div>
-                        <div>
-                          <img src="/images/icon/clock.svg" />
-                          <p> 51m</p>
-                        </div>
-                        <div>
-                          <img src="/images/icon/checks.svg" />
-                          <p> 25% finish (1/4)</p>
-                        </div>
-                      </div>
-                    </Accordion.Header>
-                    <Accordion.Body>
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="1" />
-                          <label for="1" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              1. Welcome to Ares Elite Academy
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="2" />
-                          <label for="2" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              2. NeuroTrainer (Calibration)
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="3" />
-                          <label for="3" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              3. Senaptec (Eye Hand Coordination)
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="4" />
-                          <label for="4" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              1. Welcome to Ares Elite Academy
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="5" />
-                          <label for="5" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              4. Senaptec Eye Hand Coordination Recordings (3x)
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                    </Accordion.Body>
-                  </Accordion.Item>{" "}
-                  <Accordion.Item eventKey="3">
-                    <Accordion.Header>
-                      {" "}
-                      <h6 className="w-25">Day 4</h6>
-                      <div className="d-flex acc-head-cont">
-                        <div>
-                          <img src="/images/icon/playcircle.svg" />
-                          <p> 4 Drills</p>
-                        </div>
-                        <div>
-                          <img src="/images/icon/clock.svg" />
-                          <p> 51m</p>
-                        </div>
-                        <div>
-                          <img src="/images/icon/checks.svg" />
-                          <p> 25% finish (1/4)</p>
-                        </div>
-                      </div>
-                    </Accordion.Header>
-                    <Accordion.Body>
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="1" />
-                          <label for="1" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              1. Welcome to Ares Elite Academy
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="2" />
-                          <label for="2" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              2. NeuroTrainer (Calibration)
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="3" />
-                          <label for="3" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              3. Senaptec (Eye Hand Coordination)
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="4" />
-                          <label for="4" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              1. Welcome to Ares Elite Academy
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                      <div className="days-cont">
-                        <div class="checkbox-wrapper-43">
-                          <input type="checkbox" id="5" />
-                          <label for="5" class="check d-inline">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18">
-                              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                              <polyline points="1 9 7 14 15 4"></polyline>
-                            </svg>
-
-                            <p className="d-inline">
-                              4. Senaptec Eye Hand Coordination Recordings (3x)
-                            </p>
-                          </label>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-center ">
-                          <img src="/images/icon/play.svg" />
-                          <span style={{ marginLeft: "10px" }}>07:31</span>
-                        </div>
-                      </div>{" "}
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Accordion>
-              </section>
-            </Col>
-          </Row>
-          <Row></Row>
-        </Container>
-      </section>
+          <div className="accordion">
+            <div className="drill-progress">
+              <div className="d-flex justify-content-between">
+                <h4>Drill Contents</h4>
+                <p style={{ color: "green" }}>50% Complete</p>
+              </div>
+              <Progress
+                color="green"
+                value={50}
+                style={{ background: "transparent" }}
+              />
+            </div>
+            <Accordion chevronPosition="left" variant="filled">
+              {items}
+            </Accordion>
+          </div>
+        </div>
+        <div className="drill-main-box calibration-forms">
+          <h4>NeuroTrainer (Calibration)</h4>
+          <p style={{ color: "#8C90AA", marginTop: "-1px" }}>Drill 2 of 4</p>
+          <div className="calibration-forms-cont">
+            <div><TextInput label="Head Check Speed #1 *"
+      variant="filled"
+      placeholder="Enter Head "/></div>
+           
+            <div><TextInput label="Pass Accuracy Score #1*"
+      variant="filled"
+      placeholder="Enter Head "/></div>
+            <div><TextInput label="Pass Accuracy Score #1*"
+      variant="filled"
+      placeholder="Enter Head"/></div>
+            <div><TextInput label="Swat Accuracy Score #1*"
+      variant="filled"
+      placeholder="Enter Head"/></div>
+            <div><TextInput label="Bonus #1*"
+      variant="filled"
+      placeholder="Enter Head"/></div>
+            <div><TextInput label="Score #1*"
+      variant="filled"
+      placeholder="Enter Head"/></div>
+            
+       
+          </div>
+        </div>
+      </div>
     </AtheleteMenu>
   );
 };

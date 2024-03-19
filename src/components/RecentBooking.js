@@ -2,6 +2,7 @@ import React from 'react'
 import { Modal } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import TableComp from './TableComp'
+import RecentBookingCard from './layout/Components/RecentBookingCard';
 const RecentBooking = () => {
     const [opened, { open, close }] = useDisclosure(false)
   return (
@@ -44,10 +45,21 @@ const RecentBooking = () => {
             </Modal.Title>
       
           </Modal.Header>
-          <Modal.Body><TableComp/></Modal.Body>
+          <Modal.Body>
+                <div className="table-cont" style={{overflow:"scroll",padding:"0px 4px 0px"}}>
+                 <TableComp/>
+                 </div>
+                 <div className="booking-card-cont">
+                  <RecentBookingCard/>
+                  <hr/>
+                  <RecentBookingCard/>
+                  <hr/>
+                  <RecentBookingCard/>
+                 </div>
+          </Modal.Body>
         </Modal.Content>
       </Modal.Root>
-   <div style={{background:"white",borderRadius:"16px",padding:"30px",maxWidth:"80vw",marginBottom:"10px"}}>
+   <div style={{background:"white",borderRadius:"16px",padding:"30px",maxWidth:"90vw",marginBottom:"10px"}}>
                  <div className="d-flex justify-content-between">
                  <h5>Recent Bookings</h5>
                 <p onClick={open} style={{cursor:"pointer",color:"#7257FF",fontWeight:"700"}}>View All</p>
@@ -55,6 +67,11 @@ const RecentBooking = () => {
                
                  <div className="table-cont" style={{overflow:"scroll",padding:"0px 4px 0px"}}>
                  <TableComp/>
+                 </div>
+                 <div className="booking-card-cont">
+                  <RecentBookingCard/>
+                  <hr/>
+                  <RecentBookingCard/>
                  </div>
     </div>
    </>

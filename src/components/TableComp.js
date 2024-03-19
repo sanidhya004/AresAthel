@@ -2,7 +2,7 @@ import React from 'react'
 import { Table } from '@mantine/core';
 import { Avatar } from '@mantine/core';
 import { Button } from '@mantine/core';
-import { NavLink } from 'react-router-dom';
+import { NavLink,useNavigate } from 'react-router-dom';
 
 const elements = [
     { Name: "Dr. Scott Mctominay", serviceType: "Sports Vision Performance", date: "Oct 17, 2023", name: 'Carbon' ,actions: <Button variant="filled">View Prescription</Button> ,time:"3:45 PM"},
@@ -12,6 +12,7 @@ const elements = [
     { Name: "Dr. Scott Mctominay", serviceType: "Sports Vision Performance", date: "Oct 17, 2023", name: 'Cerium',actions:<Button variant="filled">Button</Button> ,time:"3:45 PM" },
   ];
 const TableComp = () => {
+  const naviagte= useNavigate()
   const rows = elements.map((element) => (
     <Table.Tr key={element.name}>
       <Table.Td><p className='d-flex align-items-center'><span style={{marginRight:"3px"}}> <Avatar src={"https://s3-alpha-sig.figma.com/img/63c4/be83/222c85e6c852819bc5d4b24a87a87fb6?Expires=1710720000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=CCIP7DFZ2x9yXzdFgWFArmwk7ph~5ovexvWejMmfkCQ~WgL2w9JE5hnFnNqVAL4taDDWEjteHCc5bRiYWlLHA24~LvWiUc1~PEbqoUAlIB9sMCg-OV3YqAD-kSOuprPZInRtZXqkPs7L5-kQj5mwK2gh8vKM7LUP8HLwdmySsOkyBOrwrflVNRrHhdetXuDviaOVaZ7geVH4tHO~FmIKqarODz95EOvKs20HPIztElUMoNHMh3aeYMUGPb-oLWDswwSXGBThPln0sXvslUiYJoZHoIcVtr~ln9CN1huBrXFR~T~Lf~nk2jEuFdM1TmxN5CwcvCo2YNDotPY5O1gBoA__"} alt="no image here" /></span>{element.Name}</p></Table.Td>
@@ -20,7 +21,7 @@ const TableComp = () => {
       <Table.Td><p>{element.time}</p></Table.Td>
       <Table.Td>{
         <div className='d-flex flex-column gap-2'>
-          <Button variant="filled" color="#7257FF" style={{fontSize:"12px",borderRadius:"12px"}}>Start Drill</Button> 
+     <Button variant="filled" color="#7257FF" style={{fontSize:"12px",borderRadius:"12px"}} onClick={()=>{naviagte("/a-drill")}}>Start Drill </Button>
           <Button variant="filled" color="#7257FF26"style={{fontSize:"12px",color:"#7257FF",borderRadius:"12px" }}>View Prescription</Button>
           </div>
         }</Table.Td>

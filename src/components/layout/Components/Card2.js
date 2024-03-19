@@ -67,9 +67,9 @@ const Card2 = () => {
         <div>
           
           <h2 style={{fontWeight:"700"}}>Select your plan</h2>
-          <div>
+          {/* <div>
             <p style={{marginTop:"25px",width:"90%",fontSize:"16px",lineHeight:"19.2px",color:"#FFFFFFCC"}}>Lorem ipsum dolor sit amet consectetur. Vitae eu enim tristique in turpis. Enim tellus ante.</p>
-        </div>
+        </div> */}
         </div>
        <NavLink to="/a-plans">
         <div className="start-drill" style={{padding:"0px 10px 0px"}}>

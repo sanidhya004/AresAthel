@@ -363,3 +363,159 @@ text-align: left;
 color:#8C90AA
 }
 
+.drill-main-box{
+   width: 100%;
+ 
+}
+
+.weeks{
+  height: 52px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.weekbuttons{
+   display: flex !important;
+   flex-direction: row;
+ 
+  justify-content: start;
+  align-items: center;
+  gap:16px;
+  
+  
+
+
+}
+.week-button{
+  width: 106px;
+height: 41px;
+padding: 19px 24px 19px 24px;
+gap: 6px;
+border-radius: 16px;
+border: 1px;
+background: #FFFFFF;
+display: flex;
+justify-content: center;
+align-items: center;
+
+font-size: 16px;
+font-weight: 500;
+line-height: 14px;
+letter-spacing: 0px;
+text-align: center;
+
+}
+.week-button:focus{
+   background-color: #7257FF;
+   color:white;
+}
+.upgrade-plan{
+  width: 100%;
+height: 51px;
+
+padding: 19px 24px 19px 24px;
+
+border-radius: 16px;   
+border: 1;
+background: #7257FF;
+color:white;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+input[type='radio'] {
+  box-sizing: border-box;
+  appearance: none;
+  background: white;
+  outline: 2px solid #333;
+  border: 3px solid white;
+  width: 16px;
+  height: 16px;
+}
+
+input[type='radio']:checked {
+  background: #333;
+}
+.video-cont{
+  width: 100%;
+ 
+  padding: 19px 24px 19px 24px;
+  background-color: white;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  display: flex;
+  gap:30px;
+  
+  
+}
+
+.calibration-forms{ 
+  width: 100%;
+ 
+  padding: 19px 24px 19px 24px;
+  background-color: white;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border-radius: 16px;
+ 
+  gap:30px;
+}
+
+.calibration-forms-cont{
+  width: 100%;
+  height: fit-content;
+
+  display: grid;
+  grid-template-rows: repeat(2, 3fr);
+  grid-template-columns: repeat(2, 15fr);
+  gap:20px 12px
+}
+.video-player{
+   width: 50%;
+   height: 400px;
+   border-right:solid;
+   border-width: 1px;
+   border-color: #E8EAF0;
+}
+
+.accordion{
+   width: 50%;
+  
+   
+}
+.form-cont{
+
+}
+
+.tasks{
+  padding: 10px 20px 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 12px;
+}
+
+.task-title{
+  font-family: Lato;
+font-size: 14px;
+font-weight: 400;
+line-height: 22px;
+letter-spacing: -0.01em;
+text-align: left;
+color:#4E5566;
+margin:0;
+}
+
+.task-title-cont{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap:3px;
+}
+
+.tasks:hover{
+  background: #1C0D441A;
+
+}

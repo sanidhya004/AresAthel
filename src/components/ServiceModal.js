@@ -91,7 +91,7 @@ const ServiceModal = ({ heading, amount, colors, session, svg,icon }) => {
               alignItems: "center",
             }}
           >
-            <div style={{ marginTop: "20px", width: "75%" }}>
+            <div style={{ marginTop: "20px", width: "95%" }}>
               <Stepper
                 active={active}
                 onStepClick={setActive}
@@ -170,8 +170,8 @@ const ServiceModal = ({ heading, amount, colors, session, svg,icon }) => {
           </Modal.Body>
         </Modal.Content>
       </Modal.Root>
-
-      {svg}
+      <div className="svg-box" style={{display:"flex",justifyContent:"center",alignItems:"center"}}>{svg}</div>
+      
 
       <div
         style={{

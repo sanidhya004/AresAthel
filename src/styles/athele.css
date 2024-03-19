@@ -127,7 +127,12 @@ text-align: left;
 }
 
 
-
+.drill-progress  .m-db6d6462{
+  background-color: #E9EAF0 !important;
+}
+.drill-progress{
+   padding: 10px;
+}
 
 .athel-menu .menu-icon-cont {
   width: 210px;
@@ -195,6 +200,11 @@ a:hover {
   min-height: 100vh;
   margin: auto;
   overflow-x: hidden;
+  padding: 0px 30px  30px;
+  width: 100%;
+height: 673px;
+border-radius: 16 ;  
+
 }
 .athel-Consul .form-label {
   font-weight: 600;
@@ -289,6 +299,35 @@ a:hover {
 }
 .profile-password div {
   padding: 10px 20px;
+}
+@media only screen and (min-width: 1543px){
+ 
+  .service-box{
+    width: 533px  !important;
+    height: 130px !important;
+  }
+  .service-box h7{
+     font-size: 16px !important;
+  }
+ .svg-box svg{
+     height: 500px !important;
+     width:105px
+  }
+  .rightcont{
+    width: 433px !important;
+    
+  }
+  
+  .upper-card{
+    width: 533px !important;
+    height: 400px !important;
+  }
+  
+  
+  .training-card{
+    width: 533px !important;
+    height: 400px !important;
+  }
 }
 @media only screen and (max-width: 1442px){
   .upper-card{
@@ -512,38 +551,8 @@ thead {
   width: 100% !important;
   background-color: transparent;
 }
-.week-button {
 
-  border-radius: 37.5px;
 
-  box-sizing: border-box;
-  color: black;
-  cursor: pointer;
-   background-color: white;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 10.5px;
-  opacity: 1;
-  outline: 0 solid transparent;
-  padding: 8px 18px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  min-width: 80px;
-  max-width: fit-content;
-  height: 38px;
-  word-break: break-word;
-  border: 0;
-
-}
-.week-button:hover,
-.week-selected {
-  padding: 8px 18px;
-  border-radius: 37.5px;
-  background-color: #1c0d44;
-  color: white;
-  /* border: 0px solid lightgray; */
-}
 .acc-head-cont {
   width: 95%;
   justify-content: flex-end;
@@ -894,9 +903,7 @@ height: 47x;
 padding: 17px, 30px, 17px, 30px;
 border-radius: 8px;
 background: #7257FF;
-display: flex;
-justify-content: center;
-align-items: flex-end;
+
 
 font-size: 16px;
 font-weight: 600;
@@ -912,9 +919,7 @@ height: 47px;
 padding: 17px, 35px, 17px, 35px;
 border-radius: 8px;
 background: #7257FF26;
-display: flex;
-justify-content: center;
-align-items: flex-end;
+
 
 font-size: 16px;
 font-weight: 600;
@@ -1032,6 +1037,7 @@ gap: 17.5px;
 background: #FFFFFF;
 color:black;
 position: relative;
+
 }
 
 .upper-train p{
@@ -1075,10 +1081,66 @@ text-align: left;
 }
 
 
-
+.booking-card-cont{
+  display: none;
+  
+ }
+ .bottomnav{
+   display: none;
+ }
+ .upper-mast{
+  display: none;
+ }
 @media only screen and (max-width: 600px) {
   .flex-shift{
     flex-direction: column;
+ }
+ .athel-home{
+   padding: 0px !important;
+ }
+ .body{
+  margin-bottom:68px  ;
+  margin-top:68px ;
+ }
+ .bottomnav{
+   display: block;
+   position: fixed;
+   bottom: 0px;
+   width: 100vw;
+   height: 68px;
+   background-color: #7257FF;
+ }
+ .upper-mast{
+  display: flex;
+  height: 68px;
+  background-color: #7257FF;
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  width: 100vw;
+  padding: 10px;
+ }
+ .upper-mast img{
+  height: 45px;
+  margin-right: -50px;
+ }
+ .bottom-button-wrapper{
+ padding: 0px 32px 0px 32px;
+ display: flex;
+ width: 100%;
+ gap:57.5px;
+ }
+ .appointment-container{
+  
+  grid-template-columns: repeat(2, 0.5fr) !important;
+ }
+ .table-cont{
+   display: none;
+ }
+ .booking-card-cont{
+  display: flex;
+  flex-direction: column;
+  gap:5px;
  }
  .comp{
    position:absolute;
@@ -1090,9 +1152,12 @@ text-align: left;
  .start-drill{
    width: 120px;
  }
- 
+ .layout{
+   position: relative;
+ }
 .training-card{
    padding: 10px ;
+   gap:5px;
 }
  .upper-train p {
    font-size: 10px;
@@ -1102,13 +1167,59 @@ text-align: left;
  }
 
  .upper-card{
-   width: 171px;
+   width: 43vw!important;
+   padding: 20px  !important;
  }
 
+ .upper-card h2{
+  font-size: 20px !important;
+ }
+ .upper-train h2{
+  font-size: 15px !important;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  
+ }
+table{
+  font-size: small !important;
+ }
+ .addbtn{
+   height: 37px;
+   font-size: 15px;
+  
+ }
+ .addbtn p{
+  text-align: center; 
+}
+
+.m-aaf89d0b:where([data-wrap]) {
+  flex-wrap: nowrap !important;
+  gap:4px !important;
+}
+ .bookbtn{
+  height: 37px;
+  font-size: 15px;
+ }
  .layout2{
    padding: 0;
  }
 
+ .service-box {
+  width: 90vw !important;
+  
+}
+.row1 {
+  gap: 0.6rem !important;
+}
+.services-cont p {
+   font-size: 10px !important;
+}
+.services-cont h7{
+  font-size: 10px !important;
+}
+.main{
+  padding: 10px !important;
+}
  .sidebar{
    display: none;
  }
@@ -1117,14 +1228,12 @@ text-align: left;
    display: none;
  }
  .training-card{
-  width: 171px;
+width: 43vw !important;
 }
  .upper-card p{
-   font-size: 9px;
+   font-size: 10px !important;
  }
- .training-card{
-  width: 150px !important;
- }
+ 
  .circle-1{
    left:95px;
  }
@@ -1594,3 +1703,8 @@ cursor: pointer;
     font-family: "Lato", sans-serif;
   }
 
+
+ 
+.calibration-forms{ 
+  
+}

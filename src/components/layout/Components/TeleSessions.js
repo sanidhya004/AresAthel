@@ -815,9 +815,9 @@ const changeColor2 = (buttonId,service) => {
         </Modal.Content>
       </Modal.Root>
       <div xs={6} sm={6} className="training-card text-shadow">
-        <div className="d-flex justify-content-between upper-train  ">
+        <div className="d-flex  flex-wrap justify-content-between upper-train  ">
           <div>
-            <p>Training Session</p>
+            <h2 style={{fontSize:"700"}}>Training Session</h2>
           </div>
           <div>
             <div className="view-all" onClick={open}>
@@ -865,18 +865,18 @@ const changeColor2 = (buttonId,service) => {
             />
           </div>
         </div>
-        <div className="d-flex gap-4">
-          <div className="addbtn" onClick={()=>{addstep1Handler.open()}}>
-            <p>Add</p>
-          </div>
-          <div
+        <div className="d-flex gap-4" >
+          <button className="addbtn" onClick={()=>{addstep1Handler.open()}}>
+            Add
+          </button>
+          <button
             className="bookbtn"
             onClick={() => {
               bookstep1Handler.open();
             }}
           >
-            <p>Book</p>
-          </div>
+            Book
+          </button>
         </div>
       </div>
     </>
