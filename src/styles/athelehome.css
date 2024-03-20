@@ -1,3 +1,12 @@
+@media only screen and (max-width: 600px){
+  .services-cont{
+    
+    grid-template-rows: repeat(1, 1fr) !important;
+    grid-template-columns: repeat(1, 1fr) !important;
+    
+    
+  }
+}
 .all-cont-width .col-sm-6 {
   border-radius: 20px;
   width: 410px;
@@ -65,6 +74,16 @@
   border-radius: 9px;
   background: #442c82;
   text-transform: uppercase;
+}
+.services-cont{
+  width: 100%;
+  
+
+  display: grid;
+  grid-template-rows: repeat(2, 1fr) ;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 18px;
+  
 }
 .service-cont-icon {
   width: 71px;

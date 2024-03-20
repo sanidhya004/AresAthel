@@ -150,13 +150,41 @@ tbody {
 .recent-bookings-cont tr td {
   background-color: #f2f8fc !important;
 }
+.mobile-cont{
+  display: none;
+}
 @media only screen and (max-width: 600px) {
   .frame {
     width: 90vw !important;
     margin: auto;
 
     /* height: 600px; */
+  } 
+  .mobile-cont{
+     display: flex;
+     flex-direction: column;
+     margin-top: 20px;
   }
+  .console-inputs Input{
+     width: 290px !important;
+
+  }
+  .header{
+    font-size: small;
+    margin-top: 20px;
+  }
+  .sub-text{
+    font-size: x-small;
+    margin-bottom: 30px;
+  }
+  .console-inputs{
+     flex-direction: column;
+     align-items: flex-end;
+  }
+  .console-inputs svg{
+    width: 38px !important;
+ }
+  .console-inputs Input
   .buttons-cont {
     height: 60px !important;
   }
@@ -170,6 +198,9 @@ tbody {
   }
   .search-bar {
     display: none;
+  }
+  .table-cont{
+     display: none;
   }
   .recent-bookings-cont {
     height: 90vh !important;
@@ -231,6 +262,7 @@ box-shadow: 0px 10px 24px -5px #0000001A;
 background-color: white;
 border-radius: 16px;
 padding: 30px;
+overflow-y: scroll;
 }
 
 .transaction-table-console h3{

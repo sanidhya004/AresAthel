@@ -3,6 +3,8 @@ import AtheleteMenu from '../components/layout/AtheleteMenu'
 import { Input, CloseButton, Avatar } from '@mantine/core';
 import { Table } from '@mantine/core';
 import {NavLink} from 'react-router-dom';
+import TransactionCard from '../components/TransactionCard';
+import BookingCard from '../components/layout/Components/BookingCard';
 const AtheBookings = () => {
   const url="https://s3-alpha-sig.figma.com/img/63c4/be83/222c85e6c852819bc5d4b24a87a87fb6?Expires=1711324800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Y4SY5J0CmBpurLNdyssoFuDVIjUivt~TjdQaMbuLy9MqbOJzReqwYFykcxiFAm4wjnxQHbY0fBds-c8jJOuSEhxnIZytiS~EuxX~PytgwY6cobBUszo0gi-oqOTVUlJ89JtgK4fyyXVBeeavR9sisvIFpS740Bty68TTfxndSOlMBM4eOox~yT9ifL2JckNSFBj5WNjS7Cf0YAqIPr9DL4KVoE5gdsTtDmzobV4sVvo9mX9vwMMkr6hAh-NI07QoQlzioEP6B~vuit0ps5EsYwDDZpBmCN5CeU5SqRL-pbW2vNZNXPIm4IUe-bGgJZgdXVmpCnw3mPqykaekuBZ7kw__"
   const elements = [
@@ -44,7 +46,7 @@ const AtheBookings = () => {
 
         </div>
       </div>
-      <div className="mt-3">
+      <div className="mt-3 table-cont">
           <Table>
       <Table.Thead>
         <Table.Tr style={{fontWeight:"600",fontSize:"18px"}}>
@@ -59,6 +61,12 @@ const AtheBookings = () => {
       <Table.Tbody>{rows}</Table.Tbody>
     </Table>
           </div>
+      <div className="mobile-cont">
+        <BookingCard/>
+        <BookingCard/>
+        <BookingCard/>
+        <BookingCard/>
+      </div>
     </div>
     </div>
    </AtheleteMenu>

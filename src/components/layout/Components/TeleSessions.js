@@ -865,7 +865,7 @@ const changeColor2 = (buttonId,service) => {
             />
           </div>
         </div>
-        <div className="d-flex gap-4" >
+        <div className="d-flex gap-4 tele-buttons" >
           <button className="addbtn" onClick={()=>{addstep1Handler.open()}}>
             Add
           </button>

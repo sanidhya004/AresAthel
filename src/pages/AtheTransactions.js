@@ -2,6 +2,8 @@ import React from "react";
 import AtheleteMenu from "../components/layout/AtheleteMenu";
 import { Input, CloseButton } from "@mantine/core"
 import { Table,Avatar } from '@mantine/core';
+import TransactionCard from "../components/TransactionCard";
+
 
 const AtheTransactions = () => {
   const url="https://s3-alpha-sig.figma.com/img/63c4/be83/222c85e6c852819bc5d4b24a87a87fb6?Expires=1711324800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Y4SY5J0CmBpurLNdyssoFuDVIjUivt~TjdQaMbuLy9MqbOJzReqwYFykcxiFAm4wjnxQHbY0fBds-c8jJOuSEhxnIZytiS~EuxX~PytgwY6cobBUszo0gi-oqOTVUlJ89JtgK4fyyXVBeeavR9sisvIFpS740Bty68TTfxndSOlMBM4eOox~yT9ifL2JckNSFBj5WNjS7Cf0YAqIPr9DL4KVoE5gdsTtDmzobV4sVvo9mX9vwMMkr6hAh-NI07QoQlzioEP6B~vuit0ps5EsYwDDZpBmCN5CeU5SqRL-pbW2vNZNXPIm4IUe-bGgJZgdXVmpCnw3mPqykaekuBZ7kw__"
@@ -30,9 +32,43 @@ const AtheTransactions = () => {
         <div className="transaction-table">
           <div className="transaction-table-console">
             <h3>Transactions</h3>
-            <div className="d-flex console-inputs">
+            <div className="d-flex console-inputs" >
+            <Input
+                placeholder="Your email"
+                size={"xs"}
+                
+                hiddenFrom={"md"}
+                leftSection={
+                  <svg
+                    width="19"
+                    height="19"
+                    viewBox="0 0 19 19"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <ellipse
+                      cx="9.14342"
+                      cy="8.94952"
+                      rx="8.14342"
+                      ry="7.94952"
+                      stroke="#8C90AA"
+                      stroke-width="1.78947"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M14.8047 14.8906L17.9974 17.9992"
+                      stroke="#8C90AA"
+                      stroke-width="1.78947"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                }
+              />
               <Input
                 placeholder="Your email"
+                visibleFrom={"md"}
                 leftSection={
                   <svg
                     width="19"
@@ -76,7 +112,8 @@ const AtheTransactions = () => {
               </svg>
             </div>
           </div>
-          <div className="mt-3">
+          <div className="mt-3 table-cont">
+            
           <Table>
       <Table.Thead>
         <Table.Tr style={{fontWeight:"600",fontSize:"18px"}}>
@@ -90,6 +127,13 @@ const AtheTransactions = () => {
       </Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>
     </Table>
+          </div>
+          <div className="mobile-cont">
+           <TransactionCard/>
+           <TransactionCard/>
+           <TransactionCard/>
+           <TransactionCard/>
+           
           </div>
         </div>
       </div>

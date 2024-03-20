@@ -1,6 +1,7 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom'
 const RecentBookingCard = () => {
+    const navigate=useNavigate()
   return (
     <div style={{fontSize:"small"}}>
     <div className='d-flex justify-content-between'>
@@ -23,7 +24,7 @@ const RecentBookingCard = () => {
         <p>Action</p>
         <div className="d-flex gap-3">
             <button style={{padding:"12.5px 26.5px 12.5px 26.5px",background:"#7257FF26",borderRadius:"10px",width:"50%"}}>View prescription</button>
-            <button style={{padding:"12.5px 26.5px 12.5px 26.5px",background:"#7257FF",borderRadius:"10px",width:"40%",color:"white"}}>Start drill</button>
+            <button style={{padding:"12.5px 26.5px 12.5px 26.5px",background:"#7257FF",borderRadius:"10px",width:"40%",color:"white"}} onClick={()=>{navigate("/a-drill")}}>Start drill</button>
         </div>
     </div>
     </div>

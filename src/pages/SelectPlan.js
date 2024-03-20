@@ -20,7 +20,7 @@ const SelectPlan = () => {
 </defs>
 </svg>
 </div>
-    <div style={{width:"100%",display:"flex",gap:"29.2px",overflowX:"scroll"}}>
+    <div  className="plan-wrapper"style={{width:"100%",display:"flex",gap:"25.2px",overflowX:"scroll",height:"fit-content",marginTop:"-30px",padding:"10px",justifyContent:"center"}}>
       <PlanCard plans={<svg width="250" height="210" viewBox="0 0 285 248" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect y="32" width="24" height="24" rx="12" fill="#7257FF" fill-opacity="0.15"/>
 <path d="M17.3346 40.2666L10.0013 47.5999L6.66797 44.2666" stroke="#7257FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

@@ -5,7 +5,7 @@ import RecentBooking from "../components/RecentBooking";
 
 import { RingProgress, Text } from "@mantine/core";
 import { Skeleton } from '@mantine/core';
-import { Col, Container, Row, Image } from "react-bootstrap";
+import { div, Container, Row, Image } from "react-bootstrap";
 import ServiceModal from "../components/ServiceModal";
 import { Avatar } from "@mantine/core";
 import { Link } from "react-router-dom";
@@ -24,7 +24,7 @@ const AtheleDashboard = () => {
             <p className="h4  ">
               Hello,
               <p className="font-weight-bold d-inline">
-                Colter!
+                divter!
               </p>
             </p>
           </div>
@@ -32,22 +32,18 @@ const AtheleDashboard = () => {
           <div className="d-flex row1 grow1 upper-card-cont">
          
           {/* <Card1/> */}
-          {/* <Card2/> */}
-          <Card3/>
+          <Card2/>
+          {/* <Card3/> */}
           <TeleSessions/>
           </div>
           {/* -------------- */}
           {/* This row has service Cards */}
           <div className="mt-4">
           <h4 className=" text-shadow">Select Service</h4>
-          <Container className="services-cont text-shadow ">
-                  <Row
-                    className="row2 "
-                    style={{ maxWidth: "90vw" }}
-                    
-                  >
-                    <Col
-                      sm={6}
+          <div className="services-cont text-shadow ">
+                  
+                    <div
+                      
                       style={{ backgroundColor: "#57315A",borderRadius:"10px" }}
                       className=" service-box text-light mb-4 d-flex justify-content-between  align-items-center box-shadow-drop-bottom "
                     >
@@ -153,11 +149,11 @@ icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://
 }
                         heading={"Sports Vision Performance Evaluation"}
                         amount={"349"}
-                        colors={{ heading: "white", text: "#FFFFFFCC" }}
+                        divors={{ heading: "white", text: "#FFFFFFCC" }}
                         session={{ time: "8:30" }}
                       />
-                    </Col>
-                    <Col
+                    </div>
+                    <div
                       sm={6}
                       style={{ backgroundColor: "#FF8989",borderRadius:"10px" }}
                       className=" service-box text-light mb-4 d-flex justify-content-between align-items-center box-shadow-drop-bottom "
@@ -274,7 +270,7 @@ icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://
 }
                         heading={"Post-Concussion Evaluation"}
                         amount={"199"}
-                        colors={{ heading: "white", text: "white" }}
+                        divors={{ heading: "white", text: "white" }}
                       />
                       {/* <img
                         src="/images/icon/postcon.svg"
@@ -298,13 +294,10 @@ icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://
                         className="service-cont-arrow
                     "
                       /> */}
-                    </Col>
-                  </Row>
-                  <Row
-                    className="row2"
-                    style={{ maxWidth: "90vw" }}
-                  >
-                    <Col
+                    </div>
+                
+                 
+                    <div
                       sm={6}
 
                       style={{ backgroundColor: "#C1E2F4",borderRadius:"10px" }}
@@ -400,10 +393,10 @@ icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://
                       }
                         heading={"Medical/Office Visit"}
                         amount={"50"}
-                        colors={{ heading: "black", text: "black" }}
+                        divors={{ heading: "black", text: "black" }}
                       />
-                    </Col>
-                    <Col
+                    </div>
+                    <div
                       sm={6}
                       xs={12}
                       style={{ backgroundColor: "#D9CFFB",borderRadius:"10px" }}
@@ -491,18 +484,18 @@ icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://
                       </svg>
                       }
                         heading={"Consultation Call"}
-                        colors={{ heading: "black", text: "black" }}
+                        divors={{ heading: "black", text: "black" }}
                       />
-                    </Col>
-                  </Row>
-                </Container>
+                    </div>
+                 
+                </div>
           </div>
           {/* ----------------- */}
           <div className="mt-4 text-shadow">
              <Row>
-                <Col>
+                <div>
                   <RecentBooking />
-                </Col>
+                </div>
               </Row>
           </div>
         </div>

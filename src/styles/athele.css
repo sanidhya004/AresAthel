@@ -302,8 +302,14 @@ border-radius: 16 ;
 }
 @media only screen and (min-width: 1543px){
  
+  .row1{
+     gap:80px  !important;
+  }
+  table{
+     font-size: x-large;
+  }
   .service-box{
-    width: 533px  !important;
+    width: 100%  !important;
     height: 130px !important;
   }
   .service-box h7{
@@ -321,20 +327,48 @@ border-radius: 16 ;
   .upper-card{
     width: 533px !important;
     height: 400px !important;
+ 
   }
   
+  .upper-card p{
+    font-size: large;
+    line-height: 25px;
+  }
+  .upper-card h2{
+    font-size: xx-large !important;
+ 
+  }
   
   .training-card{
     width: 533px !important;
     height: 400px !important;
   }
+
+  .circle-1{
+     height: 400px !important;
+     width: 400px !important;
+  }
+  .circle-2{
+    height: 300px !important;
+    width: 300px !important;
+ }
+  .tele-buttons{
+     position: absolute;
+     bottom: 20px;
+     height: 50px;
+  }
+ 
 }
 @media only screen and (max-width: 1442px){
+ 
   .upper-card{
-     width: 370px !important;
+     width: 370px  !important ;
   }
   .training-card{ 
-    width: 370px !important;
+    width: 370px !important ;
+  }
+  .rightcont{
+     width: 370px !important;
   }
   .row1{
      gap:0.4rem !important
@@ -343,8 +377,10 @@ border-radius: 16 ;
     gap:0.4rem !important
   }
   .service-box{
-    width: 370px  !important;
+    width: 350px  !important;
+
   }
+  
   .card-art{
      left:290px  !important
   }
@@ -354,23 +390,76 @@ border-radius: 16 ;
 }
 .service-box{
   width: 400px;
+  padding: 10px;
 }
 .row2{
    gap:1.5rem;
 }
-@media only screen and (max-width: 768px){
- .sidebar{
-   display: none;
- }
+@media only screen and (max-width: 1024px){
+
+  .sidebar{
+     background-color: transparent !important;
+    height: fit-content !important;
+    position: absolute;
+    z-index: 3;
+    right: 10px;
+    top:15px;
+  }
+ 
+ 
+  .tablet-sidenav{
+     display: block !important;
+  }
+ 
+.sidenav-wrapper {
+   display: none !important;
+}
+ 
  .upper-card{
-   width: 300px ;
+   width: 45vw !important  ;
  }
  .training-card{
-  width: 300px !important;
+  width:45vw !important;
 }
 .rightcont{
    display: none;
 }
+.service-box{
+  width: 45vw !important;
+}
+
+
+}
+@media only screen and (max-width: 768px){
+
+  .sidebar{
+     background-color: transparent !important;
+    height: fit-content !important;
+    position: absolute;
+    z-index: 3;
+    right: 10px;
+    top:15px;
+  }
+ 
+ 
+  .tablet-sidenav{
+     display: block !important;
+  }
+ 
+.sidenav-wrapper {
+   display: none !important;
+}
+ 
+ .upper-card{
+   width: 330px !important  ;
+ }
+ .training-card{
+  width: 330px  !important ;
+}
+.rightcont{
+   display: none;
+}
+
 
 
 }
@@ -618,6 +707,17 @@ thead {
   visibility: hidden;
 }
 @media only screen and (max-width: 600px) {
+
+  .services-cont{
+    width: 100%;
+    
+  
+    display: grid;
+    grid-template-rows: repeat(1, 1fr) !important;
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 18px 18px;
+    
+  }
   .athel-profile {
      height:100px;
      margin-bottom: 4px;
@@ -1087,13 +1187,25 @@ text-align: left;
  }
  .bottomnav{
    display: none;
+   position: fixed;
+   bottom: 0px;
+   width: 100vw;
+   height: 68px;
+   background-color: #7257FF;
  }
  .upper-mast{
   display: none;
  }
 @media only screen and (max-width: 600px) {
+
+  .plan-wrapper{
+     justify-content: flex-start !important;
+  }
   .flex-shift{
     flex-direction: column;
+ }
+ .start-drill{
+   height: 35px;
  }
  .athel-home{
    padding: 0px !important;
@@ -1104,11 +1216,7 @@ text-align: left;
  }
  .bottomnav{
    display: block;
-   position: fixed;
-   bottom: 0px;
-   width: 100vw;
-   height: 68px;
-   background-color: #7257FF;
+   
  }
  .upper-mast{
   display: flex;
@@ -1128,7 +1236,7 @@ text-align: left;
  padding: 0px 32px 0px 32px;
  display: flex;
  width: 100%;
- gap:57.5px;
+ justify-content: space-between;
  }
  .appointment-container{
   
@@ -1211,6 +1319,7 @@ table{
 .row1 {
   gap: 0.6rem !important;
 }
+
 .services-cont p {
    font-size: 10px !important;
 }
@@ -1707,4 +1816,27 @@ cursor: pointer;
  
 .calibration-forms{ 
   
+}
+
+
+.scroll-container {
+  width: 300px;
+  height: 200px;
+  overflow: auto;
+  position: relative;
+}
+
+/* Track */
+.scroll-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

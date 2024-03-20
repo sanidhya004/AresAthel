@@ -119,10 +119,11 @@ const PlanCard = ({ price, plans }) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              
             }}
           >
-            <div>
-              <div>
+            <div style={{maxWidth:"100%"}}>
+              <div  >
                 <svg
                   width="317"
                   height="58"
@@ -141,7 +142,7 @@ const PlanCard = ({ price, plans }) => {
                 </svg>
               </div>
               <div className="mt-1">
-                <div style={{ width: "500px" }}>
+                <div style={{ width: "100%" }}>
                   <div
                     style={{
                       display: "flex",
@@ -572,14 +573,16 @@ const PlanCard = ({ price, plans }) => {
       </Modal.Root>
       <div
         style={{
-          width: "318px",
-          height: "540px",
+          width: "270px",
+          height: "520px",
           background: "white",
           borderRadius: "16px",
           padding: "30px 16px 30px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
+          cursor:"pointer",
+          userSelect:"none"
         }}
       >
         <div>

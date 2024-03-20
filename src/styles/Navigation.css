@@ -1,6 +1,6 @@
 .sidenav-wrapper{
      min-height: 100vh;
-     width: 240px;
+     width: 100%;
      background-color: #7257FF;
      padding-left:39px ;
      padding-right:39px ;
@@ -93,4 +93,19 @@ stroke: white;
 
 }
 
+.tablet-sidenav-wrapper{
+     min-height: 100vh;
+     width: 100%;
+     background-color: #7257FF;
+     padding-left:39px ;
+     padding-right:39px ;
+     padding-top: 30px;
+     display: flex;
+     flex-direction: column;
+   
+     position: relative;
+}
 
+.tablet-sidenav{
+     display: none;
+}

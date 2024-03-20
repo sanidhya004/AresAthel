@@ -166,11 +166,11 @@ const SignUp = () => {
   </form>
   <div className="auth-footer d-flex justify-content-between items-center">
   {isFetching ? (
-          <Button type="submit" className="purple-button ">
+          <Button type="submit" className="signup-button ">
             <Spinner animation="border" variant="light" />
           </Button>
         ) : (
-          <Button type="submit" className="purple-button  ">
+          <Button type="submit" className="signup-button  ">
             Sign Up
           </Button>
         )}
