@@ -141,7 +141,7 @@ const navigate=useNavigate()
                   }}
                 >
                   <button
-                    className="purple-button"
+                    className="signup-button"
                     onClick={() => {
                      
                     }}

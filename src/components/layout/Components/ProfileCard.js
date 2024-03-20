@@ -33,7 +33,7 @@ const ProfileCard = () => {
                   }}
                 >
                   <button
-                    className="purple-button"
+                    className="signup-button"
                     onClick={() => {
                       setConfirm(true);
                     }}
@@ -100,7 +100,7 @@ const ProfileCard = () => {
                 />
               </Stack>
               <div className="mt-3 ">
-                <div className="purple-button" onClick={CloseModal}>
+                <div className="signup-button" onClick={CloseModal}>
                   Confirm
                 </div>
               </div>
