@@ -5,39 +5,62 @@ import { Input } from "@mantine/core";
 import { Select } from "@mantine/core";
 import { PasswordInput } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
+import { useDispatch,useSelector} from "react-redux";
+import { UpdateProfile } from "../../features/apiCall";
+import { useDisclosure } from '@mantine/hooks';
+import { LoadingOverlay, Button, Group, Box } from '@mantine/core';
 
 const EditProfile = () => {
-  const [value, setValue] = useState(null);
+  const user= useSelector((state)=>state.auth)
+  const {isFetching}=useSelector((state)=>state.auth)
+  console.log(user)
+  const [value, setValue] = useState(new Date(user?.dob));
+   const dispatch=useDispatch()
+   const [visible, { toggle }] = useDisclosure(true);
+
 const navigate=useNavigate()
   const [formData, setFormData] = useState({
-    firstName: "",
-    surname: "",
-    city: "",
-    state: "",
-    dob: "",
-    email: "",
-    phone: "",
+    firstName:user?.userName,
+    lastName:user?.lastname,
+    city: user?.city,
+    state:user?.state,
+    // dob: user?.dob,
+    email:user?.userEmail,
+    phone: user?.phone,
+    address:user?.address
   });
 
   const handleChange = (e) => {
+
     const { name, value } = e.target;
-    setFormData((prevData) => ({
+
+  
+  setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+    
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
     // Assuming you have an API endpoint to handle profile updates
     // You can make a fetch or axios call here to send the updated data
     // to your backend.
+    
     console.log("Form data submitted:", formData);
+    const bool= await UpdateProfile(dispatch,formData)
+    if(bool){
+       navigate("/")
+    }
     // Add your API call logic here
   };
   return (
     <AtheProfileLayout>
-      <div style={{background:"white",padding:"30px",borderRadius:"16px"}}>
+
+
+      <div style={{background:"white",padding:"30px",borderRadius:"16px",position:"relative"}}>
+      <LoadingOverlay visible={isFetching} loaderProps={{ children: 'Loading...' }} />
       <div className="d-flex ">
       <NavLink to='/a-manager'>
         <div className="d-flex gap-3 mb-4">
@@ -55,34 +78,36 @@ const navigate=useNavigate()
       <div className="form-row">
         <div className="form-group col-md-6">
           <label htmlFor="inputEmail4">First Name</label>
-          <Input variant="filled" placeholder="Input component" />
+          <Input variant="filled" placeholder="Input component" defaultValue={user?.userName} name="firstName" onChange={handleChange }/>
         </div>
         <div className="form-group col-md-6">
           <label htmlFor="inputPassword4">Last Name</label>
-          <Input variant="filled" placeholder="Input component" />
+          <Input variant="filled" placeholder="Input component" defaultValue={user?.lastname} />
         </div>
       </div>
       <div className="form-row">
-        <div className="form-group col-md-6">
+        <div className="form-group col-md-12">
           <label htmlFor="inputEmail4">Email</label>
-          <Input variant="filled" placeholder="Input component" />
+          <Input variant="filled" placeholder="Input component"  defaultValue={user?.userEmail} disabled/>
         </div>
-        <div className="form-group col-md-6">
-          <label htmlFor="inputPassword4">Password</label>
-          <Input variant="filled" placeholder="Input component" />
-        </div>
+        
       </div>
       <div className="form-row">
-        <div className="form-group col-md-6">
+        {/* <div className="form-group col-md-6">
           <label htmlFor="inputEmail4">Date of birth</label>
           <DateInput
             value={value}
+            name="dob"
+            defaultValue={user?.dob}
             variant="filled"
-            onChange={setValue}
+            onChange={(e)=>{ setValue(e);setFormData((prevData) => ({
+              ...prevData,
+              ["dob"]: e,
+            }))}}
             rightSection={<i class="fa-solid fa-calendar"></i>}
             placeholder="Choose your date of birth"
           />
-        </div>
+        </div> */}
         <div className="form-group col-md-6">
           <label htmlFor="inputPassword4">Phone Number</label>
           <div className="d-flex " style={{ width: "100%" }}>
@@ -93,44 +118,35 @@ const navigate=useNavigate()
               variant="filled"
               placeholder="Phone Number"
               style={{ width: "100%" }}
+              defaultValue={user?.phone}
+              name="phone"
+              onChange={handleChange}
             />
           </div>
         </div>
       </div>
       <div className="form-row">
-        <div className="form-group col-md-6">
+        <div className="form-group col-md-12">
           <label htmlFor="inputEmail4">Adress </label>
-          <Input variant="filled" placeholder="Input component" />
+          <Input variant="filled" placeholder="Input component"  defaultValue={user?.address} name="address" onChange={handleChange}/>
         </div>
-        <div className="form-group col-md-6">
-          <label htmlFor="inputPassword4">Address Line 2</label>
-          <Input variant="filled" placeholder="Input component" />
-        </div>
+        
       </div>
       <div className="form-row">
         <div className="form-group col-md-4">
           <label htmlFor="inputEmail4">City</label>
-          <Input variant="filled" placeholder="Input component" />
+          <Input variant="filled" placeholder="Input component" defaultValue={user?.city} name="city" onChange={handleChange}/>
         </div>
         <div className="form-group col-md-4">
           <label htmlFor="inputPassword4">State</label>
-          <Input variant="filled" placeholder="Input component" />
+          <Input variant="filled" placeholder="Input component" defaultValue={user?.state} name="state" onChange={handleChange} />
         </div>
         <div className="form-group col-md-4">
           <label htmlFor="inputPassword4">Zip Code</label>
-          <Input variant="filled" placeholder="Input component" />
+          <Input variant="filled" placeholder="Input component" defaultValue={user?.zip} name="zip" onChange={handleChange} />
         </div>
       </div>
-      <div className="form-row">
-        <div className="form-group col-md-6">
-          <label htmlFor="inputEmail4">Password</label>
-          <PasswordInput variant="filled" placeholder="Create Password" />
-        </div>
-        <div className="form-group col-md-6">
-          <label htmlFor="inputPassword4">Confirm Password</label>
-          <PasswordInput variant="filled" placeholder="Confirm" />
-        </div>
-      </div>
+      
       <div className="form-row">
       <div
                   style={{
@@ -142,9 +158,10 @@ const navigate=useNavigate()
                 >
                   <button
                     className="signup-button"
-                    onClick={() => {
-                     
-                    }}
+                    type="submit"
+                    onClick={
+                     handleSubmit
+                    }
                   >
                     {" "}
                     Save

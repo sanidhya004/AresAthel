@@ -227,6 +227,12 @@ h7{
 }
 
 
+/* .m-54c44539  {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none;
+} */
+
 
 .pulsate {
   animation: myPulse 2s ease 0s infinite normal forwards;

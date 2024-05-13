@@ -1,9 +1,133 @@
 import { React, useState } from "react";
-import { DateInput } from "@mantine/dates";
-import { Select } from "@mantine/core";
+import { DateInput,DatePickerProps  } from "@mantine/dates";
+import { Select,Skeleton,Notification   } from "@mantine/core";
+import { useDisclosure } from '@mantine/hooks';
+import { LoadingOverlay, Button, Group, Box } from '@mantine/core';
 import { MultiSelect } from "@mantine/core";
-const ServiceBookingform = () => {
-  const [value, setValue] = useState(null);
+import { Indicator } from '@mantine/core';
+import { getSlots } from "../../../features/apiCall";
+import { useEffect } from "react";
+import {toast} from "react-toastify"
+const ServiceBookingform = ({date_data=[],service_type,setFormData}) => {
+  const [date, setdate] = useState(new Date());
+  const [add,setAdd]=useState("")
+ const [alldata,setAllData]=useState([])
+const [location,setLocation]=useState([])
+const [docs,setDocs]=useState([])
+const [doc,setDoc]=useState("")
+const [slots,setSlots]=useState([])
+const [time,setTime]=useState([])
+const adddate=()=>{
+  setFormData((prevData) => ({
+    ...prevData,
+    ["app_date"]: new Date(),
+  }))
+}
+useEffect(()=>{
+  adddate()
+},[])
+console.log(location)
+ const locationarray=async(json)=>{
+
+
+    const location= await json?.map(item=>item.address)
+    if(location){
+      const uniqueAddresses =  Array.from(new Set(location));
+      setLocation(uniqueAddresses)
+      if(uniqueAddresses?.length==0){
+         toast.error(" No Doctor found Please select another date")
+      }
+      else{
+        if(uniqueAddresses?.length==1){
+      
+          toast.success("Doctor available in 1 city")
+        }
+        else{
+          
+          toast.success(`Doctors available in ${uniqueAddresses?.length} cities`)
+        }
+    }
+  
+      
+    }
+    
+
+ }
+//  const handleLocationChange=()=>{
+//     alert(option)
+//    setAdd(e)
+//    askData()
+//  }
+
+ const selectDoc= async(e)=>{
+  // alert(add)
+   const DoctorList=  alldata?.filter((item)=>item.address==e)
+   const val=DoctorList?.map(item=>item.doctor)
+   setDocs(val)
+   
+   
+ }
+  const handleDate= async(e)=>{
+        setAdd(null)
+        setDoc(null)
+         setFormData([])
+        setDocs(["Loading.."])
+        setSlots([])
+        setdate(new Date(e))
+        setFormData((prevData) => ({
+          ...prevData,
+          ["app_date"]: new Date(e),
+        }))
+      
+      
+  }
+
+const hadnleAddress=(e)=>{
+   setAdd(e)
+   setFormData((prevData) => ({
+    ...prevData,
+    ["location"]: e,
+  }))
+   selectDoc(e)
+   
+}
+ 
+
+  const askData= async()=>{
+ 
+    const  payload= `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+    const data=await getSlots(service_type,payload,doc)
+    if(data.location){
+       setAllData(data.location)
+   
+      locationarray(data.location)
+   
+    }
+   
+   
+   if(data.slots){
+    setSlots(data.slots)
+   }
+   
+   
+  }
+
+  useEffect(()=>{
+   askData()
+  },[date,doc])
+  const getDayProps: DatePickerProps['getDayProps'] = (date) => {
+    
+    const today=new Date()
+ 
+  if (date<today) {
+   
+      return { disabled: true};
+    }
+    else{
+      return { disabled: false };
+    }
+  };
+  
   return (
     <div
       className="serviceBookingForm"
@@ -19,23 +143,32 @@ const ServiceBookingform = () => {
     >
       <div>
         <DateInput
-          value={value}
+          value={date}
+          getDayProps={getDayProps}
           variant="filled"
-          onChange={setValue}
+          onChange={handleDate}
           label="Appointment Date"
           placeholder="Date input"
           rightSection={<i class="fa-solid fa-calendar"></i>}
           style={{ height: "70px" }}
+          searchable
+          nothingFoundMessage="Nothing found..."
+        
         />
       </div>
-      <div>
-        <p>d</p>
+      <div className="mt-5"  >
+       
+     
+      <Skeleton visible={false}>
 
         <Select
           label="Location"
           variant="filled"
-          data={["React", "Angular", "Vue", "Svelte"]}
-          searchable
+          data={location}
+          value={add}
+          
+          onChange={hadnleAddress}
+         
           leftSection={
             <svg
               width="24"
@@ -66,26 +199,37 @@ const ServiceBookingform = () => {
           }
           nothingFoundMessage="Nothing found..."
         />
+      </Skeleton>
       </div>
       <div>
         <Select
           label="Select Doctor/Trainer"
           variant="filled"
           placeholder="Pick value"
-          data={["React", "Angular", "Vue", "Svelte"]}
+          data={docs}
+          value={doc}
+          onChange={(e)=>{setDoc(e);  setFormData((prevData) => ({
+            ...prevData,
+            ["doctor_trainer"]: e,
+          }));}}
         />
       </div>
       <div>
         <p>Appointment Time</p>
         <p style={{ fontSize: "10px" }}>90 minutes meeting</p>
         <div className="appointment-container ">
-          <div className="appointment-buttons">8:00-9:00 AM</div>
-          <div className="appointment-buttons">10:00-11:00 AM</div>
-          <div className="appointment-buttons">11:00-12:00 AM</div>
-          <div className="appointment-buttons">12:00-1:00 PM</div>
-          <div className="appointment-buttons">1:00-2:00 PM</div>
-          <div className="appointment-buttons">2:00-3:00 PM</div>
-          <div className="appointment-buttons">3:00-4:00 PM</div>
+          {slots?.map((item)=>{
+             return(
+              <button className="appointment-buttons" onClick={()=>{setTime(item[0]);  setFormData((prevData) => ({
+                ...prevData,
+                ["app_time"]: item[0],
+              }));   setFormData((prevData) => ({
+                ...prevData,
+                ["end_time"]: item[1],
+              }));}}>{item[0]}-{item[1]}</button>
+             )
+          })}
+         
         </div>
       </div>
     </div>

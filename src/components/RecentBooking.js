@@ -1,10 +1,23 @@
 import React from 'react'
 import { Modal } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+import { useDisclosure, useSetState } from '@mantine/hooks';
 import TableComp from './TableComp'
 import RecentBookingCard from './layout/Components/RecentBookingCard';
+import { getAllBooking } from '../features/apiCall';
+import { useEffect,useState } from 'react';
+import { useSelector } from 'react-redux';
 const RecentBooking = () => {
+  const {isFetching}=useSelector((state)=>state.auth)
     const [opened, { open, close }] = useDisclosure(false)
+     const [notifs,setNotifs]=useState([])
+     const fetchnotifs=async()=>{
+         const res= await getAllBooking();
+          setNotifs(res)
+          
+     }
+    useEffect(()=>{
+      fetchnotifs()
+    },[isFetching])
   return (
    <>
    
@@ -47,7 +60,7 @@ const RecentBooking = () => {
           </Modal.Header>
           <Modal.Body>
                 <div className="table-cont" style={{overflow:"scroll",padding:"0px 4px 0px"}}>
-                 <TableComp/>
+                 <TableComp data={notifs}/>
                  </div>
                  <div className="booking-card-cont">
                   <RecentBookingCard/>
@@ -62,17 +75,25 @@ const RecentBooking = () => {
    <div style={{background:"white",borderRadius:"16px",padding:"30px",maxWidth:"90vw",marginBottom:"10px"}}>
                  <div className="d-flex justify-content-between">
                  <h5>Recent Bookings</h5>
-                <p onClick={open} style={{cursor:"pointer",color:"#7257FF",fontWeight:"700"}}>View All</p>
+               { notifs?.length!=0 && <p onClick={open} style={{cursor:"pointer",color:"#7257FF",fontWeight:"700"}}>View All</p>}
                  </div>
-               
-                 <div className="table-cont" style={{overflow:"scroll",padding:"0px 4px 0px"}}>
-                 <TableComp/>
+                {
+                  notifs?.length!=0 ?<>
+                   <div className="table-cont" style={{overflow:"scroll",padding:"0px 4px 0px"}}>
+                   
+                 <TableComp data={notifs}/>
                  </div>
                  <div className="booking-card-cont">
                   <RecentBookingCard/>
                   <hr/>
                   <RecentBookingCard/>
                  </div>
+                  </>: 
+                  <div style={{textAlign:"center"}}>
+                     <p>No Notfications</p>
+                  </div>
+                }
+                
     </div>
    </>
   )

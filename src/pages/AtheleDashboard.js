@@ -15,7 +15,28 @@ import Card2 from "../components/layout/Components/Card2";
 import Card3 from "../components/layout/Components/Card3";
 import TeleSessions from "../components/layout/Components/TeleSessions";
 import TodaysSession from "../components/layout/Components/TodaysSession";
+import { useSelector,useDispatch } from "react-redux";
+import Card4 from "../components/layout/Components/Card4";
+import { userDetails } from "../features/apiCall";
+import { useEffect } from "react";
+import Drillstats from "../components/layout/Components/Drillstats";
+import { useState } from "react";
+import Loadercard from "../components/layout/Components/Loadercard";
 const AtheleDashboard = () => {
+  const name= useSelector((state)=>state.auth.userName)
+  const plan=useSelector((state)=>state.auth.plan)
+  const {is_Online}=useSelector((state)=>state.auth)
+  const dispatch=useDispatch()
+  const[userinfo,setuserinfo]=useState([])
+  const getuserDetails= async()=>{
+    const {data}= await userDetails(dispatch)
+    setuserinfo(data)
+  }
+
+  useEffect(()=>{
+    getuserDetails()
+  },[])
+  console.log("--> dwd",plan)
   return (
     <AtheleteMenu>
       <section class="layout2">
@@ -24,17 +45,29 @@ const AtheleDashboard = () => {
             <p className="h4  ">
               Hello,
               <p className="font-weight-bold d-inline">
-                divter!
+                {name}!
               </p>
+              {is_Online ? <span style={{color:"#3C3F5399"}}> <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 18.5L15 12.5L9 6.5" stroke="#858698" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span> Online</span>:<span style={{color:"#3C3F5399"}}> <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 18.5L15 12.5L9 6.5" stroke="#858698" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span> Offline</span>}
             </p>
           </div>
           {/* This is row 1 contains your stat cards */}
           <div className="d-flex row1 grow1 upper-card-cont">
-         
-          {/* <Card1/> */}
-          <Card2/>
-          {/* <Card3/> */}
-          <TeleSessions/>
+         {!userinfo?.userDetails && <><Loadercard/></>}
+         {( userinfo?.userDetails && is_Online && userinfo?.userDetails?.plan_payment=="paid") && <Card1 data={userinfo?.drillActiveStatus} datacomp={userinfo?.drillDetails}/>}
+         {/* <Card2/>
+          <Card3/>  */}
+
+          {/* <Card4/> */}
+          {( userinfo?.userDetails &&  is_Online  && userinfo?.userDetails?.plan_payment!="paid") && <Card2/>}
+          {!is_Online && <TeleSessions/> }
+          {is_Online &&  <Drillstats data={userinfo.drillDetails} ispaid={userinfo?.userDetails?.plan_payment}/>}
+          
           </div>
           {/* -------------- */}
           {/* This row has service Cards */}
@@ -48,6 +81,7 @@ const AtheleDashboard = () => {
                       className=" service-box text-light mb-4 d-flex justify-content-between  align-items-center box-shadow-drop-bottom "
                     >
                       <ServiceModal
+                      service_type={"SportsVisionPerformanceEvaluation"}
                       svg={<svg width="75" height="75" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_645_40548)">
 <rect width="88" height="88" rx="44" fill="#D9CFFB" fill-opacity="0.5"/>
@@ -159,6 +193,7 @@ icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://
                       className=" service-box text-light mb-4 d-flex justify-content-between align-items-center box-shadow-drop-bottom "
                     >
                       <ServiceModal
+                      service_type={"Post-ConcussionEvaluation"}
                       svg={<svg width="80" height="80" viewBox="0 0 89 88" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <rect x="0.5" width="88" height="88" rx="44" fill="white" fill-opacity="0.5"/>
                       <path d="M42.994 25.5266L41.457 27.0742C42.1672 27.954 42.888 28.8444 43.5771 29.7773C44.9233 31.4945 46.1635 33.1905 47.3295 34.8441C47.6537 35.0818 48.0108 35.2711 48.3895 35.4059C48.8463 35.6175 49.3579 35.6805 49.8523 35.5861L50.0537 35.5225L51.7073 33.4025C51.1737 32.7263 50.5851 32.0952 49.9477 31.5157C47.6157 29.3957 45.8561 29.0883 43.948 26.8728C43.5947 26.4502 43.2757 26 42.994 25.5266Z" fill="#FFA4A4"/>
@@ -326,6 +361,7 @@ icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://
                     "
                       /> */}
                       <ServiceModal
+                      service_type={"Medical/OfficeVisit"}
                       svg={<svg width="80" height="80" viewBox="0 0 89 88" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <rect x="0.5" width="88" height="88" rx="44" fill="white" fill-opacity="0.5"/>
                       <path d="M28.6596 35.2057C28.5283 34.0456 28.3331 32.8936 28.0747 31.755C27.9372 30.8298 27.5436 29.9615 26.9384 29.2483C26.2295 28.589 25.3073 28.2065 24.3398 28.1705C24.9716 27.9391 25.5429 27.5677 26.0109 27.0843C26.7149 26.247 27.1669 25.2271 27.3144 24.1432C27.5395 23.1602 27.6267 22.1507 27.5734 21.1436C27.5734 20.9264 27.6987 24.2769 29.6205 25.9563C30.378 26.5753 31.3033 26.9535 32.2775 27.0425C31.3062 27.3093 30.4547 27.8986 29.8628 28.7136C29.472 29.3347 29.2449 30.0447 29.2027 30.7774C28.835 33.3174 28.7348 35.2057 28.6596 35.2057Z" fill="#342939"/>
@@ -425,6 +461,7 @@ icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://
                     "
                       /> */}
                       <ServiceModal
+                      service_type={"ConsultationCall"}
                       svg={<svg width="80" height="80" viewBox="0 0 89 88" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <rect x="0.5" width="88" height="88" rx="44" fill="white" fill-opacity="0.5"/>
                       <path d="M25.6705 29.6069C25.6705 26.89 25.6048 25.5028 25.4407 25.5028C25.2765 25.5028 25.1944 26.0281 25.0221 27.0952C24.1777 27.2149 23.317 27.0686 22.5596 26.6766C22.1382 26.504 21.7517 26.2565 21.4186 25.946C20.9836 25.5274 20.7374 25.0842 20.5978 25.1252C20.4583 25.1662 20.4993 25.2319 20.5321 25.5849C21.2054 26.9369 22.1832 28.1142 23.3886 29.0241C23.8711 29.3881 24.388 29.7043 24.9318 29.9681L25.6705 29.6069Z" fill="#FFA4A4"/>
@@ -500,7 +537,7 @@ icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://
           </div>
         </div>
         <div class="rightcont text-shadow  ">
-        <Row className=" bg-white  box-shadow row1 " style={{borderRadius:"18px",padding:"2rem 0.5rem 2rem"}}>
+        {/* <Row className=" bg-white  box-shadow row1 " style={{borderRadius:"18px",padding:"2rem 0.5rem 2rem"}}>
                 <div className="calender-comp">
                   <div style={{width:"100%"}}>
                     <p>Calender</p>
@@ -510,7 +547,7 @@ icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://
                   </div>
                 </div>
                 <TodaysSession/>
-              </Row>
+              </Row> */}
               <Row className="mt-4 bg-white pt-4 pb-4 box-shadow  " style={{borderRadius:"10px"}}>
                 <Notifications />
               </Row>

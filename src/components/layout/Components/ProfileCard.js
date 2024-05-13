@@ -4,15 +4,28 @@ import { NavLink } from "react-router-dom";
 import { Modal, Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { PasswordInput, Stack } from "@mantine/core";
-
+import {useSelector,useDispatch} from "react-redux";
+import { ResetPassword } from "../../../features/apiCall";
 const ProfileCard = () => {
   const [opened, { open, close }] = useDisclosure(false);
   const [visible, { toggle }] = useDisclosure(false);
   const [confirm, setConfirm] = useState(false);
-  const CloseModal = () => {
+  const CloseModal = async() => {
+    
     close();
     setConfirm(false);
   };
+  const {userName,userEmail,phone}=useSelector((state)=>state.auth)
+  const dispatch=useDispatch()
+  const [newPassword,setnewPassword]=useState("")
+  const[ confirmPassword,setConfirmpass]=useState("")
+  const email=useSelector((state)=>state.auth.userEmail)
+  const handleChangePassword=async()=>{
+ 
+       await ResetPassword(dispatch,{email,newPassword, confirmPassword})
+       close();
+    setConfirm(false);
+  } 
   return (
     <>
       {!confirm ? (
@@ -86,21 +99,23 @@ const ProfileCard = () => {
               <Stack>
                 <PasswordInput
                   label="Password"
-                  defaultValue="secret"
+                
                   visible={visible}
                   variant="filled"
                   onVisibilityChange={toggle}
+                  onChange={(e)=>{setnewPassword(e.target.value)}}
                 />
                 <PasswordInput
                   label="Confirm password"
-                  defaultValue="secret"
+                  
                   visible={visible}
                   variant="filled"
                   onVisibilityChange={toggle}
+                  onChange={(e)=>{setConfirmpass(e.target.value)}}
                 />
               </Stack>
               <div className="mt-3 ">
-                <div className="signup-button" onClick={CloseModal}>
+                <div className="signup-button" onClick={handleChangePassword}>
                   Confirm
                 </div>
               </div>
@@ -131,11 +146,11 @@ const ProfileCard = () => {
             size="130px"
           />
           <div className="d-flex flex-column  justify-content-center text-left ">
-            <h5>MS Kishore</h5>
+            <h5>{userName}</h5>
             <div>
-              <p className="sub-text">Kishore@gmail.com</p>
+              <p className="sub-text">{userEmail}</p>
               <p className="sub-text" style={{ marginTop: "-16px" }}>
-                8770100421
+                {phone}
               </p>
             </div>
           </div>

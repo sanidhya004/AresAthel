@@ -1,14 +1,39 @@
-import { React, useState } from "react";
+import { React, useState,useEffect } from "react";
 import { useDisclosure } from "@mantine/hooks";
-import { Modal, Stepper, Button, Group } from "@mantine/core";
+import { Modal, Stepper, Button, Group} from "@mantine/core";
 import { Table } from "@mantine/core";
 
 import { Col } from "react-bootstrap";
 import ServiceBookingform from "./layout/Components/ServiceBookingform";
 import { current } from "@reduxjs/toolkit";
-const ServiceModal = ({ heading, amount, colors, session, svg,icon }) => {
+import { getSlots } from "../features/apiCall";
+import { Bookappointment } from "../features/apiCall";
+import { useDispatch } from "react-redux";
+const ServiceModal = ({ heading, amount, colors, session, svg,icon,service_type }) => {
   const [opened, { open, close }] = useDisclosure(false);
+  const dispatch=useDispatch()
   const [active, setActive] = useState(1);
+  const [datedata,setDateData]=useState([])
+  const [formData,setFormData]=useState([])
+
+  const handleBooking=async()=>{
+     setFormData((prevData) => ({
+      ...prevData,
+      ["service_type"]:service_type ,
+    }));
+    console.log("formData",formData)
+     const res= await Bookappointment(dispatch,formData)
+     if(res){
+       nextStep()
+     }
+     
+  }
+  useEffect(()=>{
+    setFormData((prevData) => ({
+      ...prevData,
+      ["service_type"]:service_type ,
+    }));
+  },[])
   const nextStep = () => {
     setActive((current) => (current < 3 ? current + 1 : current));
   };
@@ -19,6 +44,25 @@ const ServiceModal = ({ heading, amount, colors, session, svg,icon }) => {
     close();
     setActive(1);
   };
+
+  function extractDates(json) {
+    const dates = json.map(item => {
+      let dateObj = new Date(item.date);
+      dateObj.setHours(0, 0, 0, 0); // Set hours to 0, minutes to 0, seconds to 0, milliseconds to 0
+      return dateObj;
+    });
+    
+    return dates;
+  }
+  
+  const handleOpen= async()=>{
+     open()
+     const data= await getSlots(service_type)
+     
+    const res=  await extractDates(data.dates);
+    setDateData(res)
+    console.log(datedata)
+  }
   const elements = [
     { position: <b>Ref Number</b>, mass: 12.011 },
     { position: <b>Payment Time</b>, mass: 12.011 },
@@ -74,7 +118,7 @@ const ServiceModal = ({ heading, amount, colors, session, svg,icon }) => {
                   <div style={{display:"flex",flexDirection:"column",alignItems:"flex-start",marginTop:"10px"}}>
                     <h2>Appointment booking </h2>
                     
-                    <p>Sports Vision Performance Evaluation</p>
+                    <p>{service_type}</p>
                   </div>
                 </div>
               </Modal.Title>
@@ -120,10 +164,10 @@ const ServiceModal = ({ heading, amount, colors, session, svg,icon }) => {
                        
                       }}
                     >
-                      <ServiceBookingform />
+                      <ServiceBookingform date_data={datedata} service_type={service_type} setFormData={setFormData}/>
                     </div>
                      
-                    <button className="continue-btn " onClick={nextStep}>
+                    <button className="continue-btn " onClick={handleBooking}>
                       Continue
                     </button>
                     
@@ -182,10 +226,10 @@ const ServiceModal = ({ heading, amount, colors, session, svg,icon }) => {
           display:"flex",
           justifyContent:"center",
           flexDirection:"column",
-        
+          cursor:"pointer"
         }}
         className="serviceCard"
-      
+       
       >
         <h7 style={{ fontSize: "12px", color: `${colors?.heading}` }}>
           {heading}
@@ -268,7 +312,7 @@ const ServiceModal = ({ heading, amount, colors, session, svg,icon }) => {
           </>
         )}
       </div>
-      <div onClick={open} style={{cursor:"pointer"}}>
+      <div onClick={handleOpen} style={{cursor:"pointer"}}>
      {icon}
      </div>
     </>

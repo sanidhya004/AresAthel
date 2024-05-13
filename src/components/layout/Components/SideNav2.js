@@ -1,12 +1,18 @@
 import React from "react";
 import {NavLink} from 'react-router-dom'
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation,useNavigate } from 'react-router-dom';
 import { useDisclosure } from '@mantine/hooks';
 import { Drawer, Button } from '@mantine/core';
+import { logOut } from "../../../features/authSlice";
+import { useDispatch } from "react-redux";
 const SideNav2 = () => {
   let location = useLocation();
+  const dispatch=useDispatch()
  const match= location.pathname
-
+ const handleLogout = async () => {
+  await dispatch(logOut());
+};
+const naviagte=useNavigate()
  const [opened, { open, close }] = useDisclosure(false)
   return (
     <>
@@ -272,7 +278,7 @@ const SideNav2 = () => {
       </div>
       
       <div className="logout-button-wrapper">
-        <button><p><span style={{marginRight:"6px"}}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button onClick={handleLogout}><p><span style={{marginRight:"6px"}}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M17 8L15.6 9.4L17.2 11H9V13H17.2L15.6 14.6L17 16L21 12L17 8ZM5 5H12V3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H12V19H5V5Z" fill="white"/>
 </svg>
 </span> <span className="sidenav-text">Logout</span></p></button>

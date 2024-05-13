@@ -1,6 +1,10 @@
 import React from 'react'
 import { Progress } from "@mantine/core";
-const Card1 = () => {
+import {useNavigate} from 'react-router-dom'
+const Card1 = ({data,datacomp}) => {
+
+  const perc= (datacomp?.completedDrills/datacomp?.totalDrills *100).toFixed(1)
+  const navigate=useNavigate()
   return (
     <div
     xs={6}
@@ -66,22 +70,22 @@ const Card1 = () => {
       <div className="flex-shift justify-content-between  ">
         <div>
           <p>Sports Vision Performance Evaluation</p>
-          <h2>Week 1</h2>
+          <h2>Week {data?.week}</h2>
         </div>
         <div>
-          <div className="comp">15% complete</div>
+          <div className="comp">{perc}% complete</div>
         </div>
       </div>
       <div className="progress-stat mt-2">
         <div className="d-flex gap-3">
           <i class="fa-solid fa-play"></i>
-          <p>Day 1 - Web Development (webflow)</p>
+          <p>Day {data?.day} </p>
         </div>
 
-        <Progress value={50} striped color="#FFFFFF" />
+        <Progress value={perc} striped color="#FFFFFF" />
       </div>
       <div>
-        <div className="start-drill">
+        <div className="start-drill" onClick={()=>{navigate("/a-drill")}}>
           <p>Start Drill</p>
         </div>
       </div>

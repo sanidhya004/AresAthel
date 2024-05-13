@@ -1231,6 +1231,7 @@ text-align: left;
  .upper-mast img{
   height: 45px;
   margin-right: -50px;
+ 
  }
  .bottom-button-wrapper{
  padding: 0px 32px 0px 32px;
@@ -1800,12 +1801,17 @@ justify-content: center;
 align-items: center;
 font-weight: 600;
 cursor: pointer;
+font-size: x-small;
 
   }
   .appointment-buttons:hover{
      background-color: #7D64FF;
      color: white;
 
+  }
+  .appointment-buttons:focus{
+    background-color: #7D64FF;
+     color: white;
   }
 
   body{
@@ -1818,7 +1824,14 @@ cursor: pointer;
   
 }
 
+.form-grid {
+ 
 
+  display: grid;
+  grid-template-rows: repeat(auto-fit, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
 .scroll-container {
   width: 300px;
   height: 200px;
@@ -1839,4 +1852,19 @@ cursor: pointer;
 /* Handle on hover */
 .scroll-container::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.css-13cymwt-control {
+  background: #F4F4F4 !important;
+  border: none;
+}
+
+.vignette {
+  
+  
+  box-shadow: 0 0 200px rgba(200, 190, 190, 0.1) inset;
+}
+
+.m-1f921b3b{
+   border:none !important
 }

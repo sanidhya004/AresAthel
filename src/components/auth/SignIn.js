@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Form, FormCheck, InputGroup, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { login } from "../../features/apiCall";
 import AuthLayout from "./AuthLayout";
 
@@ -10,7 +11,7 @@ const SignIn = () => {
     (state) => state.auth
   );
   const [PasswordError, setPasswordError] = useState("");
-
+  const [termsAgree,setTermsAgree]=useState(false)
   const [isLoogedIn, setIsLoogedIn] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -43,23 +44,30 @@ const SignIn = () => {
   };
   useEffect(() => {
     window.scrollTo(0, 0);
-    // if (token) {
-    //   navigate("/doctor/dashboard");
-    // }
+    if (token) {
+      navigate("/");
+    }
   }, [navigate, token, error, isFetching, isLoogedIn]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password } = values;
-    await login(dispatch, { email, password });
-    setIsLoogedIn(true);
+    if(termsAgree){
+      await login(dispatch, { email, password });
+      setIsLoogedIn(true);
+      navigate("/")
+    }
+    else{
+       toast.error("Please Agree to terms")
+    }
+    
   };
-  // useEffect(() => {
-  //   if (error && !isFetching && isLoogedIn) {
-  //     toast.error(errMsg || "Unknown error occurred", ErrorToastOptions);
-  //     setIsLoogedIn(false);
-  //   }
-  // }, [error, isFetching, isLoogedIn, errMsg]);
+  useEffect(() => {
+    if (error && !isFetching && isLoogedIn) {
+      // toast.error(errMsg || "Unknown error occurred", ErrorToastOptions);
+      setIsLoogedIn(false);
+    }
+  }, [error, isFetching, isLoogedIn, errMsg]);
   return (
     <AuthLayout>
       <section className="illustration-container d-none">
@@ -129,6 +137,8 @@ const SignIn = () => {
         <FormCheck
           type="checkbox"
           id="default-checkbox"
+          value={termsAgree}
+          onChange={(e)=>{setTermsAgree(e.target.checked)}}
           label={
             <span style={{ fontSize: "12px" }}>
               By signing up, you agree to our{" "}

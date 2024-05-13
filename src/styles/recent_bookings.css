@@ -305,7 +305,7 @@ color:#8C90AA
  margin-top: 2px;
 }
 
-.success{
+.paid{
   width:133px;
 height: 40px;
 
@@ -438,9 +438,43 @@ letter-spacing: 0px;
 text-align: center;
 
 }
-.week-button:focus{
+.week-buttontwo{
+  width: 106px;
+height: 41px;
+padding: 19px 24px 19px 24px;
+gap: 6px;
+border-radius: 16px;
+border: 1px;
+background: #FFFFFF;
+display: flex;
+justify-content: center;
+align-items: center;
+color:#817AA5;
+font-size: 16px;
+font-weight: 500;
+line-height: 14px;
+letter-spacing: 0px;
+text-align: center;
+
+}
+.week-button-selected{
    background-color: #7257FF;
    color:white;
+}
+
+.week-button-selectedtwo{
+  color:#7257FF !important;
+  background: #7257FF1A !important;
+
+
+}
+.week-button:focus{
+  background-color: #7257FF;
+  color:white;
+}
+.week-buttontwo:focus{
+  color:#7257FF !important;
+  background: #7257FF1A !important;
 }
 .upgrade-plan{
   width: 100%;

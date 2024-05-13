@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 import { Link, useNavigate, NavLink } from "react-router-dom";
 import { BottomNavigation } from "reactjs-bottom-navigation";
 import { logOut } from "../../features/authSlice";
@@ -11,7 +12,11 @@ import Sidenav from "../Sidenav";
 import Bottomnav from "./Bottomnav";
 import SideNav2 from "./Components/SideNav2";
 
+
 const AtheleteMenu = ({ children }) => {
+  const { isFetching, error, errMsg, token } = useSelector(
+    (state) => state.auth
+  );
   const [selectedItem, setSelectedItem] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,17 +30,11 @@ const AtheleteMenu = ({ children }) => {
   const [windowDimension, setWindowDimension] = useState(null);
 
   useEffect(() => {
-    setWindowDimension(window.innerWidth);
-  }, []);
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowDimension(window.innerWidth);
+   
+    if (!token) {
+      navigate("/signin");
     }
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [navigate, token, error, isFetching]);
 
   const isMobile = windowDimension <= 768;
 
@@ -102,7 +101,7 @@ const AtheleteMenu = ({ children }) => {
         <div className="sidebar ">
           <SideNav2/>
         </div>
-        <div className="body text-shadow">{children}</div>
+       {token&& <div className="body text-shadow">{children}</div>}
         <div className="bottomnav">
            <BottomNav/>
         </div>
