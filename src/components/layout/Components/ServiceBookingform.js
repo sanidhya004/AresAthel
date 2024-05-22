@@ -26,7 +26,7 @@ const adddate=()=>{
 useEffect(()=>{
   adddate()
 },[])
-console.log(location)
+console.log("loc",location)
  const locationarray=async(json)=>{
 
 

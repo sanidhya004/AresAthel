@@ -58,7 +58,7 @@ const SignIn = () => {
       navigate("/")
     }
     else{
-       toast.error("Please Agree to terms")
+       toast.error("Please Agree to Terms")
     }
     
   };

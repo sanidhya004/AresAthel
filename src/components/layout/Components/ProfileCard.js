@@ -6,6 +6,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { PasswordInput, Stack } from "@mantine/core";
 import {useSelector,useDispatch} from "react-redux";
 import { ResetPassword } from "../../../features/apiCall";
+import { logOut } from "../../../features/authSlice";
 const ProfileCard = () => {
   const [opened, { open, close }] = useDisclosure(false);
   const [visible, { toggle }] = useDisclosure(false);
@@ -26,6 +27,9 @@ const ProfileCard = () => {
        close();
     setConfirm(false);
   } 
+  const handleLogout = async () => {
+    await dispatch(logOut());
+  };
   return (
     <>
       {!confirm ? (
@@ -102,7 +106,13 @@ const ProfileCard = () => {
                 
                   visible={visible}
                   variant="filled"
-                  onVisibilityChange={toggle}
+                  visibilityToggleIcon={({ reveal }) =>
+                  reveal ? (
+                   <i class="fa-solid fa-eye"></i>
+                  ) : (
+                   <i class="fa-solid fa-eye-slash"></i>
+                  )
+                }
                   onChange={(e)=>{setnewPassword(e.target.value)}}
                 />
                 <PasswordInput
@@ -127,7 +137,10 @@ const ProfileCard = () => {
       <div
         style={{ background: "white", padding: "30px", borderRadius: "16px" }}
       >
-        <p className="profile-header">Profile</p>
+        <div style={{padding:"0px 20px"}}>
+        <p className="profile-header" style={{marginRight:"30px"}}>Profile</p>
+        </div>
+       
         <div className="profile-card">
           <Avatar
             hiddenFrom="sm"
@@ -254,7 +267,7 @@ const ProfileCard = () => {
         </NavLink>
         <NavLink to="/signin">
           <div className="nav-links" style={{ background: "transparent" }}>
-            <div className="cont">
+            <div className="cont" onClick={handleLogout}>
               <p className="header" style={{ color: "red" }}>
                 {" "}
                 <span style={{marginRight:"4px"}}>

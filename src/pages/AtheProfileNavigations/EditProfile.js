@@ -127,7 +127,7 @@ const navigate=useNavigate()
       </div>
       <div className="form-row">
         <div className="form-group col-md-12">
-          <label htmlFor="inputEmail4">Adress </label>
+          <label htmlFor="inputEmail4">Address </label>
           <Input variant="filled" placeholder="Input component"  defaultValue={user?.address} name="address" onChange={handleChange}/>
         </div>
         

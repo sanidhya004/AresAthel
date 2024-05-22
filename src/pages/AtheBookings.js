@@ -14,9 +14,15 @@ import { Modal, Button } from '@mantine/core';
 import dayjs from 'dayjs';
 import { Skeleton } from '@mantine/core';
 import { Calendar } from '@mantine/dates';
+import PaymentForm from "../components/PaymentForm";
+import { stripestep1 } from '../features/apiCall';
 
 const AtheBookings = () => {
   const [opened, { open, close }] = useDisclosure(false);
+  const[paymentmodal,paymentmodalhandler]=useDisclosure(false)
+  const [clientSecret,setclientsecret]=useState(null)
+  const[mainheading,setmainheading]=useState("")
+  const [subheading, setsubheading] = useState("")
 const {isFetching}=useSelector(state=>state.fetch_app)
 const [showData,setShowData]=useState([])
   const [selected, setSelected] = useState([]);
@@ -69,11 +75,50 @@ const bookingDataHandler=async()=>{
   const url="https://s3-alpha-sig.figma.com/img/63c4/be83/222c85e6c852819bc5d4b24a87a87fb6?Expires=1711324800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Y4SY5J0CmBpurLNdyssoFuDVIjUivt~TjdQaMbuLy9MqbOJzReqwYFykcxiFAm4wjnxQHbY0fBds-c8jJOuSEhxnIZytiS~EuxX~PytgwY6cobBUszo0gi-oqOTVUlJ89JtgK4fyyXVBeeavR9sisvIFpS740Bty68TTfxndSOlMBM4eOox~yT9ifL2JckNSFBj5WNjS7Cf0YAqIPr9DL4KVoE5gdsTtDmzobV4sVvo9mX9vwMMkr6hAh-NI07QoQlzioEP6B~vuit0ps5EsYwDDZpBmCN5CeU5SqRL-pbW2vNZNXPIm4IUe-bGgJZgdXVmpCnw3mPqykaekuBZ7kw__"
   console.log("---->",bookingData.appointments)
 
+  const makePayment=async(service_type,bookingid)=>{
+    
+   
+   var body
+    if(service_type=="planPurchase"){
+      body={
+        product:{
+           
+           "type":service_type,
+           "userId":localStorage.getItem("userId")
+        }
+       }
+        
+   }
+   else{
+    body={
+      product:{
+         
+         "type":"booking",
+         "bookingId":bookingid
+
+      }
+     }
+     
+   }
+    
+   
+   const headers={
+    "Content-type":"application/json"
+   }
+   const data= await stripestep1(dispatch,{body})
+   setclientsecret(data.clientSecret)
+   paymentmodalhandler.open()
+}
+
  const handleappointmentData=(arr)=>{
 
   const apointmentData= arr?.appointments?.map((item,index)=>{
     const date = new Date(item.app_date);
     const date_dis = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    var buttoncomp=<button className="fill" onClick={()=>{makePayment(item.service_type,item._id);setmainheading("Appointment");setsubheading(`${date_dis}`)}}>Pay {item.amount}$</button>
+    if(item.presId){
+       buttoncomp=<NavLink to={`/a-prescription/${item.presId}/${item._id}`}><button className="fill">View Prescription</button></NavLink>
+    }
 
     return {
         Name: (
@@ -90,7 +135,7 @@ const bookingDataHandler=async()=>{
         name: 'Carbon',
         time: <p className='time'>{item.app_time}</p>,
         button: <button className={`${item.status}`}>{item.status}</button>,
-        status: <NavLink to="/a-prescription"><button className="fill">Pay Now</button></NavLink>
+        status:buttoncomp
     };
     
   })
@@ -120,6 +165,17 @@ const bookingDataHandler=async()=>{
   return (
     
    <AtheleteMenu className="datepicker">
+     <Modal.Root opened={paymentmodal} onClose={()=>{
+        paymentmodalhandler.close(); setclientsecret(null)
+       }}   overlayProps={{
+          backgroundOpacity: 0.55,
+          blur: 6,
+        }} style={{background:"transparent"}} >
+        <Modal.Overlay />
+        <Modal.Content>
+               <PaymentForm clientSecret={clientSecret} mainheading={mainheading} subheading={subheading}/>
+        </Modal.Content>
+      </Modal.Root>
      <Modal.Root opened={opened} onClose={close}   overlayProps={{
           backgroundOpacity: 0.55,
           blur: 6,

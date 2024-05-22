@@ -233,10 +233,16 @@ const ForgotPassword = () => {
                   <div>
                   <PasswordInput
                   label="Password"
-                
+                  visibilityToggleIcon={({ reveal }) =>
+                  reveal ? (
+                   <i class="fa-solid fa-eye"></i>
+                  ) : (
+                   <i class="fa-solid fa-eye-slash"></i>
+                  )
+                }
                   visible={visible}
                   variant="filled"
-                  onVisibilityChange={toggle}
+                 
                   onChange={(e)=>{setnewPassword(e.target.value)}}
                 />
                 <PasswordInput

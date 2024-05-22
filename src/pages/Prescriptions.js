@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AtheleteMenu from "../components/layout/AtheleteMenu";
 import { TextInput } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
+import { useSearchParams,useParams } from "react-router-dom";
+import { GetRecentPrescriptions } from "../features/apiCall";
+import { useDispatch } from "react-redux";
 const Prescriptions = () => {
     const navigate=useNavigate()
+    let { presId,appointmentid } = useParams();
+    const [presc,setpresc]=useState([])
+    const dispatch=useDispatch()
+    console.log(presc.form)
+    const fetchprescription= async()=>{
+       const {form}= await GetRecentPrescriptions(dispatch,{presId,appointmentid})
+       setpresc(form)
+    }
+    useEffect(()=>{
+      fetchprescription()
+    },[])
   return (
     <AtheleteMenu>
       <div style={{ padding: "30px" }}>
@@ -46,212 +60,35 @@ const Prescriptions = () => {
             padding: "30px",
           }}
         >
-          <div className="mb-3">
-            <p
-              style={{ fontSize: "19px", fontWeight: "600", color: "#7257FF" }}
-            >
-              Glass OD
-            </p>
-            <div
-              className="d-flex"
-              style={{ gap: "20px", marginTop: "5px", marginBottom: "10px" }}
-            >
-              <TextInput
-                label="Sphere"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%", borderRadius: "8px" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-              <TextInput
-                label="Cylinder"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-            </div>
-            <div className="d-flex" style={{ gap: "20px" }}>
-              <TextInput
-                label="Axis"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%", borderRadius: "8px" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-              <TextInput
-                label="Add Power"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-            </div>
+          <div className="mb-3 d-flex flex-wrap gap-3">
+            {presc?.form?.map((item,index)=>{
+              const form = Object.entries(item);
+              console.log(form)
+              return form?.map((field)=>{
+                return (
+                  <TextInput
+                  label={field[0]}
+                  placeholder={field[1]}
+                  variant="filled"
+                  radius={"8px"}
+                  style={{ width: "45%", borderRadius: "8px" }}
+                  inputWrapperOrder={["label", "error", "input", "description"]}
+                />
+                 )
+                   
+              })
+              
+                 
+            
+               
+            })}
+            
+           
           </div>
-          <div className="mb-3">
-            <p
-              style={{ fontSize: "19px", fontWeight: "600", color: "#7257FF" }}
-            >
-              Glass OS
-            </p>
-            <div
-              className="d-flex"
-              style={{ gap: "20px", marginTop: "5px", marginBottom: "10px" }}
-            >
-              <TextInput
-                label="Sphere"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%", borderRadius: "8px" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-              <TextInput
-                label="Cylinder"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-            </div>
-            <div className="d-flex" style={{ gap: "20px" }}>
-              <TextInput
-                label="Axis"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%", borderRadius: "8px" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-              <TextInput
-                label="Add Power"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-            </div>
-          </div>
-          <div className="mb-3">
-            <p
-              style={{ fontSize: "19px", fontWeight: "600", color: "#7257FF" }}
-            >
-              Contact Lens OD
-            </p>
-            <div
-              className="d-flex"
-              style={{ gap: "20px", marginTop: "5px", marginBottom: "10px" }}
-            >
-              <TextInput
-                label="Sphere"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%", borderRadius: "8px" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-              <TextInput
-                label="Cylinder"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-            </div>
-            <div className="d-flex" style={{ gap: "20px" }}>
-              <TextInput
-                label="Axis"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%", borderRadius: "8px" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-              <TextInput
-                label="Add Power"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-            </div>
-          </div>
-          <div className="p-2">
-            <hr />
-          </div>
+          
+         
 
-          <div className="mb-3">
-            <p
-              style={{ fontSize: "19px", fontWeight: "600", color: "#7257FF" }}
-            >
-              Lens Details
-            </p>
-            <div
-              className="d-flex"
-              style={{ gap: "20px", marginTop: "5px", marginBottom: "10px" }}
-            >
-              <TextInput
-                label="Contact Lens Brand OD"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%", borderRadius: "8px" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-              <TextInput
-                label="Contact Lens Brand OS"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-            </div>
-            <div className="d-flex" style={{ gap: "20px",marginBottom: "10px" }}>
-              <TextInput
-                label="Contact Lens Base Curve OD"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%", borderRadius: "8px" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-              <TextInput
-                label="Contact Lens Base Curve OS"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-            </div>
-            <div className="d-flex" style={{ gap: "20px" }}>
-              <TextInput
-                label="Contact Lens Diameter OD"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%", borderRadius: "8px" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-              <TextInput
-                label="Contact Lens Diameter OS"
-                placeholder="Select"
-                variant="filled"
-                radius={"8px"}
-                style={{ width: "45%" }}
-                inputWrapperOrder={["label", "error", "input", "description"]}
-              />
-            </div>
-          </div>
+          
         </div>
       </div>
     </AtheleteMenu>

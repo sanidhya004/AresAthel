@@ -12,7 +12,7 @@ const SideNav2 = () => {
  const handleLogout = async () => {
   await dispatch(logOut());
 };
-const naviagte=useNavigate()
+const navigate=useNavigate()
  const [opened, { open, close }] = useDisclosure(false)
   return (
     <>
@@ -157,7 +157,7 @@ const naviagte=useNavigate()
     </div>
     <div className="sidenav-wrapper ">
       <div className="sidenav-logo">
-        <img src="/images/DoctorMenuLogo.png" />
+        <img src="/images/DoctorMenuLogo.png" onClick={()=>{navigate("/")}}/>
       </div>
       <div className="sidenav-buttons-wrapper">
 

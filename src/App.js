@@ -23,6 +23,7 @@ import AtheleDashboard from "./pages/AtheleDashboard";
 import SelectPlan from "./pages/SelectPlan";
 import Prescriptions from "./pages/Prescriptions";
 
+
 function App() {
   return (
     <>
@@ -35,7 +36,7 @@ function App() {
           <Route path="/a-transactions" element={<AtheTransactions />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/a-booking" element={<AtheBookings />} />
-          <Route path="/a-prescription" element={<Prescriptions/>}/>
+          <Route path="/a-prescription/:presId/:appointmentid" element={<Prescriptions/>}/>
           <Route path="/a-drill" element={<Athedrill />} />
           <Route path="/a-profile" element={<EditProfile />} />
           <Route path="/a-manager" element={<AthelProfileManager />} />
@@ -48,6 +49,7 @@ function App() {
           <Route path="/a-plans" element={<SelectPlan/>}/>
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-use" element={<TermsOfUse />} />
+         
         </Routes>
         {/* </Router> */}
       </ErrorBoundary>

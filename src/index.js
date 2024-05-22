@@ -17,13 +17,17 @@ import '@mantine/carousel/styles.css';
 import { createTheme, MantineProvider } from '@mantine/core';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <BrowserRouter>
     <Provider store={store}>
       <React.StrictMode>
       <MantineProvider >
+       
         <App />
+       
         </MantineProvider>
+       
         <ToastContainer position="top-center" />
       </React.StrictMode>
     </Provider>

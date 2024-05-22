@@ -4,6 +4,7 @@ import { NavLink ,useNavigate } from "react-router-dom";
 import { useDisclosure } from '@mantine/hooks';
 import { Modal } from "@mantine/core";
 
+
 const Sidenav = () => {
   const [opened, { open, close }] = useDisclosure(false);
 const navigate=useNavigate ()
@@ -49,7 +50,9 @@ const navigate=useNavigate ()
     
       <main className="w-100 h-100 athel-menu text-center text-secondary">
         <div className="sidenav-main">
-          <img src="/images/DoctorMenuLogo.png" />
+          <img src="/images/DoctorMenuLogo.png" onClick={()=>{
+            navigate("/")
+          }} />
           <p>
             <NavLink to="/">
               <div className="toggle-btn">

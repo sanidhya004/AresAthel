@@ -7,7 +7,7 @@ import { SubmitDrillForm } from "../features/apiCall";
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button } from '@mantine/core';
 import { MultiSelect } from '@mantine/core';
-const DrillForm = ({ activity, index, total,disabled }) => {
+const DrillForm = ({ activity, index, total,disabled,fetchDrills }) => {
   const [formData, setFormData] = useState([]);
   const [opened, { open, close }] = useDisclosure(false);
   const [submitchoice, setsubmitchoice] = useState(false)
@@ -31,7 +31,7 @@ const DrillForm = ({ activity, index, total,disabled }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+   
     var isformdata_Okay=true;
     formData.map((item)=>{ 
       if(item.value.length==0){
@@ -52,11 +52,11 @@ const DrillForm = ({ activity, index, total,disabled }) => {
  
    
   };
- const submithandler=async()=>{ 
+ const submithandler=async(res)=>{ 
   toast.success("Hold on submitting your response")
   
   
-  if(submitchoice){
+  if(res){
    
     try {
       console.log("Form data submitted:", formData);
@@ -68,9 +68,11 @@ const DrillForm = ({ activity, index, total,disabled }) => {
       close();
       setsubmitchoice(false)
       toast.success("Response Submitted")
+      window.location.reload()
       
     } catch (error) {
       toast.error("Unexpected Error !");
+      console.log(error)
       setsubmitchoice(false)
       close();
     }
@@ -87,7 +89,7 @@ const DrillForm = ({ activity, index, total,disabled }) => {
        <div style={{display:"flex",justifyContent:"center",flexDirection:"column",alignItems:"center"}}>
            <h4>Submit</h4>
            <p>The submitted data will not be edited</p>
-           <button className="purple-button m-auto" onClick={()=>{setsubmitchoice(true);submithandler()}}>Confirm</button>
+           <button className="purple-button m-auto" onClick={()=>{setsubmitchoice(true);submithandler(true)}}>Confirm</button>
        </div>
        
       </Modal>

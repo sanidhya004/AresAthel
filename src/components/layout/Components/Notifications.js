@@ -36,7 +36,7 @@ console.log(Notifs)
                     style={{ color: "black" }}
                   ></i>
                 </button>
-                <p className="profile-header mt-3">Notifications({Notifs?.length})</p>
+                <p className="profile-header " style={{margin:"0px"}}>Notifications({Notifs?.length})</p>
               </div>
             </Modal.Title>
           </Modal.Header>

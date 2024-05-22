@@ -3,19 +3,26 @@ import AtheleteMenu from "../components/layout/AtheleteMenu";
 import { Input, CloseButton } from "@mantine/core"
 import { Table,Avatar } from '@mantine/core';
 import TransactionCard from "../components/TransactionCard";
-import { GetTransaction } from "../features/apiCall";
+import { GetTransaction, stripestep1 } from "../features/apiCall";
 import { useEffect } from "react";
 import {useDispatch} from 'react-redux'
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import { Select } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button } from '@mantine/core';
 import { Calendar } from '@mantine/dates';
 import dayjs from 'dayjs';
+import {loadStripe} from '@stripe/stripe-js';
+import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
+import PaymentForm from "../components/PaymentForm";
+
+
 
 const AtheTransactions = () => {
-  
+
   const [opened, { open, close }] = useDisclosure(false);
+  const[paymentmodal,paymentmodalhandler]=useDisclosure(false)
+  const navigate=useNavigate()
   const dispatch=useDispatch()
   const [showData,setShowData]=useState([])
   const getdetail=async()=>{
@@ -26,8 +33,12 @@ const AtheTransactions = () => {
   const [selected, setSelected] = useState([]);
   const [date,setDate]=useState(null)
   const [value, setValue] = useState(null );
+  const [clientSecret,setclientsecret]=useState(null)
+  const[mainheading,setmainheading]=useState("")
+  const [subheading, setsubheading] = useState("")
+  const [bodyforpaymnet,setbodyforpyamnet]=useState(null)
   const handleSelect = (date) => {
-    alert(date)
+    
     const temp=new Date(date)
    
     const res=`${temp.getFullYear()}-${temp.getMonth()+1}-${temp.getDate()}`
@@ -47,7 +58,44 @@ const AtheTransactions = () => {
   useEffect(()=>{
     getdetail()
   },[date,value])
+ 
+  const makePayment=async(service_type,bookingid)=>{
+    
+      const stripe= await loadStripe("pk_test_51Oj2PsSH9ISObaXSOzY9UoQzpiIQE8X0Z7jn0j19DWqQkC5XohMv1GsU30vmMf6tkRUj7FQlz7DS09BM5A2Sk9fh00FxwNewLo")
+     var body
+      if(service_type=="planPurchase"){
+        body={
+          product:{
+             
+             "type":service_type,
+             "userId":localStorage.getItem("userId"),
+             "isPaid": true
+          }
+         }
+          
+     }
+     else{
+      body={
+        product:{
+           
+           "type":"booking",
+           "bookingId":bookingid,
+           "isPaid": true
+           
 
+        }
+       }
+       
+     }
+      setbodyforpyamnet(body.product)
+     
+     const headers={
+      "Content-type":"application/json"
+     }
+     const data= await stripestep1(dispatch,{body})
+     setclientsecret(data.clientSecret)
+     paymentmodalhandler.open()
+  }
   const handleappointmentData=(arr)=>{
 
     const apointmentData= arr?.map((item,index)=>{
@@ -69,8 +117,8 @@ const AtheTransactions = () => {
           symbol: `${date_dis}`,
           name: 'Carbon',
           time: <p className='time'>{item.app_time}</p>,
-          button: <button className='pending'>Pending</button>,
-          status: <button className="fill">Pay Now</button>
+          button: <button className={`${item.payment_status}`}>{item.payment_status}</button>,
+          status: <button className="fill" onClick={()=>{makePayment(item.service_type,item.bookingId);setmainheading("Appointment");setsubheading(`${date_dis}`)}}>Pay {item.amount}$</button>
       };
      
       }
@@ -91,8 +139,8 @@ const AtheTransactions = () => {
           symbol: `${date_dis}`,
           name: 'Carbon',
           time: <p className='time'>{item.app_time}</p>,
-          button: <button className={`${item.payment_status}`}>{item.payment_status}</button>,
-          status: <button className="fill">Pay Now</button>
+          button: <button className={`${item.payment_status}`} >{item.payment_status}</button>,
+          status: <button className="fill" onClick={()=>{makePayment(item.service_type);setmainheading(item.plan);setsubheading(item.phase)}}>Pay {item.amount}$</button>
       };
       }
      
@@ -126,6 +174,17 @@ const AtheTransactions = () => {
   ));  
   return (
     <AtheleteMenu>
+       <Modal.Root opened={paymentmodal} onClose={()=>{
+        paymentmodalhandler.close(); setclientsecret(null)
+       }}   overlayProps={{
+          backgroundOpacity: 0.55,
+          blur: 6,
+        }} style={{background:"transparent"}} >
+        <Modal.Overlay />
+        <Modal.Content>
+               <PaymentForm clientSecret={clientSecret} mainheading={mainheading} subheading={subheading} body={bodyforpaymnet}/>
+        </Modal.Content>
+      </Modal.Root>
       <Modal.Root opened={opened} onClose={close}   overlayProps={{
           backgroundOpacity: 0.55,
           blur: 6,
@@ -191,6 +250,7 @@ const AtheTransactions = () => {
           </div>
         </div>
       </div>
+      
     </AtheleteMenu>
   );
 };

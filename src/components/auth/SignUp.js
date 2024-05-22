@@ -106,8 +106,12 @@ const SignUp = () => {
    <>
       {
         isOnline? <AuthLayout><div className="signUp-container">
-        <div className="auth-haeder">
-         <h2>Sign Up</h2>
+        <div className="auth-haeder" style={{display:"flex",gap:"9px",alignItems:"center"}}>
+        <svg onClick={()=>{setisOnline(false)}}width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 19.2C0 12.4794 0 9.11905 1.30792 6.55211C2.4584 4.29417 4.29417 2.4584 6.55211 1.30792C9.11905 0 12.4794 0 19.2 0H20.8C27.5206 0 30.8809 0 33.4479 1.30792C35.7058 2.4584 37.5416 4.29417 38.6921 6.55211C40 9.11905 40 12.4794 40 19.2V20.8C40 27.5206 40 30.8809 38.6921 33.4479C37.5416 35.7058 35.7058 37.5416 33.4479 38.6921C30.8809 40 27.5206 40 20.8 40H19.2C12.4794 40 9.11905 40 6.55211 38.6921C4.29417 37.5416 2.4584 35.7058 1.30792 33.4479C0 30.8809 0 27.5206 0 20.8V19.2Z" fill="#1C1C1C" fill-opacity="0.05"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M22.9254 14.5581C23.1915 14.8021 23.1915 15.1979 22.9254 15.4419L18.4375 19.5581C18.1714 19.8021 18.1714 20.1979 18.4375 20.4419L22.9254 24.5581C23.1915 24.8021 23.1915 25.1979 22.9254 25.4419C22.6593 25.686 22.2278 25.686 21.9617 25.4419L17.4738 21.3258C16.6754 20.5936 16.6754 19.4064 17.4738 18.6742L21.9617 14.5581C22.2278 14.314 22.6593 14.314 22.9254 14.5581Z" fill="#1C1C1C"/>
+</svg>
+         <h2 style={{margin:"0px"}}>Sign Up</h2>
         </div>
         <form onSubmit={handleSubmit}>
      <div className="form-row">
@@ -157,14 +161,14 @@ const SignUp = () => {
        </div>
      </div>
      <div className="form-row">
-       <div className="form-group col-md-6">
+       <div className="form-group col-md-12">
          <label htmlFor="inputEmail4">Adress </label>
          <Input variant="filled" placeholder="Input component" name="address" onChange={handleChange} />
        </div>
        <div className="form-group col-md-6">
          <label htmlFor="inputPassword4">Phone Number</label>
          <div className="d-flex " style={{width:"100%"}}>
-           <select className="select"><option>+91</option></select>
+          
          <Input variant="filled" placeholder="Phone Number" style={{width:"100%"}}  name="phone" onChange={handleChange}/>
          </div>
        
@@ -193,6 +197,13 @@ const SignUp = () => {
        placeholder="Create Password"
        name="password"
        onChange={handleChange}
+       visibilityToggleIcon={({ reveal }) =>
+       reveal ? (
+        <i class="fa-solid fa-eye"></i>
+       ) : (
+        <i class="fa-solid fa-eye-slash"></i>
+       )
+     }
      />
        </div>
        <div className="form-group col-md-6">
@@ -202,6 +213,14 @@ const SignUp = () => {
        placeholder="Confirm"
        name="confirmpass"
        onChange={handleChange}
+       visibilityToggleIcon={({ reveal }) =>
+       reveal ? (
+        <i class="fa-solid fa-eye"></i>
+       ) : (
+        <i class="fa-solid fa-eye-slash"></i>
+       )
+     }
+       
      />
        </div>
      </div>
@@ -234,7 +253,7 @@ const SignUp = () => {
    <AuthLayout>
     <div style={{padding:"20px"}}>
     <div style={{width:"100%",textAlign:"left"}}>
-      <h3 style={{fontWeight:"500"}}><span style={{marginRight:"6px"}}><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <h3 style={{fontWeight:"500"}}><span style={{marginRight:"6px"}}><svg onClick={()=>{navigate(-1)}}width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0 19.2C0 12.4794 0 9.11905 1.30792 6.55211C2.4584 4.29417 4.29417 2.4584 6.55211 1.30792C9.11905 0 12.4794 0 19.2 0H20.8C27.5206 0 30.8809 0 33.4479 1.30792C35.7058 2.4584 37.5416 4.29417 38.6921 6.55211C40 9.11905 40 12.4794 40 19.2V20.8C40 27.5206 40 30.8809 38.6921 33.4479C37.5416 35.7058 35.7058 37.5416 33.4479 38.6921C30.8809 40 27.5206 40 20.8 40H19.2C12.4794 40 9.11905 40 6.55211 38.6921C4.29417 37.5416 2.4584 35.7058 1.30792 33.4479C0 30.8809 0 27.5206 0 20.8V19.2Z" fill="#1C1C1C" fill-opacity="0.05"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M22.9254 14.5581C23.1915 14.8021 23.1915 15.1979 22.9254 15.4419L18.4375 19.5581C18.1714 19.8021 18.1714 20.1979 18.4375 20.4419L22.9254 24.5581C23.1915 24.8021 23.1915 25.1979 22.9254 25.4419C22.6593 25.686 22.2278 25.686 21.9617 25.4419L17.4738 21.3258C16.6754 20.5936 16.6754 19.4064 17.4738 18.6742L21.9617 14.5581C22.2278 14.314 22.6593 14.314 22.9254 14.5581Z" fill="#1C1C1C"/>
 </svg>

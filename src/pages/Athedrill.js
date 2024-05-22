@@ -5,10 +5,15 @@ import { GetDrillDetails } from "../features/apiCall";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DrillForm from "../components/DrillForm";
-import { useDisclosure } from "@mantine/hooks";
+
 import { useParams } from "react-router-dom";
-import { LoadingOverlay, Button, Group, Box } from "@mantine/core";
+import { LoadingOverlay } from "@mantine/core";
+import { Carousel } from '@mantine/carousel';
+import { useDisclosure } from '@mantine/hooks';
+import { Modal } from '@mantine/core';
+
 const Athedrill = () => {
+  const [opened, { open, close }] = useDisclosure(false);
   const [totalWeeks, setTotalWeeks] = useState("");
   const [completePercentage, setCompletePercentage] = useState("");
   const [selectedWeek, setSelectedWeek] = useState(1);
@@ -17,6 +22,7 @@ const Athedrill = () => {
   const [selectedIndex, setIndex] = useState(null);
   const [totalActivities, setTotal] = useState(null);
   const [visible, { toggle }] = useDisclosure(false);
+  const[imageurl,setimageurl]=useState("")
   const dispatch = useDispatch();
   const [drill_week_details, setDrillWeekDetails] = useState(null);
   const clientId = localStorage.getItem("userId");
@@ -39,7 +45,11 @@ const Athedrill = () => {
   useEffect(() => {
     fetchDirlls();
   }, [selectedWeek, dispatch]);
+  const handleimag=(value)=>{
+     open();
+     setimageurl(value)
 
+  }
   const handleLabelClick = (activity, index, total) => {
     console.log(activity);
     setSelectedActivity(activity);
@@ -256,6 +266,14 @@ const Athedrill = () => {
   ));
   return (
     <AtheleteMenu>
+      <Modal.Root opened={opened} onClose={close} size={"70rem"} transitionProps={{ transition: 'fade', duration: 600, timingFunction: 'linear' }}>
+        <Modal.Overlay />
+        <Modal.Content>
+          
+          <Modal.Body style={{padding:"0px",borderRadius:"30px"}} ><img src={imageurl} style={{height:"100%",width:"100%"}}/></Modal.Body>
+        </Modal.Content>
+      </Modal.Root>
+
       <LoadingOverlay
         visible={isFetching}
         zIndex={1000}
@@ -294,7 +312,7 @@ const Athedrill = () => {
             })}
           </div>
           <div>
-            <button className="upgrade-plan">Upgrade Plan</button>
+            {completePercentage==100 && <button className="upgrade-plan">Upgrade Plan</button>}
           </div>
         </div>
         <div className="drill-main-box video-cont">
@@ -309,11 +327,54 @@ const Athedrill = () => {
               )}
             </h5>
             <div
-              style={{ height: "400px", display: "flex", alignItems: "center" }}
+              style={{ height: "400px", display: "flex", alignItems: "center" ,flexDirection:"column",alignItems:"center"}}
             >
-              <video width="90%" controls style={{ borderRadius: "26.78px" }}>
-                <source src="produ.mp4" type="video/mp4" />
-              </video>
+              {selectedActivity &&  selectedActivity?.fileLinks?.map((item)=>{
+                if(item.type=="video"){
+                  return(
+                    <video width="90%" controls style={{ borderRadius: "26.78px" }}>
+                     <source src={item.link} type="video/mp4" />
+                   </video>
+                   )
+
+                }
+               
+              })
+                  
+}
+             
+             
+              <div style={{minWidth:"100%",height:"100%",display:"flex",alignItems:"center"}}>
+              <Carousel   slideSize="33.333333%" 
+      slideGap="40px"
+      loop
+      align="start"
+      slidesToScroll={3}
+      withControls={false}
+>
+{selectedActivity &&  selectedActivity?.fileLinks?.map((item)=>{
+                if(item.type=="image"){
+                  return(
+                    <Carousel.Slide><div><img src={item.link} style={{widht:"80px",height:"80px",borderRadius:"10px"}} onClick={()=>{handleimag(item.link)}}/ ></div></Carousel.Slide>
+                   )
+
+                }
+               
+              })
+                  
+}
+{/* { selectedActivity &&  selectedActivity?.fileLinks?.map((item)=>{
+      if(item.type="image"){
+        return(
+          <Carousel.Slide><div><img src={item.link} style={{widht:"80px",height:"80px",borderRadius:"10px"}} onClick={()=>{handleimag(item.link)}}/ ></div></Carousel.Slide>
+        )
+      }
+       
+      })} */}
+     
+      
+    </Carousel>
+              </div>
             </div>
           </div>
 
@@ -372,6 +433,7 @@ const Athedrill = () => {
           index={selectedIndex + 1 || 1}
           total={totalActivities || 6}
           disable={selectedActivity?.isComplete}
+          fetchDirlls={fetchDirlls}
         />
       </div>
     </AtheleteMenu>

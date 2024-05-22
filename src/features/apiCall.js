@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import axios from "../utils/axios.js";
-import { parseError } from "../utils/parseError.js"
+import { parseError } from "../utils/parseError.js";
 import {
   EditSuccess,
   Failure,
@@ -9,7 +9,7 @@ import {
   loginSuccess,
   Start,
   Success,
-  PlanSuccess
+  PlanSuccess,
 } from "./authSlice.js";
 import { AppFailure, AppStart, AppSuccess } from "./appointSlice.js";
 import { FetchFailure, FetchStart, FetchSuccess } from "./fetchSlice.js";
@@ -31,19 +31,19 @@ const successToastOptions = {
   theme: "light",
 };
 export const login = async (dispatch, user) => {
- 
   dispatch(loginStart());
 
   const { email, password } = user;
 
   try {
-    const { data } = await axios.post("/api/athlete/login", { email, password });
+    const { data } = await axios.post("/api/athlete/login", {
+      email,
+      password,
+    });
     // console.log(data);
-    
+
     toast.success("Logged in Sucessfully!", successToastOptions);
     await dispatch(loginSuccess(data));
-     
-    
   } catch (error) {
     const errorMessage = parseError(error);
     toast.error(errorMessage);
@@ -57,7 +57,7 @@ export const SendOtp = async (dispatch, email) => {
   try {
     const { data } = await axios.post(
       "/api/athlete/send-forgot-password-code",
-      {email:email}
+      { email: email }
     );
     // console.log(data);
     toast.success("OTP Sent!", successToastOptions);
@@ -72,19 +72,18 @@ export const SendOtp = async (dispatch, email) => {
   }
 };
 
-export const GetNotifications=async()=>{
+export const GetNotifications = async () => {
   const token = localStorage.getItem("userToken");
-   try{
-      const {data}= await axios.get("/api/notification/get-all",
-      {  headers: { Authorization: `Bearer ${token}` }}) 
-      console.log("-->",data)
-      return data;
-     
-   }
-   catch(err){
-     toast.error(err)
-   }
-}
+  try {
+    const { data } = await axios.get("/api/notification/get-all", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    console.log("-->", data);
+    return data;
+  } catch (err) {
+    toast.error(err);
+  }
+};
 
 export const SubmitDrillForm = async (dispatch, { activityId, formData }) => {
   const token = localStorage.getItem("userToken");
@@ -115,6 +114,26 @@ export const SubmitDrillForm = async (dispatch, { activityId, formData }) => {
   }
 };
 
+export const stripestep1 = async (dispatch, { body}) => {
+  const token = localStorage.getItem("userToken");
+  const {data} = await axios.post("/api/payments/createPaymentIntent", body,{
+   
+     headers: { Authorization: `Bearer ${token}` },
+  });
+  
+  
+ 
+  return data;
+};
+export const stripestep2= async(dispatch,{body})=>{
+  const token = localStorage.getItem("userToken");
+  const {data} = await axios.put("/api/payments/updatePayment", body,{
+   
+     headers: { Authorization: `Bearer ${token}` },
+  });
+  return data;
+  
+}
 export const GetRecentBookingsSearch = async (
   dispatch,
   {
@@ -129,7 +148,7 @@ export const GetRecentBookingsSearch = async (
   dispatch(FetchStart());
   const token = localStorage.getItem("userToken");
   try {
-    const { data } = await axios.get("/api/doctor/recent-bookings", {
+    const { data } = await axios.get("/api/athlete/recent-bookings", {
       params: {
         page_no: currentPage,
         per_page_count: pageSize,
@@ -151,20 +170,13 @@ export const GetRecentBookingsSearch = async (
   }
 };
 
-
-export const userDetails = async (
-  dispatch,
-
-) => {
+export const userDetails = async (dispatch) => {
   dispatch(FetchStart());
   const token = localStorage.getItem("userToken");
   try {
-    const data = await axios.get(
-      `/api/athlete/dashboard`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
+    const data = await axios.get(`/api/athlete/dashboard`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     dispatch(FetchSuccess({ type: "FETCH_DRILL_WEEKS", payload: data.data }));
     return data;
   } catch (error) {
@@ -198,26 +210,23 @@ export const GetDrillDetails = async (
   }
 };
 
-export const VerifyOTP=async(dispatch,email,otp)=>{
-  try{
-      const {data}= await axios.post(
-        "/api/athlete/validate-code",
-        {email:email,otp:otp}
-      );
-  }
-  catch (error){
+export const VerifyOTP = async (dispatch, email, otp) => {
+  try {
+    const { data } = await axios.post("/api/athlete/validate-code", {
+      email: email,
+      otp: otp,
+    });
+  } catch (error) {
     console.log(error);
     const errorMessage = parseError(error);
     toast.error(errorMessage, ErrorToastOptions);
     dispatch(Failure(errorMessage));
     return false;
   }
-}
+};
 
-export const Register= async(dispatch,values)=>{
+export const Register = async (dispatch, values) => {
   dispatch(loginStart());
-  
-  
 
   try {
     const { data } = await axios.post("/api/athlete/register", values);
@@ -229,7 +238,7 @@ export const Register= async(dispatch,values)=>{
     toast.error(errorMessage, ErrorToastOptions);
     dispatch(loginFailure(errorMessage));
   }
-}
+};
 export const VerifyOtp = async (dispatch, { email, code }) => {
   dispatch(Start());
 
@@ -308,13 +317,13 @@ export const GetTodayAppointmentDetails = async (dispatch) => {
     return false; // Return false to indicate that the request failed
   }
 };
-export const GetTransaction = async (dispatch,{date,service_type}) => {
+export const GetTransaction = async (dispatch, { date, service_type }) => {
   const token = localStorage.getItem("userToken");
   dispatch(FetchStart());
   try {
     const { data } = await axios.get("/api/athlete/transaction", {
       headers: { Authorization: `Bearer ${token}` },
-      params:{date:date,service_type:service_type}
+      params: { date: date, service_type: service_type },
     });
     console.log(data);
     dispatch(FetchSuccess(data));
@@ -328,13 +337,13 @@ export const GetTransaction = async (dispatch,{date,service_type}) => {
 };
 export const GetRecentPrescriptions = async (
   dispatch,
-  { currentPage, pageSize }
+  { presId, appointmentid}
 ) => {
   const token = localStorage.getItem("userToken");
   dispatch(FetchStart());
   try {
-    const { data } = await axios.get("/api/doctor/recent-prescriptions", {
-      params: { page_no: currentPage, per_page_count: pageSize },
+    const { data } = await axios.get(`/api/athlete/prescription`, {
+      params: { prescriptionId: presId,  appointmentId:appointmentid  },
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log(data);
@@ -369,24 +378,18 @@ export const GetRecentBookings = async (
   }
 };
 
-export const getAllBooking= async()=>{
+export const getAllBooking = async () => {
   const token = localStorage.getItem("userToken");
-   try{
-      const {data}= await axios.get("/api/athlete/get-bookings", {
-      
-        headers: { Authorization: `Bearer ${token}` },
-      })
-    console.log(data)
-      return data.sortedAppointments
-   }
-   catch(err){
-     
-   }
-}
+  try {
+    const { data } = await axios.get("/api/athlete/get-bookings", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    console.log(data);
+    return data.sortedAppointments;
+  } catch (err) {}
+};
 
-export const getSlots=async(service_type,date,doctor)=>{
-  
-
+export const getSlots = async (service_type, date, doctor) => {
   const token = localStorage.getItem("userToken");
   try {
     const params = {
@@ -394,7 +397,7 @@ export const getSlots=async(service_type,date,doctor)=>{
     };
 
     if (date) {
-      params.params = { ...params.params, date: date};
+      params.params = { ...params.params, date: date };
     }
 
     if (doctor) {
@@ -402,23 +405,19 @@ export const getSlots=async(service_type,date,doctor)=>{
     }
 
     if (service_type) {
-      params.params = { ...params.params, service_type: service_type};
+      params.params = { ...params.params, service_type: service_type };
     }
 
     const { data } = await axios.get("/api/doctor/get-slots", params);
 
-    
     return data;
   } catch (error) {
     const errorMessage = parseError(error);
     toast.error(errorMessage, ErrorToastOptions);
-    
+
     return false;
   }
-
-
-    
-}
+};
 
 export const GetPlans = async (dispatch) => {
   const token = localStorage.getItem("userToken");
@@ -450,14 +449,14 @@ export const Plans = async (dispatch, { Name, phase, ClientId }) => {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-    
-    dispatch(PlanSuccess(data.data))
+
+    dispatch(PlanSuccess(data.data));
     return data;
   } catch (error) {
     const errorMessage = parseError(error);
     toast.error(errorMessage, ErrorToastOptions);
     dispatch(Failure(errorMessage));
-  
+
     return false;
   }
 };
@@ -474,7 +473,7 @@ export const Bookappointment = async (dispatch, formData) => {
     const { data } = await axios.post(
       `/api/doctor/book-appointment/${client_id}`,
       {
-       ...formData
+        ...formData,
       },
       {
         headers: { Authorization: `Bearer ${token}` },
@@ -549,29 +548,28 @@ export const VerifyAthelete = async (dispatch, { email }) => {
   }
 };
 
-
-export const UpdateProfile=async(dispatch,formdata)=>{ 
+export const UpdateProfile = async (dispatch, formdata) => {
   const token = localStorage.getItem("userToken");
   dispatch(Start());
-  try{
-     const {data}=await axios.put("/api/athlete/edit-profile",
-    {
-      ...formdata
-    },
-    {
-     headers:{Authorization: `Bearer ${token}`}
-    })
-    console.log(data)
-    
+  try {
+    const { data } = await axios.put(
+      "/api/athlete/edit-profile",
+      {
+        ...formdata,
+      },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    console.log(data);
+
     dispatch(EditSuccess(data));
     toast.success("Profile Updated");
     return true;
-
-  }
-  catch(error){
+  } catch (error) {
     const errorMessage = parseError(error);
     toast.error(errorMessage, ErrorToastOptions);
     dispatch(Failure(errorMessage));
-    return false; 
+    return false;
   }
-}
+};

@@ -15,13 +15,24 @@ const ServiceModal = ({ heading, amount, colors, session, svg,icon,service_type 
   const [active, setActive] = useState(1);
   const [datedata,setDateData]=useState([])
   const [formData,setFormData]=useState([])
-
-  const handleBooking=async()=>{
-     setFormData((prevData) => ({
+const[disabled,setDisabled]=useState(true)
+console.log(formData.length)
+const handledisable=()=>{
+  
+   if(formData.app_time){
+  
+     setDisabled(false)
+   }
+}
+  const handleBooking=async(e)=>{
+      e.preventDefault()
+    
+      setFormData((prevData) => ({
       ...prevData,
       ["service_type"]:service_type ,
     }));
     console.log("formData",formData)
+
      const res= await Bookappointment(dispatch,formData)
      if(res){
        nextStep()
@@ -33,7 +44,11 @@ const ServiceModal = ({ heading, amount, colors, session, svg,icon,service_type 
       ...prevData,
       ["service_type"]:service_type ,
     }));
-  },[])
+
+    handledisable()
+  
+  },[formData])
+
   const nextStep = () => {
     setActive((current) => (current < 3 ? current + 1 : current));
   };
@@ -166,10 +181,10 @@ const ServiceModal = ({ heading, amount, colors, session, svg,icon,service_type 
                     >
                       <ServiceBookingform date_data={datedata} service_type={service_type} setFormData={setFormData}/>
                     </div>
-                     
-                    <button className="continue-btn " onClick={handleBooking}>
+                     {!disabled &&  <button className="continue-btn" disabled={disabled} onClick={handleBooking} >
                       Continue
-                    </button>
+                    </button>}
+                   
                     
                   </div>
                 </Stepper.Step>
