@@ -29,7 +29,7 @@ function App() {
     <>
       <ErrorBoundary>
         {/* <Router> */}
-        <Routes>
+        <Routes >
           <Route path="/" element={<AtheleDashboard/>} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/a-home" element={<AtheleHome />} />

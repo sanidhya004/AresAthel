@@ -19,7 +19,7 @@ import { createTheme, MantineProvider } from '@mantine/core';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/">
     <Provider store={store}>
       <React.StrictMode>
       <MantineProvider >
