@@ -8,6 +8,9 @@ import { Indicator } from '@mantine/core';
 import { getSlots } from "../../../features/apiCall";
 import { useEffect } from "react";
 import {toast} from "react-toastify"
+import { Loader } from '@mantine/core';
+
+
 const ServiceBookingform = ({date_data=[],service_type,setFormData}) => {
   const [date, setdate] = useState(new Date());
   const [add,setAdd]=useState("")
@@ -17,6 +20,7 @@ const [docs,setDocs]=useState([])
 const [doc,setDoc]=useState("")
 const [slots,setSlots]=useState([])
 const [time,setTime]=useState([])
+const [loading,setloading]=useState(false)
 const adddate=()=>{
   setFormData((prevData) => ({
     ...prevData,
@@ -26,6 +30,8 @@ const adddate=()=>{
 useEffect(()=>{
   adddate()
 },[])
+
+
 console.log("loc",location)
  const locationarray=async(json)=>{
 
@@ -66,6 +72,7 @@ console.log("loc",location)
    setDocs(val)
    
    
+   
  }
   const handleDate= async(e)=>{
         setAdd(null)
@@ -94,20 +101,26 @@ const hadnleAddress=(e)=>{
  
 
   const askData= async()=>{
- 
+    
     const  payload= `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
     const data=await getSlots(service_type,payload,doc)
     if(data.location){
        setAllData(data.location)
    
       locationarray(data.location)
+    
    
     }
    
-   
-   if(data.slots){
+  
+   if( data.slots){
+    
     setSlots(data.slots)
+  
+    
+    
    }
+   
    
    
   }
@@ -218,6 +231,7 @@ const hadnleAddress=(e)=>{
         <p>Appointment Time</p>
         <p style={{ fontSize: "10px" }}>90 minutes meeting</p>
         <div className="appointment-container ">
+           {loading && <Loader color="blue" />}
           {slots?.map((item)=>{
              return(
               <button className="appointment-buttons" onClick={()=>{setTime(item[0]);  setFormData((prevData) => ({

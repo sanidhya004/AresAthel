@@ -116,9 +116,16 @@ const bookingDataHandler=async()=>{
     const date = new Date(item.app_date);
     const date_dis = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
     var buttoncomp=<button className="fill" onClick={()=>{makePayment(item.service_type,item._id);setmainheading("Appointment");setsubheading(`${date_dis}`)}}>Pay {item.amount}$</button>
-    if(item.presId){
+
+    
+
+    if(item.presId && item.status=="paid"){
        buttoncomp=<NavLink to={`/a-prescription/${item.presId}/${item._id}`}><button className="fill">View Prescription</button></NavLink>
     }
+    else if(!item.presId && item.status=="paid" ){
+      buttoncomp=<NavLink ><button className="fill">Prescription Upcoming</button></NavLink>
+    }
+    
 
     return {
         Name: (

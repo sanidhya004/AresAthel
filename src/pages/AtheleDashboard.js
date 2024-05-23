@@ -81,7 +81,7 @@ const AtheleDashboard = () => {
                       className=" service-box text-light mb-4 d-flex justify-content-between  align-items-center box-shadow-drop-bottom "
                     >
                       <ServiceModal
-                      service_type={"SportsVisionPerformanceEvaluation"}
+                      service_type={"SportsVisionPerformanceEvaluaetion"}
                       svg={<svg width="75" height="75" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_645_40548)">
 <rect width="88" height="88" rx="44" fill="#D9CFFB" fill-opacity="0.5"/>

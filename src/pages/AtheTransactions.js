@@ -101,7 +101,13 @@ const AtheTransactions = () => {
     const apointmentData= arr?.map((item,index)=>{
       const date = new Date(item.date);
       const date_dis = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-  
+      var btn;
+      if(item.payment_status=="paid"){
+         btn=<button className="fill">Paid {item.amount}$</button>
+      }
+      else{
+        btn=<button className="fill" onClick={()=>{makePayment(item.service_type,item.bookingId);setmainheading("Appointment");setsubheading(`${date_dis}`)}}>Pay {item.amount}$</button>
+      }
       if(item.service_type!="planPurchase"){
         return {
           Name: (
@@ -118,7 +124,7 @@ const AtheTransactions = () => {
           name: 'Carbon',
           time: <p className='time'>{item.app_time}</p>,
           button: <button className={`${item.payment_status}`}>{item.payment_status}</button>,
-          status: <button className="fill" onClick={()=>{makePayment(item.service_type,item.bookingId);setmainheading("Appointment");setsubheading(`${date_dis}`)}}>Pay {item.amount}$</button>
+          status:btn
       };
      
       }

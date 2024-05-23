@@ -16,7 +16,7 @@ const ServiceModal = ({ heading, amount, colors, session, svg,icon,service_type 
   const [datedata,setDateData]=useState([])
   const [formData,setFormData]=useState([])
 const[disabled,setDisabled]=useState(true)
-console.log(formData.length)
+
 const handledisable=()=>{
   
    if(formData.app_time){

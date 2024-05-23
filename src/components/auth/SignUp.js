@@ -92,7 +92,8 @@ const SignUp = () => {
     e.preventDefault()
     console.log(values)
     if(values.password!=values.confirmpass){
-       alert("wrong number")
+       alert("Passwords do not match")
+       return ;
     }
     await Register(dispatch,values)
   };
