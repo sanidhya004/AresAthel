@@ -11,8 +11,10 @@ import { LoadingOverlay } from "@mantine/core";
 import { Carousel } from '@mantine/carousel';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal } from '@mantine/core';
+import {useNavigate} from  "react-router-dom"
 
 const Athedrill = () => {
+  const navigate=useNavigate()
   const [opened, { open, close }] = useDisclosure(false);
   const [totalWeeks, setTotalWeeks] = useState("");
   const [completePercentage, setCompletePercentage] = useState("");
@@ -312,7 +314,7 @@ const Athedrill = () => {
             })}
           </div>
           <div>
-            {completePercentage==100 && <button className="upgrade-plan">Upgrade Plan</button>}
+          {completePercentage==100 && <button className="upgrade-plan" onClick={()=>{navigate("/a-plans")}}>Upgrade Plan</button>}
           </div>
         </div>
         <div className="drill-main-box video-cont">
