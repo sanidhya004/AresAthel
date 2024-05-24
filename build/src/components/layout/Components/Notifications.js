@@ -1,6 +1,6 @@
 import React from "react";
 import { Avatar } from "@mantine/core";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { GetNotifications } from "../../../features/apiCall";
@@ -9,6 +9,7 @@ import { useEffect } from "react";
 
 const Notifications = () => {
   const [opened, { open, close }] = useDisclosure(false);
+  const navigate=useNavigate()
   const [Notifs,setNotifs]=useState([])
 console.log(Notifs)
   const fecthNoticiations=async()=>{ 
@@ -75,6 +76,7 @@ console.log(Notifs)
                     color: "white",
                     fontSize: "smaller",
                   }}
+                  onClick={()=>{navigate("/a-transactions")}}
                 >
                   Pay Now
                 </button>
@@ -143,6 +145,7 @@ console.log(Notifs)
                     color: "white",
                     fontSize: "smaller",
                   }}
+                  onClick={()=>{navigate("/a-transactions")}}
                 >
                   Pay Now
                 </button>
