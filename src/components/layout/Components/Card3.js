@@ -4,8 +4,8 @@ import React from 'react'
 
 import { Stepper, rem } from '@mantine/core';
 
-const Card3 = () => {
-    const [active, setActive] = React.useState(1);
+const Card3 = ({len,trackingid}) => {
+    const [active, setActive] = React.useState(len);
   return (
     <div
     xs={6}
@@ -16,6 +16,7 @@ const Card3 = () => {
       width:"420px"
     }}
   >
+    {(len && trackingid)?
     <div >
       <div className="circle-1 pulsate"></div>
       <div className="circle-2  pulsate"></div>
@@ -29,7 +30,7 @@ const Card3 = () => {
       active={active}
       visibleFrom="md"
       
-      onStepClick={setActive}
+     
       color="#B9ABFF"
       completedIcon={<svg width="212" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M16.9475 5.1153L8.09107 13.9717L4.06543 9.94607" stroke="#060024" stroke-width="1.61026" stroke-linecap="round" stroke-linejoin="round"/>
@@ -44,7 +45,7 @@ const Card3 = () => {
         </svg>
      
         }
-        description="order placed"
+        description="Order Placed"
       />
        <Stepper.Step
         visibleFrom={"md"}
@@ -53,7 +54,7 @@ const Card3 = () => {
         </svg>
         
         }
-        description="order dispatched"
+        description="Order Dispatched"
       />
        <Stepper.Step
         icon={<svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +62,7 @@ const Card3 = () => {
         </svg>
         
         }
-        description="order placed"
+        description="Shipped"
       />
       <Stepper.Step
       
@@ -70,7 +71,7 @@ const Card3 = () => {
         </svg>
         
         }
-        description="order placed"
+        description="Out For Delivery"
       />
       <Stepper.Step
        visibleFrom={"md"}
@@ -78,14 +79,14 @@ const Card3 = () => {
         <path d="M16.9475 5.1153L8.09107 13.9717L4.06543 9.94607" stroke="#060024" stroke-width="1.61026" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         }
-        description="order placed"
+        description="Delivered"
       />
     </Stepper>
     <Stepper
       active={active}
       hiddenFrom="md"
       iconSize={"24px"}
-      onStepClick={setActive}
+     
       color="#B9ABFF"
       completedIcon={<svg width="212" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M16.9475 5.1153L8.09107 13.9717L4.06543 9.94607" stroke="#060024" stroke-width="1.61026" stroke-linecap="round" stroke-linejoin="round"/>
@@ -124,15 +125,11 @@ const Card3 = () => {
     </Stepper>
     
       <div style={{marginTop:"45px",width:"90%"}}>
-        <h2 style={{fontWeight:"500"}}><span  style={{color:"#FFFFFF"}}>Shipped</span><span style={{color:"#FFFFFFCC"}}>-Equiment</span></h2>
+        <h2 style={{fontWeight:"500"}}><span  style={{color:"#FFFFFF"}}>Shipping </span><span style={{color:"#FFFFFFCC"}}>#{trackingid}</span></h2>
         <p style={{color:"#FFFFFF99",fontWeight:"500"}}>Your order has been shipped, and delivery is expected between <span style={{color:"#FFFFFF"}}>Jan 12th to Jan 14th</span></p>
       </div>
-      <div>
-        <div className="start-drill">
-          <p>View Details</p>
-        </div>
-      </div>
-    </div>
+      
+    </div>:<></>}
 </div>
   )
 }

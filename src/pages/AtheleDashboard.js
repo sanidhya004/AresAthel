@@ -22,17 +22,34 @@ import { useEffect } from "react";
 import Drillstats from "../components/layout/Components/Drillstats";
 import { useState } from "react";
 import Loadercard from "../components/layout/Components/Loadercard";
+import Card5 from "../components/layout/Components/card5";
 const AtheleDashboard = () => {
   const name= useSelector((state)=>state.auth.userName)
   const plan=useSelector((state)=>state.auth.plan)
   const {is_Online}=useSelector((state)=>state.auth)
   const dispatch=useDispatch()
   const[userinfo,setuserinfo]=useState([])
+  const [shiparray,setshiparray]=useState([])
+  function separateShipment(apiResponse) {
+    // Extract the shipment part
+    const shipment = apiResponse.shipment;
+
+    // Remove the shipment part from the original response
+    const { shipment: _, ...responseWithoutShipment } = apiResponse;
+
+    return {
+        responseWithoutShipment,
+        shipment
+    };
+}
+
   const getuserDetails= async()=>{
     const {data}= await userDetails(dispatch)
     setuserinfo(data)
+    const { responseWithoutShipment, shipment } = separateShipment(data)
+    setshiparray(shipment)
   }
-
+  console.log("ship",shiparray[0]?.shipmentStatus.length)
   useEffect(()=>{
     getuserDetails()
   },[])
@@ -59,12 +76,18 @@ const AtheleDashboard = () => {
           {/* This is row 1 contains your stat cards */}
           <div className="d-flex row1 grow1 upper-card-cont">
          {!userinfo?.userDetails && <><Loadercard/></>}
-         {( userinfo?.userDetails && is_Online && userinfo?.userDetails?.plan_payment=="paid") && <Card1 data={userinfo?.drillActiveStatus} datacomp={userinfo?.drillDetails}/>}
+         {( userinfo?.userDetails && is_Online && userinfo?.userDetails?.plan_payment=="paid" && shiparray[0]?.shipmentStatus.length==5) && <Card1 data={userinfo?.drillActiveStatus} datacomp={userinfo?.drillDetails}/>}
          {/* <Card2/>
           <Card3/>  */}
+          { (userinfo?.userDetails?.plan_payment=="paid"  && (shiparray[0]?.shipmentStatus && shiparray[0]?.shipmentStatus.length!=5))  && 
+           <Card3 len={shiparray[0]?.shipmentStatus.length} trackingid={shiparray[0]?.trackingId}/>
+          }
+          { (userinfo?.userDetails?.plan_payment=="paid"  && (!shiparray[0]?.shipmentStatus ))  && 
+           <Card5/>
+          }
 
           {/* <Card4/> */}
-          {( userinfo?.userDetails &&  is_Online  && userinfo?.userDetails?.plan_payment!="paid") && <Card2/>}
+          {( userinfo?.userDetails &&  is_Online  && userinfo?.userDetails?.plan_payment!="paid" ) && <Card2/>}
           {!is_Online && <TeleSessions/> }
           {is_Online &&  <Drillstats data={userinfo.drillDetails} ispaid={userinfo?.userDetails?.plan_payment}/>}
           

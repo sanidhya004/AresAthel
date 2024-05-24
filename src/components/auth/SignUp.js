@@ -142,7 +142,7 @@ const SignUp = () => {
        value={value}
        variant="filled"
        name="dob"
-       onChange={(e)=>{setValue(); setValues({...values,["dob"]:e})}}
+       onChange={(e)=>{setValue(e); setValues({...values,["dob"]:e})}}
        rightSection={<i class="fa-solid fa-calendar"></i>}
        placeholder="Choose your date of birth"
        
