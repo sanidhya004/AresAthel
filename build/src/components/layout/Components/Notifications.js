@@ -144,6 +144,7 @@ console.log(Notifs)
                     borderRadius: "10px",
                     color: "white",
                     fontSize: "smaller",
+                   
                   }}
                   onClick={()=>{navigate("/a-transactions")}}
                 >

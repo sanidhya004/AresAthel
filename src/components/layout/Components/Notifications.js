@@ -6,8 +6,10 @@ import { useDisclosure } from "@mantine/hooks";
 import { GetNotifications } from "../../../features/apiCall";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate} from "react-router-dom";
 
 const Notifications = () => {
+  const navigate=useNavigate()
   const [opened, { open, close }] = useDisclosure(false);
   const [Notifs,setNotifs]=useState([])
 console.log(Notifs)
@@ -75,6 +77,7 @@ console.log(Notifs)
                     color: "white",
                     fontSize: "smaller",
                   }}
+                  onClick={()=>{navigate("/a-transactions")}}
                 >
                   Pay Now
                 </button>
@@ -143,6 +146,7 @@ console.log(Notifs)
                     color: "white",
                     fontSize: "smaller",
                   }}
+                  onClick={()=>{navigate("/a-transactions")}}
                 >
                   Pay Now
                 </button>
