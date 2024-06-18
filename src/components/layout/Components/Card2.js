@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-const Card2 = () => {
+const Card2 = ({is_Online}) => {
   return (
     <div
     xs={6}
@@ -63,7 +63,7 @@ const Card2 = () => {
         className="circle-img"
         src="https://cdni.iconscout.com/illustration/premium/thumb/win-sports-competition-4981299-4145076.png?f=webp"
       />
-      <div className="flex-shift justify-content-between  ">
+      {is_Online=="true" &&  <div className="flex-shift justify-content-between  ">
         <div>
           
           <h2 style={{fontWeight:"700"}}>Select your plan</h2>
@@ -76,7 +76,18 @@ const Card2 = () => {
           <p>Select Plans</p>
         </div>
         </NavLink>
-      </div>
+      </div>}
+      {is_Online=="false" &&  <div className="flex-shift justify-content-between  ">
+        <div>
+          
+          <h2 style={{fontWeight:"700"}}>Welcome to <br/> Ares Elite (Offline)</h2>
+          <div>
+            <p style={{marginTop:"25px",width:"90%",fontSize:"16px",lineHeight:"19.2px",color:"#FFFFFFCC"}}>Dear Athlete,You are required to book a consultation call in order to get a plan.</p>
+        </div>
+        </div>
+       
+      </div>}
+     
     </div>
 </div>
   )

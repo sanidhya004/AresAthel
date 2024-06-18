@@ -36,20 +36,21 @@ const AtheleDashboard = () => {
 
     // Remove the shipment part from the original response
     const { shipment: _, ...responseWithoutShipment } = apiResponse;
-
+ 
     return {
         responseWithoutShipment,
         shipment
     };
 }
-
+console.log(shiparray)
   const getuserDetails= async()=>{
     const {data}= await userDetails(dispatch)
     setuserinfo(data)
     const { responseWithoutShipment, shipment } = separateShipment(data)
     setshiparray(shipment)
   }
-  console.log("ship",shiparray[0]?.shipmentStatus.length)
+  // console.log("ship",shiparray[0]?.shipmentStatus.length)
+ 
   useEffect(()=>{
     getuserDetails()
   },[])
@@ -75,21 +76,22 @@ const AtheleDashboard = () => {
           </div>
           {/* This is row 1 contains your stat cards */}
           <div className="d-flex row1 grow1 upper-card-cont">
-         {!userinfo?.userDetails && <><Loadercard/></>}
-         {( userinfo?.userDetails && is_Online && userinfo?.userDetails?.plan_payment=="paid" && shiparray[0]?.shipmentStatus.length==5) && <Card1 data={userinfo?.drillActiveStatus} datacomp={userinfo?.drillDetails}/>}
+         {!userinfo?.userDetails && <><Loadercard color="#7257FF"/></>}
+         {( userinfo?.userDetails && is_Online && userinfo?.userDetails?.plan_payment=="paid" && shiparray && shiparray[0]?.shipmentStatus.length==5) && <Card1 data={userinfo?.drillActiveStatus} datacomp={userinfo?.drillDetails}/>}
          {/* <Card2/>
           <Card3/>  */}
-          { (userinfo?.userDetails?.plan_payment=="paid"  && (shiparray[0]?.shipmentStatus && shiparray[0]?.shipmentStatus.length!=5))  && 
+          { (userinfo?.userDetails?.plan_payment=="paid"  && (shiparray && shiparray[0]?.shipmentStatus  &&  shiparray[0]?.shipmentStatus.length!=5))  && 
            <Card3 len={shiparray[0]?.shipmentStatus.length} trackingid={shiparray[0]?.trackingId}/>
           }
-          { (userinfo?.userDetails?.plan_payment=="paid"  && (!shiparray[0]?.shipmentStatus ))  && 
+          { (userinfo?.userDetails?.plan_payment=="paid"  && (!shiparray || !shiparray[0]?.shipmentStatus ))  && 
            <Card5/>
           }
 
-          {/* <Card4/> */}
-          {( userinfo?.userDetails &&  is_Online  && userinfo?.userDetails?.plan_payment!="paid" ) && <Card2/>}
-          {!is_Online && <TeleSessions/> }
-          {is_Online &&  <Drillstats data={userinfo.drillDetails} ispaid={userinfo?.userDetails?.plan_payment}/>}
+         
+          {( userinfo?.userDetails   && userinfo?.userDetails?.plan_payment!="paid" ) && <Card2 is_Online={is_Online}/>}
+          {is_Online=="false"  && <TeleSessions trainingdata={userinfo?.sessionDetails}/> }
+         
+          {is_Online=="true" &&  <Drillstats data={userinfo.drillDetails} ispaid={userinfo?.userDetails?.plan_payment}/>}
           
           </div>
           {/* -------------- */}

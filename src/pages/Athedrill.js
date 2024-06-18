@@ -332,6 +332,7 @@ const Athedrill = () => {
               style={{ height: "400px", display: "flex", alignItems: "center" ,flexDirection:"column",alignItems:"center"}}
             >
               {selectedActivity &&  selectedActivity?.fileLinks?.map((item)=>{
+               
                 if(item.type=="video"){
                   return(
                     <video width="90%" controls style={{ borderRadius: "26.78px" }}>
